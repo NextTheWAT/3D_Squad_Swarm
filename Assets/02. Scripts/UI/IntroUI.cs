@@ -23,9 +23,8 @@ public class IntroUI : BaseUI
     // 게임 시작
     public void OnClickStartButton()
     {
-        // 게임씬 로드
-        // SceneManager.LoadScene("GameScene");
-        Debug.Log("Start Button Clicked - Load Game Scene");
+        // 스테이지 선택 UI 활성화 함수 호출
+        uiManager.SetStageSelect();
     }
 
     // 옵션창 활성화

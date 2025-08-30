@@ -20,10 +20,10 @@ public class OptionUI : BaseUI
     public void OnClickReturnButton()
     {
         // UI매니저의 이전 상태를 가져옴
-        UIState currentState = uiManager.CurrentState;
+        UIState previousState = uiManager.PreviousState;
 
         // 돌아가기 누르면 이전 상태로 돌아가도록 구현
-        uiManager.ChangeState(currentState);
+        uiManager.ChangeState(previousState);
     }
 
     // 키입력에 접근해서 변경 가능하도록 구현

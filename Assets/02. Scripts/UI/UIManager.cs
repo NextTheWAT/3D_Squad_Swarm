@@ -38,12 +38,15 @@ public class UIManager : MonoBehaviour
     private PauseUI pauseUI;
     private GameOverUI gameOverUI;
     private OptionUI optionUI;
-    private UIState _currentState;
 
-    public UIState CurrentState
+    // 현재 상태와 이전 상태를 저장할 변수
+    private UIState _currentState;
+    private UIState _previousState;
+
+    public UIState PreviousState
     {
-        get { return _currentState; }
-        private set { _currentState = value; } // UIManager 내부에서만 변경 가능
+        get { return _previousState; }
+        private set { _previousState = value; }
     }
 
     private void Awake()
@@ -124,10 +127,12 @@ public class UIManager : MonoBehaviour
     }
 
     // UI 상태 변경 메서드
-    public void ChangeState(UIState state)
+    public void ChangeState(UIState newState)
     {
-        // 현재 상태를 업데이트
-        _currentState = state;
+        // 현재 상태를 이전 상태에 저장하고,
+        // 새로운 상태로 업데이트
+        _previousState = _currentState;
+        _currentState = newState;
 
         // 각 UI에 SetActive 명령을 보내서 현재 enum 상태와 일치하는지 비교후 활성화 여부 결정
         introUI.SetActive(_currentState);
