@@ -12,6 +12,8 @@ public class StageSelectUI : BaseUI
     [SerializeField] private Button stage2Button;
     [SerializeField] private Button stage3Button;
 
+    private CameraManager cameraManager;
+
     public Animator animator;
 
     public override void Init(UIManager uiManager)
@@ -24,12 +26,16 @@ public class StageSelectUI : BaseUI
         stage1Button.onClick.AddListener(() => OnClickStartStageButton(1));
         stage2Button.onClick.AddListener(() => OnClickStartStageButton(2));
         stage3Button.onClick.AddListener(() => OnClickStartStageButton(3));
+
+        cameraManager = CameraManager.Instance;
     }
 
     // 인트로 화면으로 돌아가기
     public void OnClickReturnButton()
     {
         uiManager.SetIntro();
+
+        cameraManager.SetMainCamera(); // 메인 카메라로 전환함수 호출
     }
 
     // 다음 Stage 선택버튼 불러오기

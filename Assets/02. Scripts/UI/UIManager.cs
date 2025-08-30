@@ -43,6 +43,8 @@ public class UIManager : MonoBehaviour
     private UIState _currentState;
     private UIState _previousState;
 
+    private CameraManager cameraManager;
+
     public UIState PreviousState
     {
         get { return _previousState; }
@@ -79,6 +81,8 @@ public class UIManager : MonoBehaviour
         optionUI = GetComponentInChildren<OptionUI>(true);
         optionUI.Init(this);
 
+        cameraManager = CameraManager.Instance;
+
         // 최초 enum 상태를 Intro로 설정
         SetIntro();
     }
@@ -95,6 +99,8 @@ public class UIManager : MonoBehaviour
     {
         // enum 상태를 StageSelect로 변경
         ChangeState(UIState.StageSelect);
+
+        cameraManager.SetStageSelectVirtualCamera();
     }
 
     // 게임시작 시 게임매니저에서 호출
