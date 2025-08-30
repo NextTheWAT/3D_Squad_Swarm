@@ -38,7 +38,13 @@ public class UIManager : MonoBehaviour
     private PauseUI pauseUI;
     private GameOverUI gameOverUI;
     private OptionUI optionUI;
-    private UIState currentState;
+    private UIState _currentState;
+
+    public UIState CurrentState
+    {
+        get { return _currentState; }
+        private set { _currentState = value; } // UIManager 내부에서만 변경 가능
+    }
 
     private void Awake()
     {
@@ -121,14 +127,14 @@ public class UIManager : MonoBehaviour
     public void ChangeState(UIState state)
     {
         // 현재 상태를 업데이트
-        currentState = state;
+        _currentState = state;
 
         // 각 UI에 SetActive 명령을 보내서 현재 enum 상태와 일치하는지 비교후 활성화 여부 결정
-        introUI.SetActive(currentState);
-        stageSelectUI.SetActive(currentState);
-        gameUI.SetActive(currentState);
-        pauseUI.SetActive(currentState);
-        gameOverUI.SetActive(currentState);
-        optionUI.SetActive(currentState);
+        introUI.SetActive(_currentState);
+        stageSelectUI.SetActive(_currentState);
+        gameUI.SetActive(_currentState);
+        pauseUI.SetActive(_currentState);
+        gameOverUI.SetActive(_currentState);
+        optionUI.SetActive(_currentState);
     }
 }
