@@ -6,6 +6,7 @@ using UnityEngine;
 public enum UIState
 {
     Intro,
+    StageSelect,
     Game,
     Pause,
     GameOver,
@@ -32,6 +33,7 @@ public class UIManager : MonoBehaviour
 
     // UI 요소들을 참조할 변수들
     private IntroUI introUI;
+    private StageSelectUI stageSelectUI;
     private GameUI gameUI;
     private PauseUI pauseUI;
     private GameOverUI gameOverUI;
@@ -57,6 +59,8 @@ public class UIManager : MonoBehaviour
         // 각 UI 요소들을 찾아 초기화
         introUI = GetComponentInChildren<IntroUI>(true);
         introUI.Init(this);
+        stageSelectUI = GetComponentInChildren<StageSelectUI>(true);
+        stageSelectUI.Init(this);
         gameUI = GetComponentInChildren<GameUI>(true);
         gameUI.Init(this);
         pauseUI = GetComponentInChildren<PauseUI>(true);
@@ -67,9 +71,23 @@ public class UIManager : MonoBehaviour
         optionUI.Init(this);
 
         // 최초 enum 상태를 Intro로 설정
+        SetIntro();
+    }
+
+    // 인트로 화면으로 전환
+    public void SetIntro()
+    {
+        // enum 상태를 Game으로 변경
         ChangeState(UIState.Intro);
     }
-    
+
+    // 스테이지 선택 화면으로 전환
+    public void SetStageSelect()
+    {
+        // enum 상태를 StageSelect로 변경
+        ChangeState(UIState.StageSelect);
+    }
+
     // 게임시작 시 게임매니저에서 호출
     public void SetPlayGame()
     {
@@ -107,8 +125,10 @@ public class UIManager : MonoBehaviour
 
         // 각 UI에 SetActive 명령을 보내서 현재 enum 상태와 일치하는지 비교후 활성화 여부 결정
         introUI.SetActive(currentState);
+        stageSelectUI.SetActive(currentState);
         gameUI.SetActive(currentState);
         pauseUI.SetActive(currentState);
         gameOverUI.SetActive(currentState);
+        optionUI.SetActive(currentState);
     }
 }
