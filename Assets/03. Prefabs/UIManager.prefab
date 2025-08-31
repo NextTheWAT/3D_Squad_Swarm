@@ -4742,6 +4742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eddb1ec2d94d084bb2a2e9e7ac5b630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stageSelectCarObject: {fileID: 6490624141855035781}
   currentInfection: 0
   remainingTime: 100
   killCount: 0
