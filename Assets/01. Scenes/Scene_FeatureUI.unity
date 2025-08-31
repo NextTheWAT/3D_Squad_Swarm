@@ -8183,9 +8183,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2015570725161241528, guid: 9aa81f1cba203ea4eac3db5cba01e7eb, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3872244752082404950, guid: 9aa81f1cba203ea4eac3db5cba01e7eb, type: 3}
       propertyPath: m_Name
       value: UIManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5319634068906534817, guid: 9aa81f1cba203ea4eac3db5cba01e7eb, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8253547667901283262, guid: 9aa81f1cba203ea4eac3db5cba01e7eb, type: 3}
       propertyPath: m_LocalPosition.x

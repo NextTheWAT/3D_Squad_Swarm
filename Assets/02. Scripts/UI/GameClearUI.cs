@@ -5,29 +5,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameOverUI : BaseUI
+public class GameClearUI : BaseUI
 {
-    [SerializeField] private Button restartButton;
     [SerializeField] private Button backIntroButton;
-    [SerializeField] private Button exitButton;
+    [SerializeField] private Button nextStageButton;
 
     public override void Init(UIManager uiManager)
     {
         base.Init(uiManager);
 
         // 버튼 클릭 이벤트에 함수 등록(인스펙터에서 버튼 연결 할 필요없음)
-        restartButton.onClick.AddListener(OnClickRestartButton);
         backIntroButton.onClick.AddListener(OnClickBackIntroButton);
-        exitButton.onClick.AddListener(OnClickExitButton);
-    }
-
-    // 현재 게임씬 다시 시작
-    public void OnClickRestartButton()
-    {
-        // 현재 게임씬 다시 로드
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
-        Debug.Log("Restart Button Clicked");
+        nextStageButton.onClick.AddListener(OnClickNextStageButton);
     }
 
     // 인트로씬으로 돌아가기
@@ -39,16 +28,19 @@ public class GameOverUI : BaseUI
         Debug.Log("Back to Intro Button Clicked");
     }
 
-    // 게임 종료
-    public void OnClickExitButton()
+    // 다음 스테이지 게임씬 시작
+    public void OnClickNextStageButton()
     {
-        Application.Quit();
-        
-        Debug.Log("Exit Button Clicked");
+        // 현재 게임씬 인덱스 가져오기
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        // 다음 스테이지 게임씬 로드
+        SceneManager.LoadScene(currentSceneIndex + 1);
+
+        Debug.Log("NextStage Button Clicked");
     }
 
     protected override UIState GetUIState()
     {
-        return UIState.GameOver;
+        return UIState.GameClear;
     }
 }

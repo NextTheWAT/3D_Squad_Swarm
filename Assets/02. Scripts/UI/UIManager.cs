@@ -10,6 +10,7 @@ public enum UIState
     Game,
     Pause,
     GameOver,
+    GameClear,
     Option,
 }
 
@@ -44,6 +45,7 @@ public class UIManager : MonoBehaviour
     private GameUI gameUI;
     private PauseUI pauseUI;
     private GameOverUI gameOverUI;
+    private GameClearUI gameClearUI;
     private OptionUI optionUI;
 
     // 현재 상태와 이전 상태를 저장할 변수
@@ -82,6 +84,8 @@ public class UIManager : MonoBehaviour
         pauseUI.Init(this);
         gameOverUI = GetComponentInChildren<GameOverUI>(true);
         gameOverUI.Init(this);
+        gameClearUI = GetComponentInChildren<GameClearUI>(true);
+        gameClearUI.Init(this);
         optionUI = GetComponentInChildren<OptionUI>(true);
         optionUI.Init(this);
 
@@ -129,6 +133,13 @@ public class UIManager : MonoBehaviour
         ChangeState(UIState.GameOver);
     }
 
+    // 게임 클리어 시 호출
+    public void SetGameClear()
+    {
+        // enum 상태를 GameClear로 변경
+        ChangeState(UIState.GameClear);
+    }
+
     // 각 옵션버튼에서 호출 (인트로, 일시정지)
     public void SetOption()
     {
@@ -150,6 +161,7 @@ public class UIManager : MonoBehaviour
         gameUI.SetActive(_currentState);
         pauseUI.SetActive(_currentState);
         gameOverUI.SetActive(_currentState);
+        gameClearUI.SetActive(_currentState);
         optionUI.SetActive(_currentState);
     }
 }
