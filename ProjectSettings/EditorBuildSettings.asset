@@ -4,11 +4,5 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/01. Scenes/HomeScene_PMJ.unity
-    guid: a4dd813fcf01d954c99e84cbaefc98e1
-  - enabled: 1
-    path: Assets/01. Scenes/HomeScene_PMJ.unity
-    guid: 590fe1d6d996cfc43acfbe12ffc6f6e0
+  m_Scenes: []
   m_configObjects: {}
