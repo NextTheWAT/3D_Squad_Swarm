@@ -47,12 +47,17 @@ public class UIManager : MonoBehaviour
     private GameOverUI gameOverUI;
     private GameClearUI gameClearUI;
     private OptionUI optionUI;
+    
+    private CameraManager cameraManager;
+
+    private float maxInfection = 100f; // 최대 감염도
+    public float currentInfection = 0f; // 현재 감염도
+    public float remainingTime = 100f; // 초기 시간
+    public float killCount = 0; // 사냥한 인간 수
 
     // 현재 상태와 이전 상태를 저장할 변수
     private UIState _currentState;
     private UIState _previousState;
-
-    private CameraManager cameraManager;
 
     public UIState PreviousState
     {
@@ -116,6 +121,9 @@ public class UIManager : MonoBehaviour
     {
         // enum 상태를 Game으로 변경
         ChangeState(UIState.Game);
+
+        // 게임 시작시 타이머 코루틴 시작
+        StartCoroutine(Countdown());
     }
 
     // 일시정지 키입력하는 곳에서 호출
@@ -163,5 +171,35 @@ public class UIManager : MonoBehaviour
         gameOverUI.SetActive(_currentState);
         gameClearUI.SetActive(_currentState);
         optionUI.SetActive(_currentState);
+    }
+
+    // 감염도 증가 (인간이 죽을때 호출)
+    public void getInfection(float amount)
+    {
+        // 감염도를 amount만큼 증가시키고, maxInfection(100)을 넘지 않도록 제한
+        currentInfection += amount;
+        currentInfection = Mathf.Min(currentInfection, maxInfection);
+
+        // 사냥한 인간 수 1증가
+        killCount++;
+    }
+
+    IEnumerator Countdown()
+    {
+        // 최초 시간을 100으로 다시 설정
+        remainingTime = 100f;
+
+        while (remainingTime > 0)
+        {
+            // 1초 대기
+            yield return new WaitForSeconds(1f);
+
+            // 남은 시간을 1초 감소
+            remainingTime--;
+        }
+
+        // 게임오버 (남은시간0)
+        SetGameOver();
+        Debug.Log("시간 종료!");
     }
 }

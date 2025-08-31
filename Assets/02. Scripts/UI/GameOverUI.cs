@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,6 +12,10 @@ public class GameOverUI : BaseUI
     [SerializeField] private Button backIntroButton;
     [SerializeField] private Button exitButton;
 
+    public TextMeshProUGUI gameOverTimeText; // 최종 생존 시간 표시 텍스트
+    public TextMeshProUGUI gameOverInfectionText; // 최종 감염도 표시 텍스트
+    public TextMeshProUGUI gameOverKillText; // 최종 사냥한 인간 수 표시 텍스트
+
     public override void Init(UIManager uiManager)
     {
         base.Init(uiManager);
@@ -19,6 +24,14 @@ public class GameOverUI : BaseUI
         restartButton.onClick.AddListener(OnClickRestartButton);
         backIntroButton.onClick.AddListener(OnClickBackIntroButton);
         exitButton.onClick.AddListener(OnClickExitButton);
+    }
+
+    private void OnEnable()
+    {
+        // 남은시간, 감염도, 킬카운트 가져와서 업데이트
+        gameOverTimeText.text = ((int)(uiManager.remainingTime)).ToString();
+        gameOverInfectionText.text = uiManager.currentInfection.ToString();
+        gameOverKillText.text = uiManager.killCount.ToString();
     }
 
     // 현재 게임씬 다시 시작

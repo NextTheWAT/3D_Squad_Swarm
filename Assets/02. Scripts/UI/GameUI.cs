@@ -8,25 +8,26 @@ using UnityEngine.UI;
 
 public class GameUI : BaseUI
 {
-    public TextMeshProUGUI infectionNumber;
+    public TextMeshProUGUI infectionNumber; // 감염도를 숫자로 표시할 TextMeshPro 컴포넌트
+    public TextMeshProUGUI timerText; // 시간을 숫자로 표시할 TextMeshPro 컴포넌트
+    public Slider timeSlider; // 시간을 게이지로 표시할 Slider 컴포넌트
 
-    private float maxInfection = 100f;
-    private float currentInfection = 0f;
 
     public override void Init(UIManager uiManager)
     {
         base.Init(uiManager);
     }
 
-    // 감염도 증가 (인간이 죽을때 호출)
-    public void getInfection(float amount)
+    private void Update()
     {
-        // 감염도를 amount만큼 증가시키고, maxInfection(100)을 넘지 않도록 제한
-        currentInfection += amount;
-        currentInfection = Mathf.Min(currentInfection, maxInfection);
+        // UI매니저의 감염도를 가져와 업데이트
+        SetInfectionNumber(uiManager.currentInfection);
 
-        // 감염도 UI 업데이트 함수 호출
-        SetInfectionNumber(currentInfection);
+        // UI텍스트 업데이트
+        timerText.text = "남은 시간: " + Mathf.FloorToInt(uiManager.remainingTime).ToString();
+
+        // 슬라이더 업데이트
+        timeSlider.value = uiManager.remainingTime / 100f; // 슬라이더 값은 0~1 사이여야 하므로 100으로 나눔
     }
 
     // 감염도UI 업데이트 함수
