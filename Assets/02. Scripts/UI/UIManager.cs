@@ -97,9 +97,6 @@ public class UIManager : MonoBehaviour
         optionUI.Init(this);
 
         cameraManager = CameraManager.Instance;
-
-        // 최초 enum 상태를 Intro로 설정
-        SetIntro();
     }
 
     // 인트로 화면으로 전환
@@ -225,6 +222,7 @@ public class UIManager : MonoBehaviour
         {
             // 스테이지 선택 차량 오브젝트 활성화
             stageSelectCarObject.SetActive(true);
+            SetIntro();
         }
     }
 }

@@ -39,7 +39,6 @@ public class CameraManager : MonoBehaviour
 
         // 인스턴스 초기화 및 씬 전환 시 파괴 방지
         _instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     // 메인 카메라로 전환
