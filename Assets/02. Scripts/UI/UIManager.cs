@@ -22,10 +22,17 @@ public class UIManager : MonoBehaviour
     {
         get
         {
+            // 인스턴스가 존재하지 않으면 씬에서 찾거나 새로 생성
             if (_instance == null)
             {
-                // 씬에 Manager가 없으면 에러를 발생시켜 문제를 알림
-                Debug.LogError("UIManager is not found in the scene.");
+                _instance = FindObjectOfType<UIManager>();
+
+                // 씬에 없으면 새로 게임 오브젝트를 만들어 컴포넌트 추가
+                if (_instance == null)
+                {
+                    GameObject singletonObject = new GameObject(typeof(UIManager).Name);
+                    _instance = singletonObject.AddComponent<UIManager>();
+                }
             }
             return _instance;
         }
@@ -53,19 +60,16 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        // 싱글톤 패턴 초기화 (중복 로직 제거)
-        if (_instance == null)
+        // 인스턴스가 이미 존재하고, 나 자신이 아니라면 파괴
+        if (_instance != null && _instance != this)
         {
-            _instance = this;
-            DontDestroyOnLoad(gameObject);
+            Destroy(gameObject);
+            return;
         }
-        else
-        {
-            if (_instance != this)
-            {
-                Destroy(gameObject);
-            }
-        }
+
+        // 인스턴스 초기화 및 씬 전환 시 파괴 방지
+        _instance = this;
+        DontDestroyOnLoad(gameObject);
 
         // 각 UI 요소들을 찾아 초기화
         introUI = GetComponentInChildren<IntroUI>(true);

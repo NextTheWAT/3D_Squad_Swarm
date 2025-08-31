@@ -8526,6 +8526,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4156227775148119890, guid: 50d8e6729d1acdb4db3ea03c5c922099, type: 3}
+      propertyPath: m_AmplitudeGain
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4156227775148119890, guid: 50d8e6729d1acdb4db3ea03c5c922099, type: 3}
+      propertyPath: m_FrequencyGain
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6315569956798915014, guid: 50d8e6729d1acdb4db3ea03c5c922099, type: 3}
       propertyPath: m_Name
       value: CameraManager
