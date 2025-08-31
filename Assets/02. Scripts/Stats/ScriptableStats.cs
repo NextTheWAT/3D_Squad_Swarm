@@ -4,9 +4,11 @@ using UnityEngine;
 
 public enum StatType  // Type of stats
 {
+    JumpPower,
     Speed,
     AttackSpeed,
-    DetectRange
+    DetectRange,
+    RotationDamping
 }
 
 [CreateAssetMenu(fileName = "ScriptableStats", menuName = "Stats/ScriptableStats")]

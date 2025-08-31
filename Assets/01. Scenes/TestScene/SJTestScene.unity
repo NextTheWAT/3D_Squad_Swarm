@@ -242,6 +242,7 @@ GameObject:
   - component: {fileID: 1768555800}
   - component: {fileID: 1768555804}
   - component: {fileID: 1768555803}
+  - component: {fileID: 1768555805}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -353,6 +354,20 @@ MonoBehaviour:
     jumpParameterName: Jump
     fallParameterName: Fall
     attackParameterName: Attack
+--- !u!114 &1768555805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768555799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1158e2a0adb2df479a2ed81bd010840, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseStats: {fileID: 11400000, guid: 54f8e98302cfbd041869eca461d3c248, type: 2}
+  isAlive: 1
 --- !u!1 &1864772114
 GameObject:
   m_ObjectHideFlags: 0
