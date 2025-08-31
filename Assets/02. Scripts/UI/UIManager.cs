@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum UIState
 {
@@ -47,7 +48,8 @@ public class UIManager : MonoBehaviour
     private GameOverUI gameOverUI;
     private GameClearUI gameClearUI;
     private OptionUI optionUI;
-    
+    public GameObject stageSelectCarObject;
+
     private CameraManager cameraManager;
 
     private float maxInfection = 100f; // 최대 감염도
@@ -201,5 +203,28 @@ public class UIManager : MonoBehaviour
         // 게임오버 (남은시간0)
         SetGameOver();
         Debug.Log("시간 종료!");
+    }
+
+    private void OnEnable()
+    {
+        // 씬 로드 완료 이벤트에 함수 등록
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        // 씬 로드 완료 이벤트에서 함수 해제
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    // 씬 로드 완료 시 호출되는 함수
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // 씬 인덱스가 0이면 (Home 씬)
+        if (scene.buildIndex == 0)
+        {
+            // 스테이지 선택 차량 오브젝트 활성화
+            stageSelectCarObject.SetActive(true);
+        }
     }
 }

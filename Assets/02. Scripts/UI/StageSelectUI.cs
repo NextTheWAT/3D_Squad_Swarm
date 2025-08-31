@@ -70,7 +70,10 @@ public class StageSelectUI : BaseUI
         yield return new WaitForSeconds(2.5f);
         animator.SetTrigger("StartStage");
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2.0f);
+
+        // 스테이지 시작 전, UI 매니저의 stageSelectCarObject 비활성화
+        uiManager.stageSelectCarObject.SetActive(false);
 
         switch (stageIndex)
         {
