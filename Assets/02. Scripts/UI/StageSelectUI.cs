@@ -16,6 +16,8 @@ public class StageSelectUI : BaseUI
 
     public Animator animator;
 
+    private AudioSource audioSource;
+
     public override void Init(UIManager uiManager)
     {
         base.Init(uiManager);
@@ -28,6 +30,8 @@ public class StageSelectUI : BaseUI
         stage3Button.onClick.AddListener(() => OnClickStartStageButton(3));
 
         cameraManager = CameraManager.Instance;
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     // 인트로 화면으로 돌아가기
@@ -55,6 +59,19 @@ public class StageSelectUI : BaseUI
     // 스테이지 인덱스를 받는 단일 함수
     public void OnClickStartStageButton(int stageIndex)
     {
+        StartCoroutine(DelayStageStart(stageIndex));
+    }
+
+    // 0초 지연하여 차 문열고 닫는 소리 재생 후 스테이지 시작
+    private IEnumerator DelayStageStart(int stageIndex)
+    {
+        audioSource.PlayOneShot(audioSource.clip);
+        
+        yield return new WaitForSeconds(2.5f);
+        animator.SetTrigger("StartStage");
+
+        yield return new WaitForSeconds(1.5f);
+
         switch (stageIndex)
         {
             case 1:
