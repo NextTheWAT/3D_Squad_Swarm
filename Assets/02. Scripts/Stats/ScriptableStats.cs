@@ -8,7 +8,8 @@ public enum StatType  // Type of stats
     Speed,
     AttackSpeed,
     DetectRange,
-    RotationDamping
+    RotationDamping,
+    ChaseRange
 }
 
 [CreateAssetMenu(fileName = "ScriptableStats", menuName = "Stats/ScriptableStats")]
