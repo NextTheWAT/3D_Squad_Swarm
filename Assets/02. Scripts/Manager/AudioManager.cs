@@ -74,10 +74,8 @@ public class AudioManager : MonoBehaviour
             case 0: // Home ¾À
                 ChangeBackGroundMusic(musicClip[0]);
                 break;
-            case 1: // Intro ¾À
-                ChangeBackGroundMusic(musicClip[1]);
-                break;
-            //case 2: // Game ¾À
+
+            //case 1: // Game ¾À
             //    // ChangeBackGroundMusic(musicClip[2]);
             //    break;
             default:
