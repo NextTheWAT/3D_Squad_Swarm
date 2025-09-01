@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine;
 public class PlayerStateMachine : StateMachine
 {
     public Player Player { get; }
+
+    public PlayerIdleState IdleState{ get; }
 
     public Vector2 MovementInput { get; set; }
     public float MovementSpeedModifier { get; set; } = 1f;
@@ -14,6 +17,8 @@ public class PlayerStateMachine : StateMachine
     public PlayerStateMachine(Player player)
     {
         this.Player = player;
+
+        IdleState = new PlayerIdleState(this);
 
         MainCameraTransform = Camera.main.transform;
     }

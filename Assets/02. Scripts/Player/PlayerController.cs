@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public PlayerInput playerInputs { get; private set; }
     public PlayerInput.PlayerMovementActions playerActions { get; private set; }
-    void Start()
+    private void Awake()
     {
         playerInputs = new PlayerInput();
         playerActions = playerInputs.PlayerMovement;

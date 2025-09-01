@@ -16,11 +16,13 @@ public class Player : MonoBehaviour
     {
         AnimationData.Initialize();
 
-        Animator = GetComponent<Animator>();
+        Animator = GetComponentInChildren<Animator>();
         Input = GetComponent<PlayerController>();
         Controller = GetComponent<CharacterController>();
         Stats = GetComponent<StatHandler>();
         stateMachine = new PlayerStateMachine(this);
+
+        stateMachine.ChangeState(stateMachine.IdleState);
     }
 
     private void Start()
