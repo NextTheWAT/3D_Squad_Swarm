@@ -1,0 +1,1 @@
+public enum CharacterTier { Human = 1, VipHuman = 2, Hunter = 3 }
