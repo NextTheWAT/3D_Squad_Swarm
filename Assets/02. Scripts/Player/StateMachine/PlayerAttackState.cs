@@ -10,7 +10,8 @@ public class PlayerAttackState : PlayerBaseState
 
     public override void Enter()
     {
-        stateMachine.MovementSpeedModifier = 1f;
+        stateMachine.MovementSpeedModifier = 0f;
+        stateMachine.RotationDampingModifier = 0f;
         base.Enter();
         StartAnimation(stateMachine.Player.AnimationData.attackParameterHash);
     }

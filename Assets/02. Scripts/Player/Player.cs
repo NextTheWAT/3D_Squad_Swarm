@@ -67,7 +67,7 @@ public class Player : MonoBehaviour, IDamageable
 
         foreach (Collider hit in hits)
         {
-            if (hit.CompareTag("Enemey"))
+            if (hit.CompareTag("Enemy"))
             {
                 if (hit.TryGetComponent<IDamageable>(out var damageable))
                 {

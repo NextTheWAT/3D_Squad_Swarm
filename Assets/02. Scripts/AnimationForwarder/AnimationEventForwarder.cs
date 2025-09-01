@@ -3,23 +3,41 @@ using UnityEngine;
 public class AnimationEventForwarder : MonoBehaviour
 {
     public Player parentPlayer;
+    public FollowerZombie parentZombie;
 
     private void Awake()
     {
-        if (parentPlayer == null)
+        // Try to automatically get the correct parent if not set manually
+        if (parentPlayer == null && parentZombie == null)
         {
             parentPlayer = GetComponentInParent<Player>();
+            parentZombie = GetComponentInParent<FollowerZombie>();
         }
     }
 
-    // This is the function called by the animation event
+    // Called by the animation event
     public void OnAttackAnimationComplete()
     {
-        parentPlayer.OnAttackAnimationComplete();
+        if (parentPlayer != null)
+        {
+            parentPlayer.OnAttackAnimationComplete();
+        }
+        else if (parentZombie != null)
+        {
+            parentZombie.OnAttackAnimationComplete();
+        }
     }
 
+    // Called by the animation event
     public void OnAttackHit()
     {
-        parentPlayer.OnAttackHit();
+        if (parentPlayer != null)
+        {
+            parentPlayer.OnAttackHit();
+        }
+        else if (parentZombie != null)
+        {
+            parentZombie.OnAttackHit();
+        }
     }
 }
