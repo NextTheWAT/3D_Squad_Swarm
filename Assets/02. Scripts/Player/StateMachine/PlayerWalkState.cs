@@ -10,6 +10,7 @@ public class PlayerWalkState : PlayerGroundState
     public override void Enter()
     {
         stateMachine.MovementSpeedModifier = 1f; // Run = full speed
+        stateMachine.RotationDampingModifier = 1f;
         base.Enter();
         StartAnimation(stateMachine.Player.AnimationData.WalkParameterHash);
     }

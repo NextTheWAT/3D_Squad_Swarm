@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamageable
 {
     [field: Header("Animations")]
     [field: SerializeField] public PlayerAnimationData AnimationData { get; private set; }
@@ -10,7 +10,9 @@ public class Player : MonoBehaviour
     public CharacterController Controller { get; private set; }
     public StatHandler Stats { get; private set; }
 
-    private PlayerStateMachine stateMachine;
+    public ForceReceiver ForceReceiver { get; private set; }
+
+    public PlayerStateMachine stateMachine;
 
     private void Awake()
     {
@@ -23,13 +25,15 @@ public class Player : MonoBehaviour
         stateMachine = new PlayerStateMachine(this);
 
         stateMachine.ChangeState(stateMachine.IdleState);
+
+        ForceReceiver = GetComponent<ForceReceiver>();
     }
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
-    
+
 
     private void Update()
     {
@@ -40,5 +44,36 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         stateMachine.PhysicsUpdate();
+    }
+    public void OnAttackAnimationComplete()
+    {
+        stateMachine.ChangeState(stateMachine.IdleState);
+    }
+
+    public void OnTakeDamage(bool isAlive)
+    {
+        Stats.isAlive = false;
+    }
+
+    public void OnAttackHit()
+    {
+        Debug.Log("Attack");
+        float attackRange = 1.5f;
+        float attackRadius = 0.5f;
+
+        Vector3 attackOrigin = transform.position + transform.forward * attackRange;
+
+        Collider[] hits = Physics.OverlapSphere(attackOrigin, attackRadius);
+
+        foreach (Collider hit in hits)
+        {
+            if (hit.CompareTag("Enemy"))
+            {
+                if (hit.TryGetComponent<IDamageable>(out var damageable))
+                {
+                    damageable.OnTakeDamage(false);
+                }
+            }
+        }
     }
 }
