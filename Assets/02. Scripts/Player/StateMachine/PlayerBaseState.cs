@@ -20,6 +20,17 @@ public class PlayerBaseState : IState
 
     }
 
+    protected virtual void AddInputActionsCallBacks()
+    {
+        PlayerController input = stateMachine.Player.Input;
+        input.playerActions.Movement.canceled += OnMovementCanceled;
+    }
+    protected virtual void RemoveInputActionsCallBacks()
+    {
+        PlayerController input = stateMachine.Player.Input;
+        input.playerActions.Movement.canceled -= OnMovementCanceled;
+    }
+
     public virtual void HandleInput()
     {
         ReadMovementInput();
@@ -32,9 +43,15 @@ public class PlayerBaseState : IState
 
     public virtual void Update()
     {
-	// StartAnimation 함수 먼저 작성
+	    // StartAnimation 함수 먼저 작성
         Move();
     }
+
+    protected virtual void OnMovementCanceled(InputAction.CallbackContext context)
+    {
+
+    }
+
 
     protected void StartAnimation(int animationHash)
     {
@@ -58,8 +75,8 @@ public class PlayerBaseState : IState
         
         Move(movementDirection);
 				
-				// Rotate 함수 먼저 작성
-				Rotate(movementDirection);
+        // Rotate 함수 먼저 작성
+        Rotate(movementDirection);
     }
 
     private Vector3 GetMovementDirection()
@@ -80,9 +97,7 @@ public class PlayerBaseState : IState
     {
         float movementSpeed = GetMovementSpeed();
         
-        stateMachine.Player.Controller.Move(
-            (direction * movementSpeed) * Time.deltaTime
-        );
+        stateMachine.Player.Controller.Move((direction * movementSpeed) * Time.deltaTime);
     }
 
     private float GetMovementSpeed()
