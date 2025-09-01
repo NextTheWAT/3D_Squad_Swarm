@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -36,7 +37,12 @@ public class PlayerGroundState : PlayerBaseState
         if (stateMachine.MovementInput == Vector2.zero) return;
 
         stateMachine.ChangeState(stateMachine.IdleState);
-        
+
         base.OnMovementCanceled(context);
+    }
+
+    protected virtual void OnAttack()
+    {
+        stateMachine.ChangeState(stateMachine.AttackState);
     }
 }

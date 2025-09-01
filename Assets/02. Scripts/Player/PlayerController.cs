@@ -6,10 +6,12 @@ public class PlayerController : MonoBehaviour
 {
     public PlayerInput playerInputs { get; private set; }
     public PlayerInput.PlayerMovementActions playerActions { get; private set; }
+    public Player player { get; private set; }
     private void Awake()
     {
         playerInputs = new PlayerInput();
         playerActions = playerInputs.PlayerMovement;
+        player = GetComponent<Player>();
     }
 
     private void OnEnable()
@@ -20,5 +22,13 @@ public class PlayerController : MonoBehaviour
     private void OnDisable()
     {
         playerInputs.Disable();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            player.stateMachine.ChangeState(player.stateMachine.AttackState);
+        }
     }
 }

@@ -31,6 +31,16 @@ public class PlayerBaseState : IState
         input.playerActions.Movement.canceled -= OnMovementCanceled;
     }
 
+    protected virtual void OnAttackPerformed()
+    {
+        stateMachine.IsAttacking = true;
+    }
+
+    protected virtual void OnAttackCanceled()
+    {
+        stateMachine.IsAttacking = false;
+    }
+
     public virtual void HandleInput()
     {
         ReadMovementInput();
@@ -52,7 +62,6 @@ public class PlayerBaseState : IState
 
     }
 
-
     protected void StartAnimation(int animationHash)
     {
         stateMachine.Player.Animator.SetBool(animationHash, true);
@@ -70,7 +79,7 @@ public class PlayerBaseState : IState
 
     private void Move()
     {
-		    // GetMoveMentDirection 함수 먼저 작성
+        // GetMoveMentDirection 함수 먼저 작성
         Vector3 movementDirection = GetMovementDirection();
         
         Move(movementDirection);
@@ -97,7 +106,7 @@ public class PlayerBaseState : IState
     {
         float movementSpeed = GetMovementSpeed();
         
-        stateMachine.Player.Controller.Move((direction * movementSpeed) * Time.deltaTime);
+        stateMachine.Player.Controller.Move(((direction * movementSpeed) + stateMachine.Player.ForceReceiver.Movement) * Time.deltaTime);
     }
 
     private float GetMovementSpeed()
