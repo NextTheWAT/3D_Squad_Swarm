@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NpcTest : MonoBehaviour
+public class SimpleNPC : MonoBehaviour
 {
     public NavMeshAgent agent;
     public float patrolRange = 10f;

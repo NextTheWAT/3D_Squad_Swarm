@@ -11,11 +11,11 @@ public class NPCBaseState : IState
         this.stateMachine = npcStateMachine;
     }
 
-    public void Enter()
+    public virtual void Enter()
     {
     }
 
-    public void Exit()
+    public virtual void Exit()
     { 
     }
 
@@ -25,20 +25,20 @@ public class NPCBaseState : IState
         Move();
     }
 
-    public void HandleInput()
+    public virtual void HandleInput()
     {
     }
 
-    public void PhysicsUpdate()
+    public virtual void PhysicsUpdate()
     {
 
     }
-    protected void StartAnimation(int animationHash)
+    protected virtual void StartAnimation(int animationHash)
     {
         stateMachine.Npc.Animator.SetBool(animationHash, true);
     }
 
-    protected void StopAnimation(int animationHash)
+    protected virtual void StopAnimation(int animationHash)
     {
         stateMachine.Npc.Animator.SetBool(animationHash, false);
     }
@@ -86,8 +86,8 @@ public class NPCBaseState : IState
     protected bool IsInChaseRange()
     {
         float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Npc.transform.position).sqrMagnitude;
-        return playerDistanceSqr <= stateMachine.Npc.Stats.GetStat(StatType.ChaseRange);
+        return playerDistanceSqr <= stateMachine.Npc.Stats.GetStat(StatType.ChaseRange) * stateMachine.Npc.Stats.GetStat(StatType.ChaseRange);
     }
-
+   
    
 }

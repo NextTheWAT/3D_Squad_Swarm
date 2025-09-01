@@ -12,6 +12,8 @@ public class NPCStateMachine : StateMachine
     public NPCChaseState ChaseState { get; }
     public NPCAttackState AttackState { get; }
 
+    public NPCFleeState FleeState { get; }
+
     public NPCStateMachine(NPC npc)
     {
         this.Npc = npc;

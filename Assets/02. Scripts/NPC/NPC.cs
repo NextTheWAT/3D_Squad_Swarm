@@ -9,6 +9,11 @@ public enum NPCType
 }
 public class NPC : MonoBehaviour, IDamageable
 {
+    public NPCType npcType;
+    public Transform firePoint;
+    public GameObject bulletPrefab;
+    public float bulletSpeed = 20f;
+
 
     [field: Header("Animations")]
     [field: SerializeField] public PlayerAnimationData AnimationData { get; private set; }
@@ -20,7 +25,8 @@ public class NPC : MonoBehaviour, IDamageable
 
     private NPCStateMachine stateMachine;
     public ForceReceiver ForceReceiver { get; private set; }
-
+    public NavMeshAgent agent;
+    public float patrolRange = 10f;
 
     private void Awake()
     {
@@ -33,6 +39,7 @@ public class NPC : MonoBehaviour, IDamageable
         stateMachine = new NPCStateMachine(this);
         stateMachine.ChangeState(stateMachine.IdleState);
         ForceReceiver = GetComponent<ForceReceiver>();
+        agent = GetComponent<NavMeshAgent>();
     }
 
     private void Update()
