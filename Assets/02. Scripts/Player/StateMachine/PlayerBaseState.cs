@@ -20,6 +20,17 @@ public class PlayerBaseState : IState
 
     }
 
+    protected virtual void AddInputActionsCallBacks()
+    {
+        PlayerController input = stateMachine.Player.Input;
+        input.playerActions.Movement.canceled += OnMovementCanceled;
+    }
+    protected virtual void RemoveInputActionsCallBacks()
+    {
+        PlayerController input = stateMachine.Player.Input;
+        input.playerActions.Movement.canceled -= OnMovementCanceled;
+    }
+
     public virtual void HandleInput()
     {
         ReadMovementInput();
@@ -35,6 +46,12 @@ public class PlayerBaseState : IState
 	// StartAnimation 함수 먼저 작성
         Move();
     }
+
+    protected virtual void OnMovementCanceled(InputAction.CallbackContext context)
+    {
+
+    }
+
 
     protected void StartAnimation(int animationHash)
     {
