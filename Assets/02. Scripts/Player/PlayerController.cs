@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
+            player.OnAttackHit();
             player.stateMachine.ChangeState(player.stateMachine.AttackState);
         }
     }

@@ -17,4 +17,9 @@ public class AnimationEventForwarder : MonoBehaviour
     {
         parentPlayer.OnAttackAnimationComplete();
     }
+
+    public void OnAttackHit()
+    {
+        parentPlayer.OnAttackHit();
+    }
 }

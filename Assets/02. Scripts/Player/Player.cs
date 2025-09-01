@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamageable
 {
     [field: Header("Animations")]
     [field: SerializeField] public PlayerAnimationData AnimationData { get; private set; }
@@ -48,5 +48,32 @@ public class Player : MonoBehaviour
     public void OnAttackAnimationComplete()
     {
         stateMachine.ChangeState(stateMachine.IdleState);
+    }
+
+    public void OnTakeDamage(bool isAlive)
+    {
+        Stats.isAlive = false;
+    }
+
+    public void OnAttackHit()
+    {
+        Debug.Log("Attack");
+        float attackRange = 1.5f;
+        float attackRadius = 0.5f;
+
+        Vector3 attackOrigin = transform.position + transform.forward * attackRange;
+
+        Collider[] hits = Physics.OverlapSphere(attackOrigin, attackRadius);
+
+        foreach (Collider hit in hits)
+        {
+            if (hit.CompareTag("Enemey"))
+            {
+                if (hit.TryGetComponent<IDamageable>(out var damageable))
+                {
+                    damageable.OnTakeDamage(false);
+                }
+            }
+        }
     }
 }
