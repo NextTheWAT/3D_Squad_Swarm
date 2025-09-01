@@ -686,6 +686,7 @@ GameObject:
   m_Component:
   - component: {fileID: 328620553}
   - component: {fileID: 328620554}
+  - component: {fileID: 328620555}
   m_Layer: 0
   m_Name: IntroCutScene
   m_TagString: Untagged
@@ -739,11 +740,25 @@ PlayableDirector:
     value: {fileID: 356131342}
   - key: {fileID: 5939974399325486746, guid: 2285def39b784fd4fa3e2e4de498fa77, type: 2}
     value: {fileID: 0}
+  - key: {fileID: 4049754546479574568, guid: 2285def39b784fd4fa3e2e4de498fa77, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References:
     - 96e6382952a5f544caca5c5eacc0e4dc: {fileID: 92045149}
     - 0537e8eebfa63c341a6640ad5fc89e16: {fileID: 92045149}
     - 22e6f6992a54026449817bcb4fe161b8: {fileID: 1462761054}
+--- !u!114 &328620555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328620552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 132b4c8014db4f9409a6511baecfd8df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &356131341
 GameObject:
   m_ObjectHideFlags: 0

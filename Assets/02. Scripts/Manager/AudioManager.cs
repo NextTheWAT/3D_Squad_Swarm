@@ -75,9 +75,13 @@ public class AudioManager : MonoBehaviour
                 ChangeBackGroundMusic(musicClip[0]);
                 break;
 
-            //case 1: // Game ¾À
-            //    // ChangeBackGroundMusic(musicClip[2]);
-            //    break;
+            case 1: // Intro ¾À
+                musicAudioSource.Stop();
+                break;
+
+            case 2: // TimeUP GameOver ¾À
+                musicAudioSource.Stop();
+                break;
             default:
                 break;
         }

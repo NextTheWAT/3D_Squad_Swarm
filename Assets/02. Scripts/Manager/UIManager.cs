@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,6 +14,7 @@ public enum UIState
     GameOver,
     GameClear,
     Option,
+    None,
 }
 
 public class UIManager : MonoBehaviour
@@ -56,6 +58,15 @@ public class UIManager : MonoBehaviour
     public float currentInfection = 0f; // 현재 감염도
     public float remainingTime = 100f; // 초기 시간
     public float killCount = 0; // 사냥한 인간 수
+
+    // 선택된 스테이지 인덱스를 저장할 변수
+    private int _selectedStageIndex;
+
+    public int SelectedStageIndex
+    {
+        get { return _selectedStageIndex; }
+        set { _selectedStageIndex = value; }
+    }
 
     // 현재 상태와 이전 상태를 저장할 변수
     private UIState _currentState;
@@ -198,8 +209,8 @@ public class UIManager : MonoBehaviour
         }
 
         // 게임오버 (남은시간0)
-        SetGameOver();
         Debug.Log("시간 종료!");
+        SceneManager.LoadScene("99.GameOverScene_TimeUP");
     }
 
     private void OnEnable()
