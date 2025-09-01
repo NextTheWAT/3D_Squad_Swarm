@@ -43,7 +43,7 @@ public class PlayerBaseState : IState
 
     public virtual void Update()
     {
-	// StartAnimation 함수 먼저 작성
+	    // StartAnimation 함수 먼저 작성
         Move();
     }
 
@@ -75,8 +75,8 @@ public class PlayerBaseState : IState
         
         Move(movementDirection);
 				
-				// Rotate 함수 먼저 작성
-				Rotate(movementDirection);
+        // Rotate 함수 먼저 작성
+        Rotate(movementDirection);
     }
 
     private Vector3 GetMovementDirection()
@@ -97,9 +97,7 @@ public class PlayerBaseState : IState
     {
         float movementSpeed = GetMovementSpeed();
         
-        stateMachine.Player.Controller.Move(
-            (direction * movementSpeed) * Time.deltaTime
-        );
+        stateMachine.Player.Controller.Move((direction * movementSpeed) * Time.deltaTime);
     }
 
     private float GetMovementSpeed()
