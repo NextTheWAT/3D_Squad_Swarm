@@ -234,28 +234,25 @@ public class UIManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    // 씬 로드 완료 시 호출되는 함수
+    // 씬 로드시 호출되는 함수
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         // 씬 인덱스가 0이면 (Home 씬)
         if (scene.buildIndex == 0)
         {
+            // UI 상태를 Intro로 변경하여 UI 초기화
+            ChangeState(UIState.None);
+
             // 스테이지 선택 차량 오브젝트 활성화
             stageSelectCarObject.SetActive(true);
             SetIntro();
+
+            StartCoroutine(FadeAndLoadScene());
         }
     }
 
-    /// <summary>
-    /// 페이드 효과와 함께 씬을 로드합니다.
-    /// </summary>
-    /// <param name="sceneName">로드할 씬의 이름</param>
-    public void LoadSceneWithFade(int sceneNumber)
-    {
-        StartCoroutine(FadeAndLoadScene(sceneNumber));
-    }
-
-    private IEnumerator FadeAndLoadScene(int sceneNumber)
+    // 일부 씬시작 시 페이드인(화면이 점점 밝아지는 효과) 코루틴
+    private IEnumerator FadeAndLoadScene()
     {
         // 1. 페이드 인 (화면이 어두워짐)
         float timer = 0f;
@@ -264,25 +261,9 @@ public class UIManager : MonoBehaviour
         while (timer < fadeDuration)
         {
             timer += Time.deltaTime;
-            color.a = Mathf.Lerp(0, 1, timer / fadeDuration); // 알파 값 0 -> 1로 서서히 변경
+            color.a = Mathf.Lerp(1, 0, timer / fadeDuration); // 알파 값 1 -> 0로 서서히 변경
             fadePanel.color = color;
             yield return null;
         }
-
-        // 2. 씬 로딩
-        AsyncOperation op = SceneManager.LoadSceneAsync(sceneNumber);
-        op.allowSceneActivation = false; // 씬 로딩 완료 후 바로 활성화되지 않도록
-
-        while (op.progress < 0.9f)
-        {
-            // 로딩이 90% 완료될 때까지 기다림
-            yield return null;
-        }
-
-        // 3. 씬 활성화
-        op.allowSceneActivation = true;
-
-        // 새로운 씬으로 넘어갔으므로 이 코루틴은 끝남.
-        // 새로운 씬에서 다시 페이드 아웃 코루틴을 실행해야 함.
     }
 }
