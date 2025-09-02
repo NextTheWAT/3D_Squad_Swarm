@@ -16,6 +16,8 @@ public class PlayerAnimationData
 
     [SerializeField] private string attackParameterName = "Attack";
 
+    [SerializeField] private string deathParameterName = "Death";
+
     public int GroundParameterHash { get; private set; }
     public int IdleParameterHash { get; private set; }
     public int WalkParameterHash { get; private set; }
@@ -25,6 +27,8 @@ public class PlayerAnimationData
     public int FallParameterHash { get; private set; }
 
     public int attackParameterHash { get; private set; }
+
+    public int deathParameterHash { get; private set; }
     public void Initialize()
     {
         GroundParameterHash = Animator.StringToHash(groundParameterName);
@@ -36,5 +40,7 @@ public class PlayerAnimationData
         FallParameterHash = Animator.StringToHash(fallParameterName);
 
         attackParameterHash = Animator.StringToHash(attackParameterName);
+
+        deathParameterHash = Animator.StringToHash(deathParameterName);
     }
 }

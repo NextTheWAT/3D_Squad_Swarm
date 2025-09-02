@@ -31,6 +31,10 @@ public class ZombieBaseState : IState
     {
         stateMachine.Zombie.Animator.SetBool(animationHash, false);
     }
+    protected void PlayTriggerAnimation(int triggerHash)
+    {
+        stateMachine.Zombie.Animator.SetTrigger(triggerHash);
+    }
 
     // -----------------------------
     // Movement helpers (NavMesh)
@@ -40,6 +44,10 @@ public class ZombieBaseState : IState
         if (stateMachine.Zombie.Agent.isActiveAndEnabled)
         {
             stateMachine.Zombie.Agent.isStopped = false;
+            stateMachine.Zombie.Agent.speed = stateMachine.MovementSpeed;
+            stateMachine.Zombie.Agent.angularSpeed = stateMachine.RotationDamping * 100f;
+            // (Unity angularSpeed is in degrees/sec → scale as needed)
+
             stateMachine.Zombie.Agent.SetDestination(destination);
         }
     }
@@ -49,6 +57,7 @@ public class ZombieBaseState : IState
         if (stateMachine.Zombie.Agent.isActiveAndEnabled)
         {
             stateMachine.Zombie.Agent.isStopped = true;
+            stateMachine.Zombie.Agent.velocity = Vector3.zero;
         }
     }
 

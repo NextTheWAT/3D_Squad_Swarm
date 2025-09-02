@@ -40,4 +40,16 @@ public class AnimationEventForwarder : MonoBehaviour
             parentZombie.OnAttackHit();
         }
     }
+
+    public void OnDeathAnimationComplete()
+    {
+        if (parentPlayer != null)
+        {
+            //
+        }
+        else if (parentZombie != null)
+        {
+            parentZombie.OnDeathAnimationComplete();
+        }
+    }
 }

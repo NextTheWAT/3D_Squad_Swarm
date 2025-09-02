@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerStateMachine : StateMachine
 {
     public Player Player { get; }
+    public bool IsDead { get; private set; } = false;
 
     public bool IsAttacking { get; set; }
 
@@ -13,6 +14,7 @@ public class PlayerStateMachine : StateMachine
     public PlayerIdleState IdleState { get; private set; }
     public PlayerWalkState WalkState { get; private set; }
     public PlayerAttackState AttackState { get; private set; }
+    public PlayerDeathState DeathState { get; private set; }
 
     public Vector2 MovementInput { get; set; }
     public float MovementSpeedModifier { get; set; } = 1f;
@@ -27,8 +29,14 @@ public class PlayerStateMachine : StateMachine
         IdleState = new PlayerIdleState(this);
         WalkState = new PlayerWalkState(this);
         AttackState = new PlayerAttackState(this);
+        DeathState = new PlayerDeathState(this);
 
         MainCameraTransform = Camera.main.transform;
+    }
+    public void SetDead()
+    {
+        IsDead = true;
+        ChangeState(DeathState);
     }
     public float MovementSpeed => Player.Stats.GetStat(StatType.Speed) * MovementSpeedModifier;
     public float RotationDamping => Player.Stats.GetStat(StatType.RotationDamping) * RotationDampingModifier;

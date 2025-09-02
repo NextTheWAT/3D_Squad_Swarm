@@ -361,7 +361,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 1, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -415,6 +415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPlayer: {fileID: 695335502}
+  parentZombie: {fileID: 0}
 --- !u!1 &1854462426
 GameObject:
   m_ObjectHideFlags: 0
@@ -431,7 +432,7 @@ GameObject:
   - component: {fileID: 1854462432}
   m_Layer: 0
   m_Name: Follower_Zombie
-  m_TagString: Untagged
+  m_TagString: Zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -516,7 +517,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -536,7 +537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca15efe23c223843a074f591ccfcee8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <AnimationData>k__BackingField:
+  animationData:
     groundParameterName: '@Ground'
     idleParameterName: Idle
     walkParameterName: Walk
@@ -544,6 +545,8 @@ MonoBehaviour:
     jumpParameterName: Jump
     fallParameterName: Fall
     attackParameterName: Attack
+    deathParameterName: Death
+  followRange: 2
 --- !u!114 &1854462432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1247,6 +1250,7 @@ GameObject:
   m_Component:
   - component: {fileID: 788341802208100241}
   - component: {fileID: 788341802215313879}
+  - component: {fileID: 788341802215313880}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Untagged
@@ -1885,6 +1889,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &788341802215313880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788341802208060401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 154dacb69e9adcb47b37ecd47e0e324d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentPlayer: {fileID: 0}
+  parentZombie: {fileID: 1854462431}
 --- !u!137 &788341802219563189
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
