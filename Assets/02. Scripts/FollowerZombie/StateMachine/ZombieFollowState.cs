@@ -57,7 +57,7 @@ public class ZombieFollowState : ZombieBaseState
         agent.SetDestination(targetPos);
 
         // --- Animation control: only play walk when actually moving ---
-        if (agent.velocity.sqrMagnitude > 0.05f)
+        if (agent.velocity.sqrMagnitude > 0.01f)
         {
             StartAnimation(stateMachine.Zombie.animationData.WalkParameterHash);
         }
