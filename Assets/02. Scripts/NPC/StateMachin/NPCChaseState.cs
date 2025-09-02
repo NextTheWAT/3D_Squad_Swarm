@@ -13,6 +13,7 @@ public class NPCChaseState : NPCGroundState
         stateMachine.MovementSpeedModifier = 1f; // Run = full speed
         stateMachine.RotationDampingModifier = 1f;
         base.Enter();
+        Debug.Log("추격하기");
         StartAnimation(stateMachine.Npc.AnimationData.RunParameterHash);
     }
 
@@ -25,20 +26,28 @@ public class NPCChaseState : NPCGroundState
     public override void Update()
     {
         base.Update();
+        ChaseTarget();
+        if (IsInAttackRange())
+        {
+            stateMachine.ChangeState(stateMachine.AttackState);
+            return;
+        }
 
         if (!IsInChaseRange())
         {
             stateMachine.ChangeState(stateMachine.IdleState);
             return;
         }
-        else if (isInAttackRange())
-        {
-            stateMachine.ChangeState(stateMachine.AttackState);
-            return;
-        }
     }
 
-    protected bool isInAttackRange() 
+    private void ChaseTarget()
+    {
+        Vector3 targetPos = stateMachine.Target.transform.position;
+        stateMachine.Npc.agent.isStopped = false;  // 이동 가능
+        stateMachine.Npc.agent.SetDestination(targetPos);
+    }
+
+    protected bool IsInAttackRange() 
     {
 
         float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Npc.transform.position).sqrMagnitude;

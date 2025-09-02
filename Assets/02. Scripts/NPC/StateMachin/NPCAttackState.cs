@@ -21,6 +21,12 @@ public class NPCAttackState : NPCBaseState
         lastFireTime = Time.time;
     }
 
+    public override void Exit()
+    {
+        base.Exit();
+        StopAnimation(stateMachine.Npc.AnimationData.attackParameterHash);
+    }
+
     public override void Update()
     {
         base.Update();
@@ -61,10 +67,6 @@ public class NPCAttackState : NPCBaseState
         }
     }
 
-    public override void Exit()
-    {
-        base.Exit();
-        StopAnimation(stateMachine.Npc.AnimationData.attackParameterHash);
-    }
+   
 }
 
