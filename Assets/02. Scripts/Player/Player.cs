@@ -37,6 +37,15 @@ public class Player : MonoBehaviour, IDamageable
 
     private void Update()
     {
+
+        if (Stats.isAlive == false && !stateMachine.IsDead)
+        {
+            stateMachine.SetDead();
+        }
+
+        if (stateMachine.IsDead)
+            return; // Stop all other logic
+
         stateMachine.HandleInput();
         stateMachine.Update();
     }
@@ -74,6 +83,13 @@ public class Player : MonoBehaviour, IDamageable
                     damageable.OnTakeDamage(false);
                 }
             }
+        }
+    }
+    public void OnDeathAnimationComplete()
+    {
+        if (stateMachine.Player.Controller != null)
+        {
+            stateMachine.Player.Controller.enabled = false;
         }
     }
 }

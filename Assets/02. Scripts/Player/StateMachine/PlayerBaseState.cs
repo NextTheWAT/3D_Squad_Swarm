@@ -53,6 +53,10 @@ public class PlayerBaseState : IState
 
     public virtual void Update()
     {
+        if (stateMachine.IsDead)
+        {
+            return;
+        }
 	    // StartAnimation 함수 먼저 작성
         Move();
     }
@@ -70,6 +74,11 @@ public class PlayerBaseState : IState
     protected void StopAnimation(int animationHash)
     {
         stateMachine.Player.Animator.SetBool(animationHash, false);
+    }
+
+    protected void PlayTriggerAnimation(int triggerHash)
+    {
+        stateMachine.Player.Animator.SetTrigger(triggerHash);
     }
 
     private void ReadMovementInput()

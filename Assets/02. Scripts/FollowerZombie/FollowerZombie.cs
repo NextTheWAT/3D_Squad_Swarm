@@ -37,37 +37,35 @@ public class FollowerZombie : MonoBehaviour, IDamageable
 
     private void Update()
     {
+        if (Stats.isAlive == false && !stateMachine.IsDead)
+        {
+            stateMachine.SetDead();
+        }
+
+        if (stateMachine.IsDead)
+            return; // Stop all other logic
+
         stateMachine.HandleInput();
         stateMachine.Update();
 
-        // Find closest enemy within DetectionRange
         EnemyTarget = FindClosestEnemy();
 
         if (EnemyTarget != null)
         {
             float distToEnemy = Vector3.Distance(transform.position, EnemyTarget.position);
-
             if (distToEnemy <= stateMachine.DetectionRange)
-            {
                 stateMachine.ChangeState(stateMachine.ChasingState);
-            }
         }
         else
         {
-            // No enemies → follow player
             float distToPlayer = Vector3.Distance(transform.position, PlayerTarget.position);
-
             if (distToPlayer > followRange)
-            {
                 stateMachine.ChangeState(stateMachine.FollowState);
-            }
             else
-            {
                 stateMachine.ChangeState(stateMachine.IdleState);
-            }
-                
         }
     }
+
 
     private Transform FindClosestEnemy()
     {
@@ -147,5 +145,14 @@ public class FollowerZombie : MonoBehaviour, IDamageable
                 }
             }
         }
+    }
+    public void OnDeathAnimationComplete()
+    {
+        // Disable NavMeshAgent
+        if (stateMachine.Zombie.Agent != null)
+            stateMachine.Zombie.Agent.enabled = false;
+
+        // Destroy or deactivate zombie
+        GameObject.Destroy(stateMachine.Zombie.gameObject); // Or use SetActive(false)
     }
 }

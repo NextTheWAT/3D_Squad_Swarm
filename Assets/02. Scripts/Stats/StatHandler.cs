@@ -12,10 +12,12 @@ public class StatHandler : MonoBehaviour
 
     private void Awake()
     {
-        InitializeStats();
-        isAlive = baseStats.isAlive;
+        // InitializeStats();  // ← 이 줄은 제거 (중복)
+        ApplyFrom(baseStats, clearBefore: true);        // baseStats가 있으면 적용
+        isAlive = baseStats != null ? baseStats.isAlive : true;  // 널가드
     }
 
+    //필요한지 모르겠습니다..ㅎㅎ 저는 필요없다고 판단됩니다!
     private void InitializeStats()
     {
         statValues.Clear();
@@ -45,5 +47,14 @@ public class StatHandler : MonoBehaviour
         statValues[type] *= multiplier;
         yield return new WaitForSeconds(duration);
         statValues[type] /= multiplier;
+    }
+
+    //스테이지 매니저에서 사용 현재 스탯 초기화 용도
+    public void ApplyFrom(ScriptableStats s, bool clearBefore = true)
+    {
+        if (s == null) return;
+        if (clearBefore) statValues.Clear();
+        foreach (var entry in s.stats)
+            statValues[entry.statType] = entry.baseValue;
     }
 }
