@@ -1,50 +1,32 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Stage/StageConfig")]
 public class StageConfig : ScriptableObject
 {
-    [Header("StageInfo")]
-    public int stageId;
-    public string stageName;
-    public Vector2 mapSize;
+    [Header("Stage Meta")]
+    public int stageId = 1;
+    public string stageName = "Stage 1";
     public float timeLimitSec = 120f;
-    [Range(0, 100)] public float targetInfectionPercent = 100f;
 
-    [Header("Stage Tier")]
-    public StageTier stageTier = StageTier.Stage1;   // ★ 현재 스테이지 구분
-
-    [Header("Reward")]
-    public float humanReward;
-    public float hunterReward;
-
-    [Header("Human Spawn")]
-    public int humanInit;
-    public int humanMax;
-    public float humanRegenCooldown;
-
-    [Header("VIP Spawn")]
-    public int vipInit;
-    public int vipMax;
-    public float vipRegenCooldown;
-
-    [Header("Hunter Spawn")]
-    public int hunterMaxCommon;
-    public float hunterRegenCooldown;
-    public float hunterStartThreshold = 30f;
-    public int hunterInit;
-    public int hunterMaxStage3;
-
-    [Header("Stats Source (Separate SO)")]
-    public StageStatsSet statsSet;                   // ★ 스테이지별 능력치 세트 참조
-
-    // --- 편의 접근자 ---
-    public UnitStats GetStats(CharacterTier kind)
+    [System.Serializable]
+    public class UnitEntry
     {
-        if (statsSet == null) return null;
-        return statsSet.Get(kind, stageTier);
+        public string unitId;          // 예: "Human", "VIP", "Hunter" (또는 Tag 이름)
+        public ScriptableStats stats;  // 이 유닛이 이 스테이지에서 쓸 수치 세트
     }
 
-    public UnitStats HumanStats => GetStats(CharacterTier.Human);
-    public UnitStats VipStats => GetStats(CharacterTier.VipHuman);
-    public UnitStats HunterStats => GetStats(CharacterTier.Hunter);
+    [Header("UnitId → ScriptableStats")]
+    public List<UnitEntry> unitStats = new List<UnitEntry>();
+
+    public ScriptableStats GetStatsFor(string unitId)
+    {
+        if (string.IsNullOrEmpty(unitId)) return null;
+        for (int i = 0; i < unitStats.Count; i++)
+        {
+            var e = unitStats[i];
+            if (e != null && e.unitId == unitId) return e.stats;
+        }
+        return null;
+    }
 }
