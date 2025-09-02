@@ -43,7 +43,15 @@ public class NPC : MonoBehaviour, IDamageable
 
     private void Update()
     {
+        if (Stats.isAlive == false && !stateMachine.IsDead)
+        {
+            stateMachine.SetDead();
+        }
+
+        if (stateMachine.IsDead)
+            return; // Stop all other logic
         stateMachine.Update();
+
     }
 
     private void FixedUpdate()

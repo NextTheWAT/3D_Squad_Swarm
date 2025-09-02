@@ -17,7 +17,7 @@ public class NPCAttackState : NPCBaseState
         base.Enter();
         StartAnimation(stateMachine.Npc.AnimationData.attackParameterHash);
 
-        //만약 조준시간을 주고싶다면 lastFireTime = Time.time; 근데 이러면 애니메이션을 트리거로 이벤트호출해야할거같음
+       //lastFireTime = Time.time; //만약 조준시간을 주고싶다면 근데 이러면 애니메이션을 트리거로 이벤트호출해야할거같음
     }
 
     public override void Exit()
@@ -37,6 +37,7 @@ public class NPCAttackState : NPCBaseState
             stateMachine.ChangeState(stateMachine.ChaseState);
             return;
         }
+        LookTarget();
 
         if (Time.time >= lastFireTime + fireCooldown)
         {
@@ -54,7 +55,7 @@ public class NPCAttackState : NPCBaseState
         if (npc.bulletPrefab != null && npc.firePoint != null)
         {
             Vector3 targetDir = (stateMachine.Target.transform.position - npc.firePoint.position).normalized;
-
+           
             // 총알 생성
             GameObject bullet = GameObject.Instantiate(npc.bulletPrefab, npc.firePoint.position, Quaternion.LookRotation(targetDir));
 
@@ -64,10 +65,21 @@ public class NPCAttackState : NPCBaseState
             {
                 rb.velocity = targetDir * npc.bulletSpeed;
             }
-
         }
     }
+    private void LookTarget()
+    {
+        NPC npc = stateMachine.Npc;
 
-   
+        Vector3 targetDir = (stateMachine.Target.transform.position - npc.firePoint.position).normalized;
+        Quaternion LookDir = Quaternion.LookRotation(targetDir);
+        if(targetDir != Vector3.zero)
+        {
+            npc.transform.rotation = Quaternion.Slerp(npc.transform.rotation, LookDir, npc.Stats.GetStat(StatType.RotationDamping) * Time.deltaTime);
+        }
+
+    }
+
+
 }
 

@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 9155471574872836475}
   - component: {fileID: 5016596051386169234}
   - component: {fileID: 1287767407822025331}
+  - component: {fileID: 8223781094376136005}
   m_Layer: 0
   m_Name: NPC_Hunter
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,6 +83,7 @@ MonoBehaviour:
     jumpParameterName: Jump
     fallParameterName: Fall
     attackParameterName: Attack
+    deathParameterName: Death
   agent: {fileID: 0}
 --- !u!114 &1287767407822025331
 MonoBehaviour:
@@ -97,6 +99,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseStats: {fileID: 11400000, guid: b769dcdf1775b1047bcc709e50e5e08e, type: 2}
   isAlive: 1
+--- !u!136 &8223781094376136005
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6072405973118448602}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1028705882524522326
 PrefabInstance:
   m_ObjectHideFlags: 0
