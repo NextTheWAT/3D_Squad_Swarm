@@ -12,7 +12,6 @@ public class NPCFleeState : NPCGroundState
         stateMachine.MovementSpeedModifier = 1f; // Run = full speed
         stateMachine.RotationDampingModifier = 1f;
         base.Enter();
-        //Debug.Log("µµ¸Á°¡±â");
         StartAnimation(stateMachine.Npc.AnimationData.RunParameterHash);
     }
 

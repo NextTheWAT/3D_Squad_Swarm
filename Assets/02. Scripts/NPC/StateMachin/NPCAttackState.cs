@@ -65,7 +65,6 @@ public class NPCAttackState : NPCBaseState
                 rb.velocity = targetDir * npc.bulletSpeed;
             }
 
-            Debug.Log("ÃÑ¾Ë ¹ß»ç");
         }
     }
 

@@ -13,7 +13,6 @@ public class NPCChaseState : NPCGroundState
         stateMachine.MovementSpeedModifier = 1f; // Run = full speed
         stateMachine.RotationDampingModifier = 1f;
         base.Enter();
-        Debug.Log("추격하기");
         StartAnimation(stateMachine.Npc.AnimationData.RunParameterHash);
     }
 

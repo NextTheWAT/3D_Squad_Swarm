@@ -19,7 +19,6 @@ public abstract class StateMachine
         currentState?.Exit();
         currentState = state;
         currentState?.Enter();
-        Debug.Log(state);
     }
 
     public void HandleInput() 
