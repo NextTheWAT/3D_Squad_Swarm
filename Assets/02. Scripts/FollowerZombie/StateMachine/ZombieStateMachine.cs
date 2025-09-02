@@ -34,6 +34,6 @@ public class ZombieStateMachine : StateMachine
         ChangeState(DeathState);
     }
     public float MovementSpeed => Zombie.Stats.GetStat(StatType.Speed) * MovementSpeedModifier;
-    public float RotationDamping => Zombie.Stats.GetStat(StatType.RotationDamping) * RotationDamping;
+    public float RotationDamping => Zombie.Stats.GetStat(StatType.RotationDamping) * RotationDampingModifier;
     public float DetectionRange => Zombie.Stats.GetStat(StatType.DetectRange);
 }
