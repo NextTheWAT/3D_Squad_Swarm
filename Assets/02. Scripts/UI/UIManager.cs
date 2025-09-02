@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public enum UIState
 {
@@ -13,6 +15,7 @@ public enum UIState
     GameOver,
     GameClear,
     Option,
+    None,
 }
 
 public class UIManager : MonoBehaviour
@@ -52,10 +55,25 @@ public class UIManager : MonoBehaviour
 
     private CameraManager cameraManager;
 
+    // 페이드 효과에 사용할 UI Image
+    [SerializeField] private Image fadePanel;
+
+    // 페이드 시간 (몇 초 동안 페이드할지)
+    public float fadeDuration = 5.0f;
+
     private float maxInfection = 100f; // 최대 감염도
     public float currentInfection = 0f; // 현재 감염도
     public float remainingTime = 100f; // 초기 시간
     public float killCount = 0; // 사냥한 인간 수
+
+    // 선택된 스테이지 인덱스를 저장할 변수
+    private int _selectedStageIndex;
+
+    public int SelectedStageIndex
+    {
+        get { return _selectedStageIndex; }
+        set { _selectedStageIndex = value; }
+    }
 
     // 현재 상태와 이전 상태를 저장할 변수
     private UIState _currentState;
@@ -95,8 +113,6 @@ public class UIManager : MonoBehaviour
         gameClearUI.Init(this);
         optionUI = GetComponentInChildren<OptionUI>(true);
         optionUI.Init(this);
-
-        cameraManager = CameraManager.Instance;
     }
 
     // 인트로 화면으로 전환
@@ -112,6 +128,10 @@ public class UIManager : MonoBehaviour
         // enum 상태를 StageSelect로 변경
         ChangeState(UIState.StageSelect);
 
+        if (cameraManager == null)
+        {
+            cameraManager = CameraManager.Instance;
+        }
         cameraManager.SetStageSelectVirtualCamera();
     }
 
@@ -198,8 +218,8 @@ public class UIManager : MonoBehaviour
         }
 
         // 게임오버 (남은시간0)
-        SetGameOver();
         Debug.Log("시간 종료!");
+        SceneManager.LoadScene("99.GameOverScene_TimeUP");
     }
 
     private void OnEnable()
@@ -214,15 +234,36 @@ public class UIManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    // 씬 로드 완료 시 호출되는 함수
+    // 씬 로드시 호출되는 함수
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         // 씬 인덱스가 0이면 (Home 씬)
         if (scene.buildIndex == 0)
         {
+            // UI 상태를 Intro로 변경하여 UI 초기화
+            ChangeState(UIState.None);
+
             // 스테이지 선택 차량 오브젝트 활성화
             stageSelectCarObject.SetActive(true);
             SetIntro();
+
+            StartCoroutine(FadeAndLoadScene());
+        }
+    }
+
+    // 일부 씬시작 시 페이드인(화면이 점점 밝아지는 효과) 코루틴
+    private IEnumerator FadeAndLoadScene()
+    {
+        // 1. 페이드 인 (화면이 어두워짐)
+        float timer = 0f;
+        Color color = fadePanel.color;
+
+        while (timer < fadeDuration)
+        {
+            timer += Time.deltaTime;
+            color.a = Mathf.Lerp(1, 0, timer / fadeDuration); // 알파 값 1 -> 0로 서서히 변경
+            fadePanel.color = color;
+            yield return null;
         }
     }
 }
