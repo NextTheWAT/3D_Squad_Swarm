@@ -67,5 +67,11 @@ public class NPCBaseState : IState
         return playerDistanceSqr <= stateMachine.Npc.Stats.GetStat(StatType.DetectRange) * stateMachine.Npc.Stats.GetStat(StatType.DetectRange);
     }
 
+    protected bool IsInAttackRange()
+    {
+        float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Npc.transform.position).sqrMagnitude;
+        return playerDistanceSqr <= stateMachine.Npc.Stats.GetStat(StatType.NPCAttackRange) * stateMachine.Npc.Stats.GetStat(StatType.NPCAttackRange);
+    }
+
 
 }

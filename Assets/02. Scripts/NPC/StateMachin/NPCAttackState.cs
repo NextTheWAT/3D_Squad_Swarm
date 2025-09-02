@@ -13,18 +13,18 @@ public class NPCAttackState : NPCBaseState
 
     public override void Enter()
     {
-        stateMachine.MovementSpeedModifier = 0f;
-        stateMachine.RotationDampingModifier = 0f;
+        stateMachine.Npc.agent.isStopped = true; //공격시 멈추고
         base.Enter();
         StartAnimation(stateMachine.Npc.AnimationData.attackParameterHash);
 
-        lastFireTime = Time.time;
+        //만약 조준시간을 주고싶다면 lastFireTime = Time.time;
     }
 
     public override void Exit()
     {
         base.Exit();
         StopAnimation(stateMachine.Npc.AnimationData.attackParameterHash);
+        stateMachine.Npc.agent.isStopped = false; //끝나면 움직임
     }
 
     public override void Update()
@@ -32,13 +32,13 @@ public class NPCAttackState : NPCBaseState
         base.Update();
         //총쏘는 로직 작성
 
-        if (!IsInChaseRange())
+        if (!IsInAttackRange())
         {
-            stateMachine.ChangeState(stateMachine.IdleState);
+            stateMachine.ChangeState(stateMachine.ChaseState);
             return;
         }
 
-        if (IsInChaseRange()&&Time.time >= lastFireTime + fireCooldown)
+        if (Time.time >= lastFireTime + fireCooldown)
         {
             Shoot();
             lastFireTime = Time.time;
@@ -53,14 +53,16 @@ public class NPCAttackState : NPCBaseState
 
         if (npc.bulletPrefab != null && npc.firePoint != null)
         {
+            Vector3 targetDir = (stateMachine.Target.transform.position - npc.firePoint.position).normalized;
+
             // 총알 생성
-            GameObject bullet = GameObject.Instantiate(npc.bulletPrefab, npc.firePoint.position, npc.firePoint.rotation);
+            GameObject bullet = GameObject.Instantiate(npc.bulletPrefab, npc.firePoint.position, Quaternion.LookRotation(targetDir));
 
             // 총알에 힘을 가해 앞으로 날아가게 함
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                rb.velocity = npc.firePoint.forward * npc.bulletSpeed;
+                rb.velocity = targetDir * npc.bulletSpeed;
             }
 
             Debug.Log("총알 발사");
