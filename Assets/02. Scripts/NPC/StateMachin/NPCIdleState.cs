@@ -1,55 +1,46 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class NPCIdleState : NPCGroundState
 {
-    public float patrolRange = 10f;
-    public NPCIdleState(NPCStateMachine npcStateMachine) : base(npcStateMachine)
-    {
-    }
+    private float idleTime = 2f; // 최소 대기 시간
+    private float timer;
+
+    public NPCIdleState(NPCStateMachine npcStateMachine) : base(npcStateMachine) { }
 
     public override void Enter()
     {
-        stateMachine.MovementSpeedModifier = 0f;
         base.Enter();
-        StartAnimation(stateMachine.Npc.AnimationData.IdleParameterHash);
+        StartAnimation(stateMachine.Npc.AnimationData.WalkParameterHash);
+
+        timer = 0f;
+        stateMachine.Npc.agent.isStopped = false; // NavMeshAgent 켜기
     }
 
     public override void Exit()
     {
         base.Exit();
-        StopAnimation(stateMachine.Npc.AnimationData.IdleParameterHash);
+        StopAnimation(stateMachine.Npc.AnimationData.WalkParameterHash);
     }
 
     public override void Update()
     {
         base.Update();
-        if (!stateMachine.Npc.agent.pathPending && stateMachine.Npc.agent.remainingDistance < 0.5f)
+
+        timer += Time.deltaTime;
+
+        // 추격/도망 조건 확인
+        if (stateMachine.Npc.npcType == NPCType.Hunter && IsInChaseRange())
         {
-            SetRandomDestination();
+            stateMachine.ChangeState(stateMachine.ChaseState);
+            return;
         }
-        //if (stateMachine.Npc.npcType == NPCType.Hunter&&IsInChaseRange())
-        //{
-        //    stateMachine.ChangeState(stateMachine.ChaseState);
-        //    return;
-        //}
-        //else
-        //{
-        //    stateMachine.ChangeState(stateMachine.FleeState);
-        //    return;
-        //}
+        else if (stateMachine.Npc.npcType != NPCType.Hunter && IsInDetectRange())
+        {
+            stateMachine.ChangeState(stateMachine.FleeState);
+            return;
+        }
 
+        
     }
-    void SetRandomDestination()
-    {
-        Vector3 randomPos = stateMachine.Npc.transform.position + new Vector3(
-            Random.Range(-patrolRange, patrolRange),
-            0,
-            Random.Range(-patrolRange, patrolRange)
-        );
-        stateMachine.Npc.agent.SetDestination(randomPos);
-    }
-
-
 }

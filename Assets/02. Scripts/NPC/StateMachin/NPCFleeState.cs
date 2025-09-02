@@ -12,6 +12,7 @@ public class NPCFleeState : NPCGroundState
         stateMachine.MovementSpeedModifier = 1f; // Run = full speed
         stateMachine.RotationDampingModifier = 1f;
         base.Enter();
+        Debug.Log("µµ¸Á°¡±â");
         StartAnimation(stateMachine.Npc.AnimationData.RunParameterHash);
     }
 
@@ -20,5 +21,25 @@ public class NPCFleeState : NPCGroundState
         base.Exit();
         StopAnimation(stateMachine.Npc.AnimationData.RunParameterHash);
     }
+
+    public override void Update()
+    {
+        base.Update();
+        FleeFromTarget();
+
+        if (!IsInDetectRange())
+        {
+            stateMachine.ChangeState(stateMachine.IdleState);
+        }
+    }
+
+    private void FleeFromTarget()
+    {
+        Vector3 dir = (stateMachine.Npc.transform.position - stateMachine.Target.transform.position).normalized;
+        Vector3 fleePos = stateMachine.Npc.transform.position + dir * 10f;
+
+        stateMachine.Npc.agent.SetDestination(fleePos);
+    }
+ 
 
 }

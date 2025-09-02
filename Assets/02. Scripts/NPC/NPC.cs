@@ -19,27 +19,26 @@ public class NPC : MonoBehaviour, IDamageable
     [field: SerializeField] public PlayerAnimationData AnimationData { get; private set; }
 
     public Animator Animator { get; private set; }
-    public CharacterController Controller { get; private set; }
 
     public StatHandler Stats { get; private set; }
 
     private NPCStateMachine stateMachine;
-    public ForceReceiver ForceReceiver { get; private set; }
+    //public ForceReceiver ForceReceiver { get; private set; }
     public NavMeshAgent agent;
     
 
     private void Awake()
     {
+        agent = GetComponent<NavMeshAgent>();
         AnimationData.Initialize();
 
         Animator = GetComponentInChildren<Animator>();
-        Controller = GetComponent<CharacterController>();
         Stats= GetComponent<StatHandler>();
 
         stateMachine = new NPCStateMachine(this);
         stateMachine.ChangeState(stateMachine.IdleState);
-        ForceReceiver = GetComponent<ForceReceiver>();
-        agent = GetComponent<NavMeshAgent>();
+        //ForceReceiver = GetComponent<ForceReceiver>();
+       
     }
 
     private void Update()

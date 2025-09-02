@@ -22,8 +22,8 @@ public class NPCStateMachine : StateMachine
         IdleState = new NPCIdleState(this);
         ChaseState = new NPCChaseState(this);
         AttackState = new NPCAttackState(this);
+        FleeState = new NPCFleeState(this);
 
-      
     }
     public float MovementSpeed => Npc.Stats.GetStat(StatType.Speed) * MovementSpeedModifier;
     public float RotationDamping => Npc.Stats.GetStat(StatType.RotationDamping) * RotationDampingModifier;
