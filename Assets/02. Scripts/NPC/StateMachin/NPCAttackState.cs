@@ -17,7 +17,7 @@ public class NPCAttackState : NPCBaseState
         base.Enter();
         StartAnimation(stateMachine.Npc.AnimationData.attackParameterHash);
 
-        //만약 조준시간을 주고싶다면 lastFireTime = Time.time;
+        //만약 조준시간을 주고싶다면 lastFireTime = Time.time; 근데 이러면 애니메이션을 트리거로 이벤트호출해야할거같음
     }
 
     public override void Exit()
