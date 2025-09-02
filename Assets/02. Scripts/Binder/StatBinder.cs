@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(StatHandler))]
-public class StageStatBinder : MonoBehaviour
+public class StatBinder : MonoBehaviour
 {
     [SerializeField] private string unitIdOverride; // 비워두면 Tag 사용
     private StatHandler handler;
