@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCIdleState : NPCBaseState
+public class NPCIdleState : NPCGroundState
 {
     public float patrolRange = 10f;
     public NPCIdleState(NPCStateMachine npcStateMachine) : base(npcStateMachine)

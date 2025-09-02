@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCFleeState : NPCBaseState
+public class NPCFleeState : NPCGroundState
 {
     public NPCFleeState(NPCStateMachine npcStateMachine) : base(npcStateMachine)
     {
@@ -12,13 +12,13 @@ public class NPCFleeState : NPCBaseState
         stateMachine.MovementSpeedModifier = 1f; // Run = full speed
         stateMachine.RotationDampingModifier = 1f;
         base.Enter();
-        StartAnimation(stateMachine.Npc.AnimationData.WalkParameterHash);
+        StartAnimation(stateMachine.Npc.AnimationData.RunParameterHash);
     }
 
     public override void Exit()
     {
         base.Exit();
-        StopAnimation(stateMachine.Npc.AnimationData.WalkParameterHash);
+        StopAnimation(stateMachine.Npc.AnimationData.RunParameterHash);
     }
 
 }

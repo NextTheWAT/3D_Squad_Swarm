@@ -26,7 +26,7 @@ public class NPC : MonoBehaviour, IDamageable
     private NPCStateMachine stateMachine;
     public ForceReceiver ForceReceiver { get; private set; }
     public NavMeshAgent agent;
-    public float patrolRange = 10f;
+    
 
     private void Awake()
     {
