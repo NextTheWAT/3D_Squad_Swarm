@@ -24,7 +24,7 @@ public class GameUI : BaseUI
         SetInfectionNumber(uiManager.currentInfection);
 
         // UI텍스트 업데이트
-        timerText.text = "남은 시간: " + Mathf.FloorToInt(uiManager.remainingTime).ToString();
+        timerText.text = Mathf.FloorToInt(uiManager.remainingTime).ToString();
 
         // 슬라이더 업데이트
         timeSlider.value = uiManager.remainingTime / 100f; // 슬라이더 값은 0~1 사이여야 하므로 100으로 나눔
