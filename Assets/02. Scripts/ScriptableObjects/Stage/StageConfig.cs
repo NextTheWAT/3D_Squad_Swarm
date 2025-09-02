@@ -4,20 +4,18 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Stage/StageConfig")]
 public class StageConfig : ScriptableObject
 {
-    [Header("Stage Meta")]
-    public int stageId = 1;
-    public string stageName = "Stage 1";
-    public float timeLimitSec = 120f;
+    [Header("Scene")]
+    public string sceneName; // Build Settings에 등록된 씬 이름
 
     [System.Serializable]
     public class UnitEntry
     {
-        public string unitId;          // 예: "Human", "VIP", "Hunter" (또는 Tag 이름)
-        public ScriptableStats stats;  // 이 유닛이 이 스테이지에서 쓸 수치 세트
+        public string unitId;           // 유닛 식별자(= GameObject.tag)
+        public ScriptableStats stats;   // 이 유닛이 이 스테이지에서 쓸 스탯
     }
 
-    [Header("UnitId → ScriptableStats")]
-    public List<UnitEntry> unitStats = new List<UnitEntry>();
+    [Header("Unit → Stats")]
+    public List<UnitEntry> unitStats = new();
 
     public ScriptableStats GetStatsFor(string unitId)
     {

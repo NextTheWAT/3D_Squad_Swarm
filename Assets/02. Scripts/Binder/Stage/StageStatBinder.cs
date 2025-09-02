@@ -1,37 +1,28 @@
 using UnityEngine;
 
-[DisallowMultipleComponent]
+[RequireComponent(typeof(StatHandler))]
 public class StageStatBinder : MonoBehaviour
 {
-    [Tooltip("비워두면 GameObject.tag 를 unitId로 사용합니다.")]
-    [SerializeField] private string unitIdOverride;
-
+    [SerializeField] private string unitIdOverride; // 비워두면 Tag 사용
     private StatHandler handler;
 
-    private void Awake()
-    {
-        handler = GetComponent<StatHandler>();
-    }
+    private void Awake() => handler = GetComponent<StatHandler>();
 
     private void OnEnable()
     {
-        StageManager.OnStageStarted += HandleStageStarted;   // StageManager가 이벤트를 쏘는 구조인 경우
+        StageManager.OnStageStarted += Handle;
+        // 이미 스테이지가 시작돼 있다면 즉시 1회 적용
+        if (StageManager.Instance != null && StageManager.Instance.Current != null)
+            Handle(StageManager.Instance.Current);
     }
 
-    private void OnDisable()
-    {
-        StageManager.OnStageStarted -= HandleStageStarted;
-    }
+    private void OnDisable() => StageManager.OnStageStarted -= Handle;
 
-    private void HandleStageStarted(StageConfig cfg)
+    private void Handle(StageConfig cfg)
     {
         if (handler == null || cfg == null) return;
-
         string unitId = string.IsNullOrEmpty(unitIdOverride) ? gameObject.tag : unitIdOverride;
-        var so = cfg.GetStatsFor(unitId);    // StageConfig: unitId → ScriptableStats 매핑
-        if (so != null)
-        {
-            handler.ApplyFrom(so, clearBefore: true);
-        }
+        var so = cfg.GetStatsFor(unitId);
+        if (so != null) handler.ApplyFrom(so, clearBefore: true);
     }
 }

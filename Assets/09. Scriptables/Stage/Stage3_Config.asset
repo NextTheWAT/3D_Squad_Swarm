@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa533b5e7a69a5947ad83cd9bda2a9de, type: 3}
   m_Name: Stage3_Config
   m_EditorClassIdentifier: 
-  stageId: 1
-  stageName: Stage 1
+  stageId: 3
+  stageName: Stage 3
   timeLimitSec: 120
   unitStats:
   - unitId: 
