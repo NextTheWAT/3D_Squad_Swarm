@@ -34,15 +34,6 @@ public class GameOverUI : BaseUI
         gameOverKillText.text = uiManager.killCount.ToString();
     }
 
-    // 현재 게임씬 다시 시작
-    public void OnClickRestartButton()
-    {
-        // 현재 게임씬 다시 로드
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
-        Debug.Log("Restart Button Clicked");
-    }
-
     // 인트로씬으로 돌아가기
     public void OnClickBackIntroButton()
     {
@@ -50,6 +41,15 @@ public class GameOverUI : BaseUI
         SceneManager.LoadScene(0);
 
         Debug.Log("Back to Intro Button Clicked");
+    }
+
+    // 현재 게임씬 다시 시작
+    public void OnClickRestartButton()
+    {
+        // 현재 게임씬 다시 로드
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+        Debug.Log("Restart Button Clicked");
     }
 
     // 게임 종료
