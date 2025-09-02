@@ -26,13 +26,12 @@ public class StageSelectUI : BaseUI
         // 버튼 클릭 이벤트에 함수 등록(인스펙터에서 버튼 연결 할 필요없음)
         returnButton.onClick.AddListener(OnClickReturnButton);
         nextStageButton.onClick.AddListener(OnClickNextStageButton);
-        stage1Button.onClick.AddListener(() => OnClickStartStageButton(1));
-        stage2Button.onClick.AddListener(() => OnClickStartStageButton(2));
-        stage3Button.onClick.AddListener(() => OnClickStartStageButton(3));
+        stage1Button.onClick.AddListener(() => OnClickStartStageButton(3)); // 3번 씬(스테이지1)으로 이동
+        stage2Button.onClick.AddListener(() => OnClickStartStageButton(4)); // 4번 씬(스테이지2)으로 이동
+        stage3Button.onClick.AddListener(() => OnClickStartStageButton(5)); // 5번 씬(스테이지3)으로 이동
 
         if (cameraManager == null)
         {
-            Debug.Log("CameraManager Null");
             cameraManager = CameraManager.Instance;
         }
 

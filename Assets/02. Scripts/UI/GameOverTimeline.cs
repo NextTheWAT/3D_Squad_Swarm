@@ -10,6 +10,9 @@ public class GameOverTimeline : MonoBehaviour
     void Awake()
     {
         director = GetComponent<PlayableDirector>();
+
+        // 시작할 때 UI 상태를 None으로 설정해서 모든 UI를 비활성화
+        UIManager.Instance.ChangeState(UIState.None);
     }
 
     void OnEnable()

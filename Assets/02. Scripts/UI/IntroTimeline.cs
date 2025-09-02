@@ -8,12 +8,30 @@ public class IntroTimeline : MonoBehaviour
 {
     private PlayableDirector director;
 
+    // 씬을 미리 로드하는 오퍼레이션
+    private AsyncOperation asyncOperation;
+
     void Awake()
     {
         director = GetComponent<PlayableDirector>();
+    }
 
+    private void Start()
+    {
         // 시작할 때 UI 상태를 None으로 설정해서 모든 UI를 비활성화
         UIManager.Instance.ChangeState(UIState.None);
+
+        // UI매니저에 저장 된 스테이지 인덱스를 가져와서 변수에 저장
+        int selectSceneNumber = UIManager.Instance.SelectedStageIndex;
+
+        // 다음 씬 비동기 로드 시작
+        asyncOperation = SceneManager.LoadSceneAsync(selectSceneNumber);
+
+        // 씬 로딩 완료 후 바로 전환될지 확인하는 설정값 (false로 설정)
+        asyncOperation.allowSceneActivation = false;
+
+        // 코루틴 시작
+        StartCoroutine(WaitForTimelineAndActivate());
     }
 
     void OnEnable()
@@ -28,29 +46,24 @@ public class IntroTimeline : MonoBehaviour
         director.stopped -= OnTimelineFinished;
     }
 
+    // 90%까지만 다음 씬을 로딩하는 코루틴
+    private IEnumerator WaitForTimelineAndActivate()
+    {
+        // 씬 로딩이 90% 완료될 때까지 기다림
+        while (asyncOperation.progress < 0.9f)
+        {
+            yield return null;
+        }
+    }
+
     // 타임라인이 끝났을 때 호출되는 메서드
     private void OnTimelineFinished(PlayableDirector director)
     {
-        // Test : 바로 타임업 게임오버씬 불러오기
-        //SceneManager.LoadScene(2); 
-
-        // UI매니저에 저장 된 스테이지 인덱스를 가져옴
-        int sceneNumber = UIManager.Instance.SelectedStageIndex;
-
-        switch (sceneNumber)
+        // 씬 로딩이 90% 완료되었는지 확인
+        if (asyncOperation.progress >= 0.9f)
         {
-            case 1:
-                Debug.Log("스테이지 1 시작");
-                // SceneManager.LoadScene("Stage1Scene");
-                break;
-            case 2:
-                Debug.Log("스테이지 2 시작");
-                // SceneManager.LoadScene("Stage2Scene");
-                break;
-            case 3:
-                Debug.Log("스테이지 3 시작");
-                // SceneManager.LoadScene("Stage3Scene");
-                break;
+            // 씬 전환 허용 (true로 설정)
+            asyncOperation.allowSceneActivation = true;
         }
     }
 }

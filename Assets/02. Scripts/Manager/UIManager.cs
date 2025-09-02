@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public enum UIState
 {
@@ -53,6 +54,12 @@ public class UIManager : MonoBehaviour
     public GameObject stageSelectCarObject;
 
     private CameraManager cameraManager;
+
+    // 페이드 효과에 사용할 UI Image
+    [SerializeField] private Image fadePanel;
+
+    // 페이드 시간 (몇 초 동안 페이드할지)
+    public float fadeDuration = 5.0f;
 
     private float maxInfection = 100f; // 최대 감염도
     public float currentInfection = 0f; // 현재 감염도
@@ -237,5 +244,45 @@ public class UIManager : MonoBehaviour
             stageSelectCarObject.SetActive(true);
             SetIntro();
         }
+    }
+
+    /// <summary>
+    /// 페이드 효과와 함께 씬을 로드합니다.
+    /// </summary>
+    /// <param name="sceneName">로드할 씬의 이름</param>
+    public void LoadSceneWithFade(int sceneNumber)
+    {
+        StartCoroutine(FadeAndLoadScene(sceneNumber));
+    }
+
+    private IEnumerator FadeAndLoadScene(int sceneNumber)
+    {
+        // 1. 페이드 인 (화면이 어두워짐)
+        float timer = 0f;
+        Color color = fadePanel.color;
+
+        while (timer < fadeDuration)
+        {
+            timer += Time.deltaTime;
+            color.a = Mathf.Lerp(0, 1, timer / fadeDuration); // 알파 값 0 -> 1로 서서히 변경
+            fadePanel.color = color;
+            yield return null;
+        }
+
+        // 2. 씬 로딩
+        AsyncOperation op = SceneManager.LoadSceneAsync(sceneNumber);
+        op.allowSceneActivation = false; // 씬 로딩 완료 후 바로 활성화되지 않도록
+
+        while (op.progress < 0.9f)
+        {
+            // 로딩이 90% 완료될 때까지 기다림
+            yield return null;
+        }
+
+        // 3. 씬 활성화
+        op.allowSceneActivation = true;
+
+        // 새로운 씬으로 넘어갔으므로 이 코루틴은 끝남.
+        // 새로운 씬에서 다시 페이드 아웃 코루틴을 실행해야 함.
     }
 }
