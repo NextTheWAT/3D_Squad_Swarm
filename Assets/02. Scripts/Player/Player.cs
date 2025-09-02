@@ -87,7 +87,6 @@ public class Player : MonoBehaviour, IDamageable
     }
     public void OnDeathAnimationComplete()
     {
-        // Disable NavMeshAgent
         if (stateMachine.Player.Controller != null)
         {
             stateMachine.Player.Controller.enabled = false;

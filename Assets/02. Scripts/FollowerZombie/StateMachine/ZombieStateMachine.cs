@@ -7,6 +7,7 @@ public class ZombieStateMachine : StateMachine
 
     public Vector2 MovementInput { get; set; }
     public float MovementSpeedModifier { get; set; }
+    public float RotationDampingModifier { get; set; }
 
     public GameObject Target { get; private set; }
     public ZombieIdleState IdleState { get; }
@@ -33,6 +34,6 @@ public class ZombieStateMachine : StateMachine
         ChangeState(DeathState);
     }
     public float MovementSpeed => Zombie.Stats.GetStat(StatType.Speed) * MovementSpeedModifier;
-    public float RotationDamping => Zombie.Stats.GetStat(StatType.RotationDamping);
+    public float RotationDamping => Zombie.Stats.GetStat(StatType.RotationDamping) * RotationDamping;
     public float DetectionRange => Zombie.Stats.GetStat(StatType.DetectRange);
 }
