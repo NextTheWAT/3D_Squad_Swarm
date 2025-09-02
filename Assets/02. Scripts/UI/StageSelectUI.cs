@@ -30,6 +30,11 @@ public class StageSelectUI : BaseUI
         stage2Button.onClick.AddListener(() => OnClickStartStageButton(4)); // 4번 씬(스테이지2)으로 이동
         stage3Button.onClick.AddListener(() => OnClickStartStageButton(5)); // 5번 씬(스테이지3)으로 이동
 
+        
+    }
+
+    private void OnEnable()
+    {
         if (cameraManager == null)
         {
             cameraManager = CameraManager.Instance;

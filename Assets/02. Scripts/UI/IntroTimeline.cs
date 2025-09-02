@@ -11,6 +11,8 @@ public class IntroTimeline : MonoBehaviour
     // 씬을 미리 로드하는 오퍼레이션
     private AsyncOperation asyncOperation;
 
+    public GameObject skipButton;
+
     void Awake()
     {
         director = GetComponent<PlayableDirector>();

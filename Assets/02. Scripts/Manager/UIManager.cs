@@ -131,8 +131,8 @@ public class UIManager : MonoBehaviour
         if (cameraManager == null)
         {
             cameraManager = CameraManager.Instance;
-            cameraManager.SetStageSelectVirtualCamera();
         }
+        cameraManager.SetStageSelectVirtualCamera();
     }
 
     // 게임시작 시 게임매니저에서 호출
