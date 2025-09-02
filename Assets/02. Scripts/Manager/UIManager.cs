@@ -106,8 +106,6 @@ public class UIManager : MonoBehaviour
         gameClearUI.Init(this);
         optionUI = GetComponentInChildren<OptionUI>(true);
         optionUI.Init(this);
-
-        cameraManager = CameraManager.Instance;
     }
 
     // 인트로 화면으로 전환
@@ -123,7 +121,11 @@ public class UIManager : MonoBehaviour
         // enum 상태를 StageSelect로 변경
         ChangeState(UIState.StageSelect);
 
-        cameraManager.SetStageSelectVirtualCamera();
+        if (cameraManager == null)
+        {
+            cameraManager = CameraManager.Instance;
+            cameraManager.SetStageSelectVirtualCamera();
+        }
     }
 
     // 게임시작 시 게임매니저에서 호출

@@ -31,25 +31,26 @@ public class IntroTimeline : MonoBehaviour
     // 타임라인이 끝났을 때 호출되는 메서드
     private void OnTimelineFinished(PlayableDirector director)
     {
-        SceneManager.LoadScene(2); // Test : 타임업 게임오버씬 불러오기
+        // Test : 바로 타임업 게임오버씬 불러오기
+        //SceneManager.LoadScene(2); 
 
         // UI매니저에 저장 된 스테이지 인덱스를 가져옴
-        //int sceneNumber = UIManager.Instance.SelectedStageIndex;
+        int sceneNumber = UIManager.Instance.SelectedStageIndex;
 
-        //switch (sceneNumber)
-        //{
-        //    case 1:
-        //        Debug.Log("스테이지 1 시작");
-        //        // SceneManager.LoadScene("Stage1Scene");
-        //        break;
-        //    case 2:
-        //        Debug.Log("스테이지 2 시작");
-        //        // SceneManager.LoadScene("Stage2Scene");
-        //        break;
-        //    case 3:
-        //        Debug.Log("스테이지 3 시작");
-        //        // SceneManager.LoadScene("Stage3Scene");
-        //        break;
-        //}
+        switch (sceneNumber)
+        {
+            case 1:
+                Debug.Log("스테이지 1 시작");
+                // SceneManager.LoadScene("Stage1Scene");
+                break;
+            case 2:
+                Debug.Log("스테이지 2 시작");
+                // SceneManager.LoadScene("Stage2Scene");
+                break;
+            case 3:
+                Debug.Log("스테이지 3 시작");
+                // SceneManager.LoadScene("Stage3Scene");
+                break;
+        }
     }
 }

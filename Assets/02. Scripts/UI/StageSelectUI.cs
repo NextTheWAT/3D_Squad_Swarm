@@ -30,7 +30,11 @@ public class StageSelectUI : BaseUI
         stage2Button.onClick.AddListener(() => OnClickStartStageButton(2));
         stage3Button.onClick.AddListener(() => OnClickStartStageButton(3));
 
-        cameraManager = CameraManager.Instance;
+        if (cameraManager == null)
+        {
+            Debug.Log("CameraManager Null");
+            cameraManager = CameraManager.Instance;
+        }
 
         audioSource = GetComponent<AudioSource>();
     }

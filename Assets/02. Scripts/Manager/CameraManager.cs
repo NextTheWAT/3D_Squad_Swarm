@@ -25,16 +25,30 @@ public class CameraManager : MonoBehaviour
 
     private void Awake()
     {
-        if (_instance != null && _instance != this)
+        // 씬 내에 이미 인스턴스가 존재하면 현재 오브젝트 파괴
+        if (_instance != null)
         {
-            Destroy(gameObject);
-            return;
+            // 현재 인스턴스와 기존 인스턴스가 다르면 경고 로그와 함께 파괴
+            if (_instance != this)
+            {
+                Debug.LogWarning("CameraManager: 씬에 이미 다른 CameraManager 인스턴스가 존재합니다. 중복 인스턴스를 파괴합니다.");
+                Destroy(gameObject);
+                return;
+            }
         }
 
+        // 싱글톤 인스턴스 설정
         _instance = this;
 
-        //mainVirtualCamera = transform.Find("Virtual Camera")?.GetComponent<CinemachineVirtualCamera>();
-        //stageSelectVirtualCamera = transform.Find("Virtual Camera_StageSelect")?.GetComponent<CinemachineVirtualCamera>();
+        // 카메라 할당이 성공했는지 확인하는 디버그 로그 추가 (디버깅용)
+        if (mainVirtualCamera == null)
+        {
+            Debug.LogError("mainVirtualCamera가 인스펙터에 할당되지 않았습니다.");
+        }
+        if (stageSelectVirtualCamera == null)
+        {
+            Debug.LogError("stageSelectVirtualCamera가 인스펙터에 할당되지 않았습니다.");
+        }
     }
 
     // 메인 카메라의 우선순위를 높여 활성화
