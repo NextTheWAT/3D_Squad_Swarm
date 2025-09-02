@@ -3,6 +3,7 @@ using UnityEngine;
 public class ZombieStateMachine : StateMachine
 {
     public FollowerZombie Zombie { get; }
+    public bool IsDead { get; private set; } = false;
 
     public Vector2 MovementInput { get; set; }
     public float MovementSpeedModifier { get; set; }
@@ -12,15 +13,24 @@ public class ZombieStateMachine : StateMachine
     public ZombieFollowState FollowState { get; }
     public ZombieChasingState ChasingState { get; }
     public ZombieAttackState AttackState { get; }
+    public ZombieDeathState DeathState { get; }
 
     public ZombieStateMachine(FollowerZombie Zombie)
     {
         this.Zombie = Zombie;
+        MovementSpeedModifier = 1f;
 
         IdleState = new ZombieIdleState(this);
         FollowState = new ZombieFollowState(this);
         ChasingState = new ZombieChasingState(this);
         AttackState = new ZombieAttackState(this);
+        DeathState = new ZombieDeathState(this);
+    }
+
+    public void SetDead()
+    {
+        IsDead = true;
+        ChangeState(DeathState);
     }
     public float MovementSpeed => Zombie.Stats.GetStat(StatType.Speed) * MovementSpeedModifier;
     public float RotationDamping => Zombie.Stats.GetStat(StatType.RotationDamping);

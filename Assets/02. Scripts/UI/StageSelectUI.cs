@@ -2,6 +2,7 @@ using DG.Tweening.Core.Easing;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class StageSelectUI : BaseUI
@@ -25,11 +26,19 @@ public class StageSelectUI : BaseUI
         // 버튼 클릭 이벤트에 함수 등록(인스펙터에서 버튼 연결 할 필요없음)
         returnButton.onClick.AddListener(OnClickReturnButton);
         nextStageButton.onClick.AddListener(OnClickNextStageButton);
-        stage1Button.onClick.AddListener(() => OnClickStartStageButton(1));
-        stage2Button.onClick.AddListener(() => OnClickStartStageButton(2));
-        stage3Button.onClick.AddListener(() => OnClickStartStageButton(3));
+        stage1Button.onClick.AddListener(() => OnClickStartStageButton(3)); // 3번 씬(스테이지1)으로 이동
+        stage2Button.onClick.AddListener(() => OnClickStartStageButton(4)); // 4번 씬(스테이지2)으로 이동
+        stage3Button.onClick.AddListener(() => OnClickStartStageButton(5)); // 5번 씬(스테이지3)으로 이동
 
-        cameraManager = CameraManager.Instance;
+        
+    }
+
+    private void OnEnable()
+    {
+        if (cameraManager == null)
+        {
+            cameraManager = CameraManager.Instance;
+        }
 
         audioSource = GetComponent<AudioSource>();
     }
@@ -65,6 +74,8 @@ public class StageSelectUI : BaseUI
     // 0초 지연하여 차 문열고 닫는 소리 재생 후 스테이지 시작
     private IEnumerator DelayStageStart(int stageIndex)
     {
+        uiManager.SelectedStageIndex = stageIndex; // 선택된 스테이지 인덱스를 변수에 저장해둠 -> 인트로씬에서 사용할 예정
+
         audioSource.PlayOneShot(audioSource.clip);
         
         yield return new WaitForSeconds(2.5f);
@@ -75,21 +86,7 @@ public class StageSelectUI : BaseUI
         // 스테이지 시작 전, UI 매니저의 stageSelectCarObject 비활성화
         uiManager.stageSelectCarObject.SetActive(false);
 
-        switch (stageIndex)
-        {
-            case 1:
-                Debug.Log("스테이지 1 시작");
-                // SceneManager.LoadScene("Stage1Scene");
-                break;
-            case 2:
-                Debug.Log("스테이지 2 시작");
-                // SceneManager.LoadScene("Stage2Scene");
-                break;
-            case 3:
-                Debug.Log("스테이지 3 시작");
-                // SceneManager.LoadScene("Stage3Scene");
-                break;
-        }
+        SceneManager.LoadScene(1); // 1번 씬(인트로씬)으로 이동
     }
 
     protected override UIState GetUIState()

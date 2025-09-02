@@ -1,11 +1,12 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // 캐릭터 이름 Text가 카메라에 정면으로 비추게 하기 위한 코드
 public class Billboard : MonoBehaviour
 {
     private Transform mainCameraTransform;
 
-    void Start()
+    private void OnEnable()
     {
         // 메인 카메라의 Transform을 찾기
         mainCameraTransform = Camera.main.transform;

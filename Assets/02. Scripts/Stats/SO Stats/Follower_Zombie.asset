@@ -15,7 +15,7 @@ MonoBehaviour:
   isAlive: 1
   stats:
   - statType: 1
-    baseValue: 5
+    baseValue: 4
   - statType: 3
     baseValue: 5
   - statType: 4

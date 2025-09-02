@@ -106,6 +106,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2081639627406383131}
   - component: {fileID: 6238703417948294782}
+  - component: {fileID: 4777015751335061749}
   m_Layer: 0
   m_Name: Player_Zombie
   m_TagString: Untagged
@@ -151,6 +152,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4777015751335061749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617252071820217026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 154dacb69e9adcb47b37ecd47e0e324d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentPlayer: {fileID: 6550417344251523612}
+  parentZombie: {fileID: 0}
 --- !u!1 &2096903767673105616
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,7 +503,7 @@ GameObject:
   - component: {fileID: 6250758683030607893}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -585,6 +600,7 @@ MonoBehaviour:
     jumpParameterName: Jump
     fallParameterName: Fall
     attackParameterName: Attack
+    deathParameterName: Death
 --- !u!114 &1008932351582022511
 MonoBehaviour:
   m_ObjectHideFlags: 0
