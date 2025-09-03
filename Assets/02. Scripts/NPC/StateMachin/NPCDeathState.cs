@@ -18,6 +18,7 @@ public class NPCDeathState : NPCBaseState
         {
             PlayerManager.Instance.PlayerSpeedUp();
         }
+        stateMachine.Npc.gameObject.tag = "Untagged";
         stateMachine.Npc.agent.isStopped = true;
         PlayTriggerAnimation(stateMachine.Npc.AnimationData.deathParameterHash);
 
