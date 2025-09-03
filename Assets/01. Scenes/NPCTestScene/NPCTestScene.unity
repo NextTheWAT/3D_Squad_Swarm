@@ -175,6 +175,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC_Hunter_1
       objectReference: {fileID: 0}
+    - target: {fileID: 6072405973118448602, guid: ac30cdd0e060bd64b88c57a17839f9bc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -191,6 +195,10 @@ PrefabInstance:
     - target: {fileID: 2451761408369611063, guid: 41370a52aa9c30747bae5d25519b21f2, type: 3}
       propertyPath: m_Name
       value: NPC_Woman_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2451761408369611063, guid: 41370a52aa9c30747bae5d25519b21f2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8453943446541556785, guid: 41370a52aa9c30747bae5d25519b21f2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -289,6 +297,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC_VIP_M_2
       objectReference: {fileID: 0}
+    - target: {fileID: 5507003941367423812, guid: 9e74fbba0da91754780e6e16d19a3ff3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -305,6 +317,10 @@ PrefabInstance:
     - target: {fileID: 4663749763471866935, guid: 980d821579f857248abc548e54294cd0, type: 3}
       propertyPath: m_Name
       value: NPC_VIP_M_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4663749763471866935, guid: 980d821579f857248abc548e54294cd0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8406957949066626693, guid: 980d821579f857248abc548e54294cd0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -403,6 +419,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC_VIP_W_3
       objectReference: {fileID: 0}
+    - target: {fileID: 7087763673012793474, guid: b404757fc4bdb1e4498cf9f76e47efbd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -459,6 +479,10 @@ PrefabInstance:
     - target: {fileID: 7691466430745523193, guid: 17481c2e46859b94fb63ebd883b354a2, type: 3}
       propertyPath: m_Name
       value: NPC_VIP_W_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7691466430745523193, guid: 17481c2e46859b94fb63ebd883b354a2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -579,6 +603,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC_Hunter_W_3
       objectReference: {fileID: 0}
+    - target: {fileID: 5944571120269254071, guid: 5a638fafbdae7a343bbbf00854f70a7b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -598,7 +626,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1666421720722391696, guid: cc7fd377968814a4fbb324262953a500, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3527019774630966992, guid: cc7fd377968814a4fbb324262953a500, type: 3}
       propertyPath: m_LocalPosition.x
@@ -668,6 +696,10 @@ PrefabInstance:
     - target: {fileID: 3638801546970039278, guid: 2d9002490fd211940a7e2632b3461240, type: 3}
       propertyPath: m_Name
       value: NPC_Woman_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3638801546970039278, guid: 2d9002490fd211940a7e2632b3461240, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7289884403130743204, guid: 2d9002490fd211940a7e2632b3461240, type: 3}
       propertyPath: m_LocalPosition.x
@@ -872,6 +904,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC_Hunter_3
       objectReference: {fileID: 0}
+    - target: {fileID: 7842510224554946093, guid: 9d55e30fc2253284995d9b90b308326e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -888,6 +924,10 @@ PrefabInstance:
     - target: {fileID: 4512848442818263564, guid: b6daccebee407e8428cfbddcb23f511b, type: 3}
       propertyPath: m_Name
       value: Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4512848442818263564, guid: b6daccebee407e8428cfbddcb23f511b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6362790881039892809, guid: b6daccebee407e8428cfbddcb23f511b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -986,6 +1026,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC_Woman_1
       objectReference: {fileID: 0}
+    - target: {fileID: 5210098199429294078, guid: 109e98089e4afb4459bac6ed2ebe8f58, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6481983343525803344, guid: 109e98089e4afb4459bac6ed2ebe8f58, type: 3}
+      propertyPath: zombieEffect
+      value: 
+      objectReference: {fileID: 2771775932424238379, guid: f8e4365a7130aaf43aecc92064f6d17d, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1043,11 +1091,139 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC_Man_3
       objectReference: {fileID: 0}
+    - target: {fileID: 2972642708918744755, guid: 0f3e0b91c8d360a4a977cbb915f56c14, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f3e0b91c8d360a4a977cbb915f56c14, type: 3}
+--- !u!1 &1182287774 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4886982653721326076, guid: efd82a542b4684a479b9b46d39913ea7, type: 3}
+  m_PrefabInstance: {fileID: 1626021028}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1182287780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182287774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23dcf32b89c79804597d553deb23892c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePoint: {fileID: 1743821593}
+  lineRenderer: {fileID: 1182287781}
+  maxDistance: 50
+--- !u!120 &1182287781
+LineRenderer:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182287774}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 0
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 1e199c1f0daaebe4587791998a3f2639, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Positions:
+  - {x: 0, y: 0, z: 15}
+  - {x: 0, y: 0, z: 1}
+  m_Parameters:
+    serializedVersion: 3
+    widthMultiplier: 1
+    widthCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.07802963
+        value: 0.9330349
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    colorGradient:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: -1
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    numCornerVertices: 0
+    numCapVertices: 0
+    alignment: 0
+    textureMode: 0
+    textureScale: {x: 1, y: 1}
+    shadowBias: 0.5
+    generateLightingData: 0
+  m_MaskInteraction: 0
+  m_UseWorldSpace: 1
+  m_Loop: 0
+  m_ApplyActiveColorSpace: 1
 --- !u!1001 &1233586639
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1059,6 +1235,10 @@ PrefabInstance:
     - target: {fileID: 1357426970570690203, guid: c526e253363e21844a8426958b508e7a, type: 3}
       propertyPath: m_Name
       value: NPC_Hunter_W_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1357426970570690203, guid: c526e253363e21844a8426958b508e7a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2906097572137703452, guid: c526e253363e21844a8426958b508e7a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1117,6 +1297,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC_Man_1
       objectReference: {fileID: 0}
+    - target: {fileID: 6673452028324763727, guid: bf89fc9d27b331446b50c17807e972d3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7569144202553138305, guid: bf89fc9d27b331446b50c17807e972d3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1173,6 +1357,10 @@ PrefabInstance:
     - target: {fileID: 6687691561937348005, guid: 40ba292b296873a4baad299c49a59ec1, type: 3}
       propertyPath: m_Name
       value: NPC_Man_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6687691561937348005, guid: 40ba292b296873a4baad299c49a59ec1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8827427514571998003, guid: 40ba292b296873a4baad299c49a59ec1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1231,6 +1419,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC_Hunter_2
       objectReference: {fileID: 0}
+    - target: {fileID: 4886982653721326076, guid: efd82a542b4684a479b9b46d39913ea7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5191274270915908780, guid: efd82a542b4684a479b9b46d39913ea7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1274,7 +1466,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4886982653721326076, guid: efd82a542b4684a479b9b46d39913ea7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1182287781}
+    - targetCorrespondingSourceObject: {fileID: 4886982653721326076, guid: efd82a542b4684a479b9b46d39913ea7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1182287780}
   m_SourcePrefab: {fileID: 100100000, guid: efd82a542b4684a479b9b46d39913ea7, type: 3}
 --- !u!1 &1627034519
 GameObject:
@@ -1380,6 +1578,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC_VIP_W_2
       objectReference: {fileID: 0}
+    - target: {fileID: 1583775786394517558, guid: f1fdbe7790188034f83bae10d44d34e3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8804748227809953737, guid: f1fdbe7790188034f83bae10d44d34e3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1425,6 +1627,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1fdbe7790188034f83bae10d44d34e3, type: 3}
+--- !u!4 &1743821593 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4773610440763584190, guid: efd82a542b4684a479b9b46d39913ea7, type: 3}
+  m_PrefabInstance: {fileID: 1626021028}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1771226186
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1436,6 +1643,10 @@ PrefabInstance:
     - target: {fileID: 987013070293102917, guid: 1e33df42841577c44b047593030ba105, type: 3}
       propertyPath: m_Name
       value: NPC_VIP_M_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 987013070293102917, guid: 1e33df42841577c44b047593030ba105, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2366175819597854788, guid: 1e33df42841577c44b047593030ba105, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1494,6 +1705,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC_Hunter_W_2
       objectReference: {fileID: 0}
+    - target: {fileID: 386326027053311078, guid: 0381073dfc4e99c488cb022a2e73f4d8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5277560922070293442, guid: 0381073dfc4e99c488cb022a2e73f4d8, type: 3}
+      propertyPath: zombieEffect
+      value: 
+      objectReference: {fileID: 2771775932424238379, guid: f8e4365a7130aaf43aecc92064f6d17d, type: 3}
     - target: {fileID: 6313405035653301259, guid: 0381073dfc4e99c488cb022a2e73f4d8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

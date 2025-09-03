@@ -65,7 +65,7 @@ public class NPCAttackState : NPCBaseState
                 rb.velocity = targetDir * npc.bulletSpeed;
 
             }
-            var aim = npc.GetComponent<GunAim>();
+            var aim = npc.GetComponent<GunAimer>();
             if (aim != null)
             {
                 aim.EnableAim(false);
@@ -83,7 +83,7 @@ public class NPCAttackState : NPCBaseState
             npc.transform.rotation = Quaternion.Slerp(npc.transform.rotation, LookDir, npc.Stats.GetStat(StatType.RotationDamping) * Time.deltaTime);
         }
 
-        var aim = npc.GetComponent<GunAim>();
+        var aim = npc.GetComponent<GunAimer>();
         if (aim != null)
         {
             aim.EnableAim(true);

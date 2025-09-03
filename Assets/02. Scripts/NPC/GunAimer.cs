@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunAim : MonoBehaviour
+public class GunAimer : MonoBehaviour
 {
     public Transform firePoint;
     public LineRenderer lineRenderer;
-    public float maxDistance = 50f;
+    public float maxDistance = 20f;
     void Awake()
     {
         if (lineRenderer != null)
@@ -29,6 +29,7 @@ public class GunAim : MonoBehaviour
     {
         RaycastHit hit;
         Vector3 endPos;
+        
 
         if (Physics.Raycast(firePoint.position, firePoint.forward, out hit, maxDistance))
         {
