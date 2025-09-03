@@ -52,6 +52,8 @@ public class NPC : MonoBehaviour, IDamageable
 
         if (stateMachine.IsDead)
             return; // Stop all other logic
+
+        stateMachine.RefreshTargetEveryFrame(); //타겟 업데이트
         stateMachine.Update();
 
     }
