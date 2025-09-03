@@ -11,7 +11,7 @@ public class ZombieManager : MonoBehaviour
     [Header("Camera")]
     public CinemachineVirtualCamera virtualCamera;
     public float baseDistance = 10f;
-    public float distanceStep = 2f;
+    public float distanceStep = 10f;
     public float maxDistance = 50f;
     public float lerpSpeed = 2f;
 
@@ -70,7 +70,7 @@ public class ZombieManager : MonoBehaviour
 
     private void UpdateTargetDistance()
     {
-        int zoomSteps = zombies.Count / 5;
+        int zoomSteps = zombies.Count / 20;
         targetDistance = Mathf.Min(baseDistance + zoomSteps * distanceStep, maxDistance);
     }
 }
