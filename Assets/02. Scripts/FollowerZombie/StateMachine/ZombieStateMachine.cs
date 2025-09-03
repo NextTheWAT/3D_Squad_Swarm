@@ -15,6 +15,7 @@ public class ZombieStateMachine : StateMachine
     public ZombieChasingState ChasingState { get; }
     public ZombieAttackState AttackState { get; }
     public ZombieDeathState DeathState { get; }
+    public ZombieRiseState RiseState { get; }
 
     public ZombieStateMachine(FollowerZombie Zombie)
     {
@@ -26,6 +27,7 @@ public class ZombieStateMachine : StateMachine
         ChasingState = new ZombieChasingState(this);
         AttackState = new ZombieAttackState(this);
         DeathState = new ZombieDeathState(this);
+        RiseState = new ZombieRiseState(this);
     }
 
     public void SetDead()

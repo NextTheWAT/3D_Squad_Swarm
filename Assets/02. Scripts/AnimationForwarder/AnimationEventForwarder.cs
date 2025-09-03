@@ -52,4 +52,12 @@ public class AnimationEventForwarder : MonoBehaviour
             parentZombie.OnDeathAnimationComplete();
         }
     }
+
+    public void OnRiseComplete()
+    {
+        if (parentZombie != null)
+        {
+            parentZombie.OnRiseComplete();
+        }
+    }
 }
