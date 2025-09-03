@@ -45,7 +45,11 @@ public class NPCBaseState : IState
     {
         stateMachine.Npc.Animator.SetBool(animationHash, false);
     }
-   
+    protected void PlayTriggerAnimation(int triggerHash)
+    {
+        stateMachine.Npc.Animator.SetTrigger(triggerHash);
+    }
+
     public void Wandering()
     {
         Vector3 randomPos = stateMachine.Npc.transform.position + new Vector3(

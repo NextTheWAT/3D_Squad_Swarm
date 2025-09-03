@@ -13,11 +13,11 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        var player = collision.collider.GetComponent<Player>();
         //플레이어만 총에맞음
-        if (player != null && player.Stats.isAlive)
+        if (collision.gameObject.CompareTag("Player")||collision.gameObject.CompareTag("Zombie"))
         {
-            player.Stats.isAlive = false;
+            var target = collision.gameObject.GetComponent<StatHandler>();
+            target.isAlive = false;
         }
         Destroy(gameObject);
     }
