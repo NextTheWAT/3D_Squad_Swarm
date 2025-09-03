@@ -16,7 +16,7 @@ MonoBehaviour:
   spawns:
   - name: NPC_Man
     prefab: {fileID: 6673452028324763727, guid: bf89fc9d27b331446b50c17807e972d3, type: 3}
-    infectionPoint: 0
+    infectionPoint: 1
     initialCount: 5
     maxCount: 10
     respawnInterval: 5

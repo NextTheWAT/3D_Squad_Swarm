@@ -8385,13 +8385,45 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 2847829259360721232, guid: 9aa81f1cba203ea4eac3db5cba01e7eb, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -199.99995
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847829259360721232, guid: 9aa81f1cba203ea4eac3db5cba01e7eb, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -16
+      objectReference: {fileID: 0}
+    - target: {fileID: 3588588906018363393, guid: 9aa81f1cba203ea4eac3db5cba01e7eb, type: 3}
+      propertyPath: m_text
+      value: 0%
+      objectReference: {fileID: 0}
+    - target: {fileID: 3588588906018363393, guid: 9aa81f1cba203ea4eac3db5cba01e7eb, type: 3}
+      propertyPath: m_fontSize
+      value: 69.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3588588906018363393, guid: 9aa81f1cba203ea4eac3db5cba01e7eb, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3588588906018363393, guid: 9aa81f1cba203ea4eac3db5cba01e7eb, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3872244752082404950, guid: 9aa81f1cba203ea4eac3db5cba01e7eb, type: 3}
       propertyPath: m_Name
       value: UIManager
       objectReference: {fileID: 0}
     - target: {fileID: 5159867234807564124, guid: 9aa81f1cba203ea4eac3db5cba01e7eb, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5334686704739245397, guid: 9aa81f1cba203ea4eac3db5cba01e7eb, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -284
+      objectReference: {fileID: 0}
+    - target: {fileID: 5334686704739245397, guid: 9aa81f1cba203ea4eac3db5cba01e7eb, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 142
       objectReference: {fileID: 0}
     - target: {fileID: 5338864229883739069, guid: 9aa81f1cba203ea4eac3db5cba01e7eb, type: 3}
       propertyPath: m_Pivot.x
@@ -8399,7 +8431,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5338864229883739069, guid: 9aa81f1cba203ea4eac3db5cba01e7eb, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5338864229883739069, guid: 9aa81f1cba203ea4eac3db5cba01e7eb, type: 3}
       propertyPath: m_SizeDelta.y
@@ -8461,6 +8493,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 914
       objectReference: {fileID: 0}
+    - target: {fileID: 7132470762021459720, guid: 9aa81f1cba203ea4eac3db5cba01e7eb, type: 3}
+      propertyPath: m_fontSize
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132470762021459720, guid: 9aa81f1cba203ea4eac3db5cba01e7eb, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132470762021459720, guid: 9aa81f1cba203ea4eac3db5cba01e7eb, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8253547667901283262, guid: 9aa81f1cba203ea4eac3db5cba01e7eb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -8507,7 +8551,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8307753792171762623, guid: 9aa81f1cba203ea4eac3db5cba01e7eb, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9204729526043842571, guid: 9aa81f1cba203ea4eac3db5cba01e7eb, type: 3}
       propertyPath: m_fontColor.b
