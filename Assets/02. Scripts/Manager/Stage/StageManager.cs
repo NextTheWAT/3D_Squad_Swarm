@@ -41,7 +41,6 @@ public class StageManager : Singleton<StageManager>
         }
         Current = config;
         SceneManager.LoadScene(config.sceneName); // 필요하면 Async로 변경
-        UIManager.Instance.SetPlayGame();
     }
 
     private void HandleLoaded(Scene _, LoadSceneMode __)
