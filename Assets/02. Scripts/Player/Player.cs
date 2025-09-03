@@ -90,6 +90,12 @@ public class Player : MonoBehaviour, IDamageable
         if (stateMachine.Player.Controller != null)
         {
             stateMachine.Player.Controller.enabled = false;
+            if (UIManager.Instance != null)
+            {
+                UIManager.Instance.SetGameOver();
+            }
+            else
+                Debug.LogWarning("UIManager instance not found!");
         }
     }
 }

@@ -1,12 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
     public PlayerInput playerInputs { get; private set; }
     public PlayerInput.PlayerMovementActions playerActions { get; private set; }
     public Player player { get; private set; }
+
     private void Awake()
     {
         playerInputs = new PlayerInput();
@@ -17,10 +17,15 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         playerInputs.Enable();
+
+        // Subscribe to the Pause input
+        playerActions.Pause.performed += OnPausePressed;
     }
 
     private void OnDisable()
     {
+        // Unsubscribe to avoid multiple calls
+        playerActions.Pause.performed -= OnPausePressed;
         playerInputs.Disable();
     }
 
@@ -31,5 +36,14 @@ public class PlayerController : MonoBehaviour
             player.OnAttackHit();
             player.stateMachine.ChangeState(player.stateMachine.AttackState);
         }
+    }
+
+    // Callback for the Escape key / Pause input
+    private void OnPausePressed(InputAction.CallbackContext context)
+    {
+        if (UIManager.Instance != null)
+            UIManager.Instance.SetPause();
+        else
+            Debug.LogWarning("UIManager instance not found!");
     }
 }
