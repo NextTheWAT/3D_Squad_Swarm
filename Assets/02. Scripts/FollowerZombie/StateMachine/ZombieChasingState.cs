@@ -6,7 +6,8 @@ public class ZombieChasingState : ZombieBaseState
 
     public override void Enter()
     {
-        // Start run animation (assuming you have a RunParameterHash)
+        stateMachine.MovementSpeedModifier = 1f; // Run = full speed
+        stateMachine.RotationDampingModifier = 1f;
         StartAnimation(stateMachine.Zombie.animationData.WalkParameterHash);
     }
 

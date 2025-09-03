@@ -48,6 +48,11 @@ public class FollowerZombie : MonoBehaviour, IDamageable
         stateMachine.HandleInput();
         stateMachine.Update();
 
+        if (stateMachine.AttackState != null && stateMachine.AttackState.Equals(stateMachine))
+        {
+            // Currently attacking, skip
+            return;
+        }
         EnemyTarget = FindClosestEnemy();
 
         if (EnemyTarget != null)
