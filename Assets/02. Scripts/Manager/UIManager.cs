@@ -173,6 +173,7 @@ public class UIManager : Singleton<UIManager>
 
         // 사냥한 인간 수 1증가
         killCount++;
+
     }
 
     IEnumerator Countdown()
