@@ -3,9 +3,9 @@ using UnityEngine.AI;
 
 public enum NPCType
 {
-    Civilian,   // ÀÏ¹Ý »ç¶÷
-    Hunter,     // »ç³É²Û (Á»ºñ ÃßÀû)
-    VIP         // º¸È£ÇØ¾ß ÇÏ´Â »ç¶÷
+    Civilian,   // ï¿½Ï¹ï¿½ ï¿½ï¿½ï¿½
+    Hunter,     // ï¿½ï¿½É²ï¿½ (ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
+    VIP         // ï¿½ï¿½È£ï¿½Ø¾ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½
 }
 public class NPC : MonoBehaviour, IDamageable
 {
@@ -53,7 +53,7 @@ public class NPC : MonoBehaviour, IDamageable
         if (stateMachine.IsDead)
             return; // Stop all other logic
 
-        stateMachine.RefreshTargetEveryFrame(); //Å¸°Ù ¾÷µ¥ÀÌÆ®
+        stateMachine.RefreshTargetEveryFrame(); //Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
         stateMachine.Update();
 
     }
@@ -77,11 +77,17 @@ public class NPC : MonoBehaviour, IDamageable
     {
         GameObject zombie = GameObject.Instantiate(zombiePrefab, stateMachine.Npc.transform.position, stateMachine.Npc.transform.transform.rotation);
         Destroy(gameObject);
+
+        FollowerZombie followerZombie = zombie.GetComponent<FollowerZombie>();
+        if (followerZombie != null && ZombieManager.Instance != null)
+        {
+            ZombieManager.Instance.RegisterZombie(followerZombie);
+        }
     }
     public void Die()
     {
         StageManager.Instance?.OnEnemyKilled(this);
-        // ¿øÇÏ¸é ¿©±â¼­ Destroy(gameObject)±îÁö Ã³¸®
+        // ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½â¼­ Destroy(gameObject)ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
     }
 }
    
