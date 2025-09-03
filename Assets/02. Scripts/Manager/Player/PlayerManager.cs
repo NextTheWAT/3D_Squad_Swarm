@@ -18,6 +18,7 @@ public class PlayerManager : Singleton<PlayerManager>
         player.Stats.BoostStatRound(StatType.Speed, 0.5f);
         Debug.Log("Player Speed Up! 0.5f");
 
+        if (player == null) return;
     }
 
 }
