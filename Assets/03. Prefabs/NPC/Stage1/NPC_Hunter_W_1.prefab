@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 7572458291620540283}
   - component: {fileID: 2459583013786201826}
   m_Layer: 0
-  m_Name: NPC_Hunter_W
+  m_Name: NPC_Hunter_W_1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b85308dd73c50a44dbb69175135e4c4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcType: 1
+  npcType: 0
   firePoint: {fileID: 5312161601866746227}
   bulletPrefab: {fileID: 88251313295885787, guid: d722eab6f2136c94784ebb215e06c34f, type: 3}
   bulletSpeed: 5
