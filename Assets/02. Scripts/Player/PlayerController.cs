@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    //한국어주석
+    //즐거운 내일배움캠프 
     public PlayerInput playerInputs { get; private set; }
     public PlayerInput.PlayerMovementActions playerActions { get; private set; }
     public Player player { get; private set; }
