@@ -16,7 +16,7 @@ public class NPCDeathState : NPCBaseState
         base.Enter();
         if (stateMachine.Npc.npcType == NPCType.VIP)
         {
-            var player = stateMachine.Target.GetComponent<Player>();
+            var player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
             player.Stats.BoostStatRound(StatType.Speed, 0.5f);
             Debug.Log("Player Speed:" + player.Stats.GetStat(StatType.Speed));
         }
