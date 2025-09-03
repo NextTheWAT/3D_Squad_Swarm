@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class ZombieManager : MonoBehaviour
 {
@@ -8,10 +9,14 @@ public class ZombieManager : MonoBehaviour
     private List<FollowerZombie> zombies = new List<FollowerZombie>();
 
     [Header("Camera")]
-    public Cinemachine.CinemachineVirtualCamera virtualCamera;
-    public float baseZoom = 5f;         
-    public float zoomPerZombie = 0.5f;  
-    public float maxZoom = 15f;         
+    public CinemachineVirtualCamera virtualCamera;
+    public float baseDistance = 10f;
+    public float distanceStep = 10f;
+    public float maxDistance = 50f;
+    public float lerpSpeed = 2f;
+
+    private float targetDistance;
+    private CinemachineFramingTransposer transposer;
 
     private void Awake()
     {
@@ -21,6 +26,28 @@ public class ZombieManager : MonoBehaviour
             return;
         }
         Instance = this;
+
+        if (virtualCamera != null)
+        {
+            transposer = virtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
+            if (transposer != null)
+            {
+                transposer.m_CameraDistance = baseDistance;
+                targetDistance = baseDistance;
+            }
+        }
+    }
+
+    private void Update()
+    {
+        if (transposer != null)
+        {
+            transposer.m_CameraDistance = Mathf.Lerp(
+                transposer.m_CameraDistance,
+                targetDistance,
+                Time.deltaTime * lerpSpeed
+            );
+        }
     }
 
     public void RegisterZombie(FollowerZombie zombie)
@@ -28,7 +55,7 @@ public class ZombieManager : MonoBehaviour
         if (!zombies.Contains(zombie))
         {
             zombies.Add(zombie);
-            UpdateCameraZoom();
+            UpdateTargetDistance();
         }
     }
 
@@ -37,17 +64,13 @@ public class ZombieManager : MonoBehaviour
         if (zombies.Contains(zombie))
         {
             zombies.Remove(zombie);
-            UpdateCameraZoom();
+            UpdateTargetDistance();
         }
     }
 
-    private void UpdateCameraZoom()
+    private void UpdateTargetDistance()
     {
-        if (virtualCamera != null)
-        {
-            float targetZoom = baseZoom + zombies.Count * zoomPerZombie;
-            targetZoom = Mathf.Min(targetZoom, maxZoom);
-            virtualCamera.m_Lens.OrthographicSize = targetZoom;
-        }
+        int zoomSteps = zombies.Count / 20;
+        targetDistance = Mathf.Min(baseDistance + zoomSteps * distanceStep, maxDistance);
     }
 }

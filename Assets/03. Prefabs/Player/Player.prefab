@@ -94,7 +94,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.3716988, w: 0.9283534}
   m_LocalPosition: {x: 0, y: 2.271, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6619727096608826113}
@@ -127,7 +127,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 678c5ff82df362640b61ce76164ab48e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -671,7 +671,7 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 1.5
+  m_Height: 1.8
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
@@ -730,6 +730,7 @@ MonoBehaviour:
     fallParameterName: Fall
     attackParameterName: Attack
     deathParameterName: Death
+    riseParameterName: Rise
 --- !u!114 &1008932351582022511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -789,9 +790,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 1.6751319
+  m_Height: 1.6803308
   m_Direction: 1
-  m_Center: {x: 0, y: 0.8111201, z: 0}
+  m_Center: {x: 0, y: 0.8085207, z: 0}
 --- !u!1 &4794147202769315123
 GameObject:
   m_ObjectHideFlags: 0
