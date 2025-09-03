@@ -70,11 +70,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b85308dd73c50a44dbb69175135e4c4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcType: 0
+  npcType: 1
   firePoint: {fileID: 1028705882524650444}
   bulletPrefab: {fileID: 88251313295885787, guid: d722eab6f2136c94784ebb215e06c34f, type: 3}
   bulletSpeed: 5
   zombiePrefab: {fileID: 1666421720722391696, guid: cc7fd377968814a4fbb324262953a500, type: 3}
+  zombieEffect: {fileID: 2771775932424238379, guid: f8e4365a7130aaf43aecc92064f6d17d, type: 3}
   <AnimationData>k__BackingField:
     groundParameterName: '@Ground'
     idleParameterName: Idle
@@ -85,6 +86,7 @@ MonoBehaviour:
     fallParameterName: Fall
     attackParameterName: Attack
     deathParameterName: Death
+    riseParameterName: Rise
   agent: {fileID: 0}
 --- !u!114 &1287767407822025331
 MonoBehaviour:
@@ -119,7 +121,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.1
+  m_Radius: 1
   m_Height: 1.5
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
