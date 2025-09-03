@@ -20,6 +20,6 @@ public class IntroSkipButton : MonoBehaviour
     {
         Debug.Log("Skip button clicked");
         // 인트로타임라인 스크립트에 접근해서 씬 전환 허용 값을 true로 설정
-        introTimeline.AsyncOperation.allowSceneActivation = true;
+        introTimeline.Director.Stop();
     }
 }
