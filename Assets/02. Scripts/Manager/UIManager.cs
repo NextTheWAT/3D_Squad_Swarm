@@ -190,8 +190,8 @@ public class UIManager : Singleton<UIManager>
 
     IEnumerator Countdown()
     {
-        // 최초 시간을 100으로 다시 설정
-        remainingTime = 5f;
+        // 최초 시간을 00으로 다시 설정
+        remainingTime = 100f;
 
         while (remainingTime > 0)
         {
