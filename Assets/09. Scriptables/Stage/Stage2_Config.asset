@@ -12,13 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa533b5e7a69a5947ad83cd9bda2a9de, type: 3}
   m_Name: Stage2_Config
   m_EditorClassIdentifier: 
-  stageId: 2
-  stageName: Stage 2
-  timeLimitSec: 120
-  unitStats:
-  - unitId: 
-    stats: {fileID: 0}
-  - unitId: 
-    stats: {fileID: 0}
-  - unitId: 
-    stats: {fileID: 0}
+  sceneName: 12. Stage2_Scene
+  spawns: []

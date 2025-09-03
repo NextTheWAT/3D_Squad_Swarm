@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa533b5e7a69a5947ad83cd9bda2a9de, type: 3}
   m_Name: Stage1_Config
   m_EditorClassIdentifier: 
-  stageId: 1
-  stageName: Stage 1
-  timeLimitSec: 120
-  unitStats:
-  - unitId: 
-    stats: {fileID: 0}
-  - unitId: 
-    stats: {fileID: 0}
-  - unitId: 
-    stats: {fileID: 0}
+  sceneName: 11. Stage1_Scene
+  spawns:
+  - name: NPC_Man
+    prefab: {fileID: 6673452028324763727, guid: bf89fc9d27b331446b50c17807e972d3, type: 3}
+    initialCount: 5
+    maxCount: 10
+    respawnInterval: 1
+    startCondition: 1
+    startDelay: 1
+    unlockInfectionPercent: 100
+    spawnPoints:
+    - {fileID: 0}
+    randomAreaSize: {x: 10, y: 10}
+    fixedY: 0
