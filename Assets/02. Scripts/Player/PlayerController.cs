@@ -3,7 +3,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    //Áñ°Å¿î ³»ÀÏ¹è¿òÄ·ÇÁ 
     public PlayerInput playerInputs { get; private set; }
     public PlayerInput.PlayerMovementActions playerActions { get; private set; }
     public Player player { get; private set; }
