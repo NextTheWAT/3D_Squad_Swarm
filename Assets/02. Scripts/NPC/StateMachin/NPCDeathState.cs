@@ -16,6 +16,9 @@ public class NPCDeathState : NPCBaseState
         Debug.Log("ав╬З╢ы"!);
         stateMachine.Npc.agent.isStopped = true;
         PlayTriggerAnimation(stateMachine.Npc.AnimationData.deathParameterHash);
+
+        stateMachine.Npc.Die();
+
     }
 
     public override void Exit()

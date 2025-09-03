@@ -39,7 +39,7 @@ public class GameUI : BaseUI
     // 감염도UI 업데이트 함수
     public void SetInfectionNumber(float number)
     {
-        infectionNumber.text = number.ToString();
+        infectionNumber.text = $"{Mathf.FloorToInt(number)}%";
     }
 
     // 타임즈업 애니메이션 재생 함수 (바로 재생)

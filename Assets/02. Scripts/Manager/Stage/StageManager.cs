@@ -48,4 +48,16 @@ public class StageManager : Singleton<StageManager>
     {
         if (Current != null) OnStageStarted?.Invoke(Current);
     }
+    public void OnEnemyKilled(NPC npc)
+    {
+        if (npc == null) return;
+
+        var sh = npc.GetComponent<StatHandler>();
+
+        // StatHandler는 SO를 이미 적용/보관하고 있고 GetStat으로 꺼낼 수 있음
+        float amount = (sh != null) ? sh.GetStat(StatType.InfectionPoint) : 0f;
+
+        if (amount != 0f)
+            UIManager.Instance?.getInfection(amount); // UIManager가 감염도/킬카운트 증가
+    }
 }
