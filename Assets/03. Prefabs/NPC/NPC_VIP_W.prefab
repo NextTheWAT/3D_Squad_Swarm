@@ -44,6 +44,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4702438222104723734}
   - component: {fileID: 6176220038290608399}
+  - component: {fileID: 7188729586627181260}
   m_Layer: 0
   m_Name: NPC_female
   m_TagString: Untagged
@@ -90,6 +91,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7188729586627181260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366438335765501274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56206584befe73a44b4d8b1393c43db3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentNpc: {fileID: 0}
 --- !u!1 &843685038983813443
 GameObject:
   m_ObjectHideFlags: 0
@@ -5924,9 +5938,10 @@ GameObject:
   - component: {fileID: 6189635803267699654}
   - component: {fileID: 6762758170101220397}
   - component: {fileID: 8918594891339451344}
+  - component: {fileID: 8177023513691885178}
   m_Layer: 0
   m_Name: NPC_VIP_W
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5983,10 +5998,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b85308dd73c50a44dbb69175135e4c4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcType: 2
+  npcType: 0
   firePoint: {fileID: 0}
   bulletPrefab: {fileID: 0}
   bulletSpeed: 20
+  zombiePrefab: {fileID: 1666421720722391696, guid: cc7fd377968814a4fbb324262953a500, type: 3}
   <AnimationData>k__BackingField:
     groundParameterName: '@Ground'
     idleParameterName: Idle
@@ -5996,6 +6012,7 @@ MonoBehaviour:
     jumpParameterName: Jump
     fallParameterName: Fall
     attackParameterName: Attack
+    deathParameterName: Death
   agent: {fileID: 0}
 --- !u!114 &8918594891339451344
 MonoBehaviour:
@@ -6011,6 +6028,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseStats: {fileID: 11400000, guid: d4dc47946215b4a4483f19ac3b2b6466, type: 2}
   isAlive: 1
+--- !u!136 &8177023513691885178
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7691466430745523193}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.1
+  m_Height: 1.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &7823666142972688308
 GameObject:
   m_ObjectHideFlags: 0

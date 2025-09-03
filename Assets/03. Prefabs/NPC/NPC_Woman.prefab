@@ -640,6 +640,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1710154129767352494}
   - component: {fileID: 5265362599267314419}
+  - component: {fileID: 4066292625568819495}
   m_Layer: 0
   m_Name: NPC_female
   m_TagString: Untagged
@@ -686,6 +687,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4066292625568819495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5064602206480259443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56206584befe73a44b4d8b1393c43db3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentNpc: {fileID: 0}
 --- !u!1 &5210098199429294078
 GameObject:
   m_ObjectHideFlags: 0
@@ -698,9 +712,10 @@ GameObject:
   - component: {fileID: 8290713925562080427}
   - component: {fileID: 6481983343525803344}
   - component: {fileID: 76676059257199285}
+  - component: {fileID: 1209092830760242364}
   m_Layer: 0
   m_Name: NPC_Woman
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -759,6 +774,7 @@ MonoBehaviour:
   firePoint: {fileID: 0}
   bulletPrefab: {fileID: 0}
   bulletSpeed: 20
+  zombiePrefab: {fileID: 1666421720722391696, guid: cc7fd377968814a4fbb324262953a500, type: 3}
   <AnimationData>k__BackingField:
     groundParameterName: '@Ground'
     idleParameterName: Idle
@@ -768,6 +784,7 @@ MonoBehaviour:
     jumpParameterName: Jump
     fallParameterName: Fall
     attackParameterName: Attack
+    deathParameterName: Death
   agent: {fileID: 0}
 --- !u!114 &76676059257199285
 MonoBehaviour:
@@ -783,6 +800,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseStats: {fileID: 11400000, guid: 75886d7c496a85343820b408b81e09cd, type: 2}
   isAlive: 1
+--- !u!136 &1209092830760242364
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5210098199429294078}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.1
+  m_Height: 1.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &5273068706234798550
 GameObject:
   m_ObjectHideFlags: 0

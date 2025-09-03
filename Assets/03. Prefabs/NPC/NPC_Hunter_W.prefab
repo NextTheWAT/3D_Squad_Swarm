@@ -172,9 +172,10 @@ GameObject:
   - component: {fileID: 2013593471026392868}
   - component: {fileID: 7352315947903220931}
   - component: {fileID: 7572458291620540283}
+  - component: {fileID: 2459583013786201826}
   m_Layer: 0
   m_Name: NPC_Hunter_W
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -233,6 +234,7 @@ MonoBehaviour:
   firePoint: {fileID: 5312161601866746227}
   bulletPrefab: {fileID: 88251313295885787, guid: d722eab6f2136c94784ebb215e06c34f, type: 3}
   bulletSpeed: 5
+  zombiePrefab: {fileID: 1666421720722391696, guid: cc7fd377968814a4fbb324262953a500, type: 3}
   <AnimationData>k__BackingField:
     groundParameterName: '@Ground'
     idleParameterName: Idle
@@ -242,6 +244,7 @@ MonoBehaviour:
     jumpParameterName: Jump
     fallParameterName: Fall
     attackParameterName: Attack
+    deathParameterName: Death
   agent: {fileID: 0}
 --- !u!114 &7572458291620540283
 MonoBehaviour:
@@ -257,6 +260,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseStats: {fileID: 11400000, guid: b769dcdf1775b1047bcc709e50e5e08e, type: 2}
   isAlive: 1
+--- !u!136 &2459583013786201826
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357426970570690203}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.1
+  m_Height: 1.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &1505275184305640000
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,6 +794,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4050779860289685912}
   - component: {fileID: 6678845260578933610}
+  - component: {fileID: 7494639298223510083}
   m_Layer: 0
   m_Name: NPC_female
   m_TagString: Untagged
@@ -814,6 +841,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7494639298223510083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4019491331633785807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56206584befe73a44b4d8b1393c43db3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentNpc: {fileID: 0}
 --- !u!1 &4256719717654190476
 GameObject:
   m_ObjectHideFlags: 0

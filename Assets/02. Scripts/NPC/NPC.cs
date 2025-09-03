@@ -14,6 +14,8 @@ public class NPC : MonoBehaviour, IDamageable
     public GameObject bulletPrefab;
     public float bulletSpeed = 20f;
 
+    [Header("Zombie")]
+    public GameObject zombiePrefab;
 
     [field: Header("Animations")]
     [field: SerializeField] public PlayerAnimationData AnimationData { get; private set; }
@@ -43,7 +45,15 @@ public class NPC : MonoBehaviour, IDamageable
 
     private void Update()
     {
+        if (Stats.isAlive == false && !stateMachine.IsDead)
+        {
+            stateMachine.SetDead();
+        }
+
+        if (stateMachine.IsDead)
+            return; // Stop all other logic
         stateMachine.Update();
+
     }
 
     private void FixedUpdate()
@@ -56,6 +66,16 @@ public class NPC : MonoBehaviour, IDamageable
         Stats.isAlive = false;
     }
 
+    public void OnShootEvent()
+    {
+        stateMachine.AttackState.Shoot();
+    }
+
+    public void ChangeToZombie()
+    {
+        GameObject zombie = GameObject.Instantiate(zombiePrefab, stateMachine.Npc.transform.position, stateMachine.Npc.transform.transform.rotation);
+        Destroy(gameObject);
+    }
 }
    
         

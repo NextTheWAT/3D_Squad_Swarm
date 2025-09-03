@@ -3,8 +3,7 @@ using UnityEngine.AI;
 
 public class NPCIdleState : NPCGroundState
 {
-    private float idleTime = 2f; // 최소 대기 시간
-    private float timer;
+
 
     public NPCIdleState(NPCStateMachine npcStateMachine) : base(npcStateMachine) { }
 
@@ -13,7 +12,7 @@ public class NPCIdleState : NPCGroundState
         base.Enter();
         StartAnimation(stateMachine.Npc.AnimationData.WalkParameterHash);
 
-        timer = 0f;
+
         stateMachine.Npc.agent.isStopped = false; // NavMeshAgent 켜기
     }
 
@@ -27,7 +26,6 @@ public class NPCIdleState : NPCGroundState
     {
         base.Update();
 
-        timer += Time.deltaTime;
 
         // 추격/도망 조건 확인
         if (stateMachine.Npc.npcType == NPCType.Hunter && IsInChaseRange())
