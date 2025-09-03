@@ -191,7 +191,7 @@ public class UIManager : Singleton<UIManager>
     IEnumerator Countdown()
     {
         // 최초 시간을 100으로 다시 설정
-        remainingTime = 100f;
+        remainingTime = 5f;
 
         while (remainingTime > 0)
         {
@@ -203,7 +203,7 @@ public class UIManager : Singleton<UIManager>
         }
 
         // 시간이 0 이하가 되면 타임업 처리
-        if (remainingTime < 0)
+        if (remainingTime <= 0)
         {
             remainingTime = Mathf.Max(remainingTime, 0); // 시간을 0 이하로 떨어뜨리지 않음
 

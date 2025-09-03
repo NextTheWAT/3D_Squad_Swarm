@@ -21,8 +21,8 @@ public class TimeUPUI : BaseUI
         audioSource = GetComponent<AudioSource>();
     }
 
-    // 타임즈업 애니메이션 재생 함수 (바로 재생)
-    public void PlayTimesUpAnimation()
+    // UI가 활성화될 때 호출되는 메서드
+    private void OnEnable()
     {
         // 타임즈업 애니메이션 재생 (타임업 글자 띄움)
         timesUpAnimator.SetTrigger("TimesUP");
@@ -30,6 +30,7 @@ public class TimeUPUI : BaseUI
         // 타임즈업 오디오 재생 (호루라기 소리)
         audioSource.PlayOneShot(audioSource.clip);
 
+        // 코루틴시작
         StartCoroutine(TimesUpAnimtionDelay(audioSource.clip));
     }
 
@@ -45,6 +46,6 @@ public class TimeUPUI : BaseUI
 
     protected override UIState GetUIState()
     {
-        return UIState.Game;
+        return UIState.TimeUP;
     }
 }
