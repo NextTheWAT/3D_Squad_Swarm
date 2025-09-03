@@ -14,7 +14,6 @@ public class NPCDeathState : NPCBaseState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("�׾���!");
         if (stateMachine.Npc.npcType == NPCType.VIP)
         {
             var player = stateMachine.Target.GetComponent<Player>();
