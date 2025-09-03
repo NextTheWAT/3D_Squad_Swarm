@@ -13,6 +13,7 @@ public class ZombieAttackState : ZombieBaseState
         stateMachine.RotationDampingModifier = 0f;
         base.Enter();
         StartAnimation(stateMachine.Zombie.animationData.attackParameterHash);
+        Debug.Log("Why doesn it work");
     }
 
     public override void Update()
