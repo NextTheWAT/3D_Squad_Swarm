@@ -11,6 +11,8 @@ using UnityEngine.UI;
 
 public class GameUI : BaseUI
 {
+    [SerializeField] private Button pauseButton;
+
     public TextMeshProUGUI infectionNumber; // 감염도를 숫자로 표시할 TextMeshPro 컴포넌트
     public TextMeshProUGUI timerText; // 시간을 숫자로 표시할 TextMeshPro 컴포넌트
     public Slider timeSlider; // 시간을 게이지로 표시할 Slider 컴포넌트
@@ -21,6 +23,9 @@ public class GameUI : BaseUI
     public override void Init(UIManager uiManager)
     {
         base.Init(uiManager);
+
+        // 버튼 클릭 이벤트에 함수 등록(인스펙터에서 버튼 연결 할 필요없음)
+        pauseButton.onClick.AddListener(OnClickPauseButton);
 
         // 슬라이더의 최대값을 1로 고정
         timeSlider.maxValue = 1f;
@@ -39,6 +44,13 @@ public class GameUI : BaseUI
         // 시간 슬라이더 업데이트: remainingTime을 maxTime으로 나누어 0~1 사이의 값
         float elapsedTime = maxTime - uiManager.remainingTime;
         timeSlider.value = elapsedTime / maxTime;
+    }
+
+    // 일시정지 버튼 클릭 함수
+    public void OnClickPauseButton()
+    {
+        // 일시정지 UI 활성화 함수 호출
+        uiManager.SetPause();
     }
 
     // 감염도UI 업데이트 함수
