@@ -55,7 +55,7 @@ public class GameUI : BaseUI
 
     private IEnumerator GameStartFadeOut()
     {
-        float duration = 2.0f; // 페이드 아웃 지속 시간
+        float duration = 1.5f; // 페이드 아웃 지속 시간
         float elapsed = 0.0f; // 경과 시간
         Color originalColor = gameStartPanel.color; // 원래 색상 저장
         while (elapsed < duration)
