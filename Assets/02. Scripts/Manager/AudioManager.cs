@@ -54,6 +54,19 @@ public class AudioManager : Singleton<AudioManager>
             case 2: // TimeUP GameOver ¾À
                 musicAudioSource.Stop();
                 break;
+
+            case 3: // Stage1 ¾À
+                ChangeBackGroundMusic(musicClip[1]);
+                break;
+
+            case 4: // Stage2 ¾À
+                ChangeBackGroundMusic(musicClip[2]);
+                break;
+
+            case 5: // Stage3 ¾À
+                ChangeBackGroundMusic(musicClip[3]);
+                break;
+
             default:
                 break;
         }
