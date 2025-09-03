@@ -6,7 +6,6 @@ public class StageSpawner : MonoBehaviour
 {
     [Tooltip("인펙션 퍼센트 제공자(선택). AfterInfectionPercent 조건에서 사용")]
     [SerializeField] private MonoBehaviour progressSource; // IStageProgressProvider 구현체
-    private IStageProgressProvider Progress => progressSource as IStageProgressProvider;
 
     private StageConfig cfg;
     private readonly List<int> aliveCounts = new();
@@ -54,10 +53,6 @@ public class StageSpawner : MonoBehaviour
         {
             case StageConfig.StartCondition.AfterSeconds:
                 if (rule.startDelay > 0f) yield return new WaitForSeconds(rule.startDelay);
-                break;
-            case StageConfig.StartCondition.AfterInfectionPercent:
-                yield return new WaitUntil(() =>
-                    Progress != null && (Progress.InfectionPercent01 * 100f) >= rule.unlockInfectionPercent);
                 break;
         }
 

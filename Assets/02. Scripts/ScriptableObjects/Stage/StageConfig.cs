@@ -16,7 +16,9 @@ public class StageConfig : ScriptableObject
         [Header("What")]
         public string name;                 // 예: "Human", "VIP", "Hunter"
         public GameObject prefab;         // 소환할 프리팹
-        //public ScriptableStats statsOverride; // (선택) 스폰 시 StatHandler에 적용
+
+        [Header("Infection")]
+        public float infectionPoint = 0f;  // 이 적 1건이 기여하는 감염 점수
 
         [Header("How many")]
         public int initialCount = 0;      // 시작 즉시 생성 수
