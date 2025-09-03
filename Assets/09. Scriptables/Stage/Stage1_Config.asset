@@ -14,16 +14,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: 11. Stage1_Scene
   spawns:
-  - name: NPC_Man
+  - name: NPC_Man_1
     prefab: {fileID: 6673452028324763727, guid: bf89fc9d27b331446b50c17807e972d3, type: 3}
-    infectionPoint: 1
     initialCount: 5
     maxCount: 10
     respawnInterval: 5
     startCondition: 1
     startDelay: 1
-    unlockInfectionPercent: 100
-    spawnPoints:
-    - {fileID: 5422534185651761901, guid: 8467267db99359d4fbc0410774e7a3a8, type: 3}
-    randomAreaSize: {x: 10, y: 10}
-    fixedY: 0
+  - name: NPC_Woman_1
+    prefab: {fileID: 5210098199429294078, guid: 109e98089e4afb4459bac6ed2ebe8f58, type: 3}
+    initialCount: 5
+    maxCount: 10
+    respawnInterval: 5
+    startCondition: 1
+    startDelay: 1
+  - name: NPC_Hunter_1
+    prefab: {fileID: 6072405973118448602, guid: ac30cdd0e060bd64b88c57a17839f9bc, type: 3}
+    initialCount: 5
+    maxCount: 10
+    respawnInterval: 5
+    startCondition: 1
+    startDelay: 1
+  - name: NPC_Hunter_W_1
+    prefab: {fileID: 1357426970570690203, guid: c526e253363e21844a8426958b508e7a, type: 3}
+    initialCount: 5
+    maxCount: 10
+    respawnInterval: 5
+    startCondition: 1
+    startDelay: 1
+  - name: NPC_VIP_M_1
+    prefab: {fileID: 987013070293102917, guid: 1e33df42841577c44b047593030ba105, type: 3}
+    initialCount: 5
+    maxCount: 10
+    respawnInterval: 5
+    startCondition: 1
+    startDelay: 1
+  - name: NPC_VIP_W_1
+    prefab: {fileID: 7691466430745523193, guid: 17481c2e46859b94fb63ebd883b354a2, type: 3}
+    initialCount: 5
+    maxCount: 10
+    respawnInterval: 5
+    startCondition: 1
+    startDelay: 1
+  spawnOnNavMesh: 1
+  navMeshData: {fileID: 23800000, guid: 4a189b0b458b6164b870200c4c345a45, type: 2}
+  navSampleMaxDistance: 5
+  navAreaMask: -1

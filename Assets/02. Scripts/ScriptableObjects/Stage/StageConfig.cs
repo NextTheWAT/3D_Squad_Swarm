@@ -1,41 +1,35 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 [CreateAssetMenu(menuName = "Stage/StageConfig")]
 public class StageConfig : ScriptableObject
 {
     [Header("Scene")]
-    public string sceneName; // Build Settings µî·ÏµÈ ¾À ÀÌ¸§
+    public string sceneName;
 
-    // === »õ·Î Ãß°¡: ½ºÆù ±ÔÄ¢ ===
-    public enum StartCondition { Immediate, AfterSeconds, AfterInfectionPercent }
+    [Header("Spawn Rules")]
+    public List<SpawnRule> spawns = new();
 
     [System.Serializable]
     public class SpawnRule
     {
-        [Header("What")]
-        public string name;                 // ¿¹: "Human", "VIP", "Hunter"
-        public GameObject prefab;         // ¼ÒÈ¯ÇÒ ÇÁ¸®ÆÕ
-
-        [Header("Infection")]
-        public float infectionPoint = 0f;  // ÀÌ Àû 1°ÇÀÌ ±â¿©ÇÏ´Â °¨¿° Á¡¼ö
-
-        [Header("How many")]
-        public int initialCount = 0;      // ½ÃÀÛ Áï½Ã »ı¼º ¼ö
-        public int maxCount = 10;         // µ¿½Ã ÃÖ´ë Á¸Àç ¼ö
-        public float respawnInterval = 1f;// ¹Ì¸¸ÀÏ ¶§ Ã¤¿ì´Â ÁÖ±â
-
-        [Header("When")]
+        public string name;
+        public GameObject prefab;
+        public int initialCount = 0;
+        public int maxCount = 10;
+        public float respawnInterval = 1f;
         public StartCondition startCondition = StartCondition.Immediate;
-        public float startDelay = 0f;         // AfterSeconds ¿ë
-        [Range(0, 100)] public float unlockInfectionPercent = 0f; // AfterInfectionPercent ¿ë
-
-        [Header("Where")]
-        public Transform[] spawnPoints;       // ÁöÁ¤ Æ÷ÀÎÆ®(¾øÀ¸¸é randomArea »ç¿ë)
-        public Vector2 randomAreaSize = new Vector2(12f, 12f); // Áß½É(0,0) ±âÁØ XZ »ç°¢Çü
-        public float fixedY = 0f;             // ³ôÀÌ °íÁ¤ °ª
+        public float startDelay = 0f;
     }
 
-    [Header("Spawns")]
-    public List<SpawnRule> spawns = new();
+    public enum StartCondition { Immediate, AfterSeconds }
+
+    // ---------- ì—¬ê¸°ë¶€í„° NavMesh ê¸°ë°˜ ìŠ¤í° ì˜µì…˜ ----------
+    [Header("NavMesh Spawn")]
+    public bool spawnOnNavMesh = true;        // NavMesh ìœ„ë¡œë§Œ ìŠ¤í°
+    public NavMeshData navMeshData;           // ìŠ¤í…Œì´ì§€ ì „ìš© NavMeshData ì—ì…‹
+    public float navSampleMaxDistance = 2f;   // ìƒ˜í”Œ ë°˜ê²½
+    public int navAreaMask = ~0;              // ëª¨ë“  ì˜ì—­(~0) / í•„ìš” ì‹œ ë§ˆìŠ¤í¬ ì§€ì •
+
 }

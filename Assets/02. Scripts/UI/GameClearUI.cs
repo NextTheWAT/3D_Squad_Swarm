@@ -46,6 +46,14 @@ public class GameClearUI : BaseUI
     {
         // 현재 게임씬 인덱스 가져오기
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        // 현재 씬이 5번 씬(스테이지3)이라면
+        if (currentSceneIndex == 5)
+        {
+            // Home씬으로 돌아가기
+            SceneManager.LoadScene(0);
+        }
+
         // 다음 스테이지 게임씬 로드
         SceneManager.LoadScene(currentSceneIndex + 1);
 
