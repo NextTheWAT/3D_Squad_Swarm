@@ -21,10 +21,6 @@ MonoBehaviour:
     respawnInterval: 5
     startCondition: 1
     startDelay: 1
-    spawnPoints:
-    - {fileID: 5422534185651761901, guid: 8467267db99359d4fbc0410774e7a3a8, type: 3}
-    randomAreaSize: {x: 10, y: 10}
-    fixedY: 0
   - name: NPC_Woman_3
     prefab: {fileID: 2451761408369611063, guid: 41370a52aa9c30747bae5d25519b21f2, type: 3}
     initialCount: 5
@@ -32,10 +28,6 @@ MonoBehaviour:
     respawnInterval: 5
     startCondition: 1
     startDelay: 1
-    spawnPoints:
-    - {fileID: 5422534185651761901, guid: 8467267db99359d4fbc0410774e7a3a8, type: 3}
-    randomAreaSize: {x: 10, y: 10}
-    fixedY: 0
   - name: NPC_Hunter_3
     prefab: {fileID: 7842510224554946093, guid: 9d55e30fc2253284995d9b90b308326e, type: 3}
     initialCount: 5
@@ -43,10 +35,6 @@ MonoBehaviour:
     respawnInterval: 5
     startCondition: 1
     startDelay: 1
-    spawnPoints:
-    - {fileID: 5422534185651761901, guid: 8467267db99359d4fbc0410774e7a3a8, type: 3}
-    randomAreaSize: {x: 10, y: 10}
-    fixedY: 0
   - name: NPC_Hunter_W_3
     prefab: {fileID: 5944571120269254071, guid: 5a638fafbdae7a343bbbf00854f70a7b, type: 3}
     initialCount: 5
@@ -54,10 +42,6 @@ MonoBehaviour:
     respawnInterval: 5
     startCondition: 1
     startDelay: 1
-    spawnPoints:
-    - {fileID: 5422534185651761901, guid: 8467267db99359d4fbc0410774e7a3a8, type: 3}
-    randomAreaSize: {x: 10, y: 10}
-    fixedY: 0
   - name: NPC_VIP_M_3
     prefab: {fileID: 5507003941367423812, guid: 9e74fbba0da91754780e6e16d19a3ff3, type: 3}
     initialCount: 5
@@ -65,10 +49,6 @@ MonoBehaviour:
     respawnInterval: 5
     startCondition: 1
     startDelay: 1
-    spawnPoints:
-    - {fileID: 5422534185651761901, guid: 8467267db99359d4fbc0410774e7a3a8, type: 3}
-    randomAreaSize: {x: 10, y: 10}
-    fixedY: 0
   - name: NPC_VIP_W_3
     prefab: {fileID: 7087763673012793474, guid: b404757fc4bdb1e4498cf9f76e47efbd, type: 3}
     initialCount: 5
@@ -76,7 +56,7 @@ MonoBehaviour:
     respawnInterval: 5
     startCondition: 1
     startDelay: 1
-    spawnPoints:
-    - {fileID: 5422534185651761901, guid: 8467267db99359d4fbc0410774e7a3a8, type: 3}
-    randomAreaSize: {x: 10, y: 10}
-    fixedY: 0
+  spawnOnNavMesh: 1
+  navMeshData: {fileID: 23800000, guid: 82e665f9aaabfe741901d7a8115f2bc5, type: 2}
+  navSampleMaxDistance: 5
+  navAreaMask: -1
