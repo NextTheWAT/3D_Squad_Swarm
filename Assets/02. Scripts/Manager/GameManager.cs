@@ -8,4 +8,23 @@ public class GameManager : Singleton<GameManager>
     {
         base.Awake();
     }
+    //private void OnEnable()
+    //{
+    //    if(UIManager.Instance != null) UIManager.Instance.SetPlayGame();
+    //}
+
+    // 게임 일시정지 및 재개 메서드
+    public void OnPause(bool pause)
+    {
+        if (pause)
+        {
+            // 게임 시간 정지
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            // 게임 시간 재개
+            Time.timeScale = 1f;
+        }
+    }
 }

@@ -8183,22 +8183,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1236563788229417757, guid: 4dcd9baae928b424fafea2dd70516513, type: 3}
-      propertyPath: musicClip.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1236563788229417757, guid: 4dcd9baae928b424fafea2dd70516513, type: 3}
-      propertyPath: musicClip.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: e34064c22301c2f4288cdbba64367a80, type: 3}
-    - target: {fileID: 1236563788229417757, guid: 4dcd9baae928b424fafea2dd70516513, type: 3}
-      propertyPath: musicClip.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: cef6abbd64ce8bb4a813bc59efe1e0e5, type: 3}
-    - target: {fileID: 1236563788229417757, guid: 4dcd9baae928b424fafea2dd70516513, type: 3}
-      propertyPath: musicClip.Array.data[3]
-      value: 
-      objectReference: {fileID: 8300000, guid: 27d1883791e62014898ad103a2531117, type: 3}
     - target: {fileID: 2946037893772375082, guid: 4dcd9baae928b424fafea2dd70516513, type: 3}
       propertyPath: m_Name
       value: AudioManager
