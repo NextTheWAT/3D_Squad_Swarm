@@ -87,6 +87,24 @@ public class UIManager : Singleton<UIManager>
         optionUI.Init(this);
     }
 
+    // UI 상태 변경 메서드
+    public void ChangeState(UIState newState)
+    {
+        // 현재 상태를 이전 상태에 저장하고,
+        // 새로운 상태로 업데이트
+        _previousState = _currentState;
+        _currentState = newState;
+
+        // 각 UI에 SetActive 명령을 보내서 현재 enum 상태와 일치하는지 비교후 활성화 여부 결정
+        introUI.SetActive(_currentState);
+        stageSelectUI.SetActive(_currentState);
+        gameUI.SetActive(_currentState);
+        pauseUI.SetActive(_currentState);
+        gameOverUI.SetActive(_currentState);
+        gameClearUI.SetActive(_currentState);
+        optionUI.SetActive(_currentState);
+    }
+
     // 인트로 화면으로 전환
     public void SetIntro()
     {
@@ -144,24 +162,6 @@ public class UIManager : Singleton<UIManager>
     {
         // enum 상태를 Option로 변경
         ChangeState(UIState.Option);
-    }
-
-    // UI 상태 변경 메서드
-    public void ChangeState(UIState newState)
-    {
-        // 현재 상태를 이전 상태에 저장하고,
-        // 새로운 상태로 업데이트
-        _previousState = _currentState;
-        _currentState = newState;
-
-        // 각 UI에 SetActive 명령을 보내서 현재 enum 상태와 일치하는지 비교후 활성화 여부 결정
-        introUI.SetActive(_currentState);
-        stageSelectUI.SetActive(_currentState);
-        gameUI.SetActive(_currentState);
-        pauseUI.SetActive(_currentState);
-        gameOverUI.SetActive(_currentState);
-        gameClearUI.SetActive(_currentState);
-        optionUI.SetActive(_currentState);
     }
 
     // 감염도 증가 (인간이 죽을때 호출)
