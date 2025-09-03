@@ -11,6 +11,8 @@ public class ZombieFollowState : ZombieBaseState
 
     public override void Enter()
     {
+        stateMachine.MovementSpeedModifier = 1f; // Run = full speed
+        stateMachine.RotationDampingModifier = 1f;
         agent = stateMachine.Zombie.Agent;
 
         // Random stopping distance for variety
