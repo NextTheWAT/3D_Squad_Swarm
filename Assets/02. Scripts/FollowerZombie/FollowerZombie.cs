@@ -27,12 +27,12 @@ public class FollowerZombie : MonoBehaviour, IDamageable
         Stats = GetComponent<StatHandler>();
 
         stateMachine = new ZombieStateMachine(this);
+        stateMachine.ChangeState(stateMachine.RiseState);
     }
 
     private void Start()
     {
         PlayerTarget = GameObject.FindWithTag("Player").transform;
-        stateMachine.ChangeState(stateMachine.IdleState);
     }
 
     private void Update()
@@ -84,6 +84,10 @@ public class FollowerZombie : MonoBehaviour, IDamageable
         Stats.isAlive = false;
     }
     public void OnAttackAnimationComplete()
+    {
+        stateMachine.ChangeState(stateMachine.IdleState);
+    }
+    public void OnRiseComplete()
     {
         stateMachine.ChangeState(stateMachine.IdleState);
     }
