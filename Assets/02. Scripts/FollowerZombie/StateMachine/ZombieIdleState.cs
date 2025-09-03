@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ZombieIdleState : ZombieBaseState
@@ -8,17 +6,40 @@ public class ZombieIdleState : ZombieBaseState
 
     public override void Enter()
     {
-        // Stop movement
         stateMachine.Zombie.Agent.isStopped = true;
-
-        // Play idle animation
         StartAnimation(stateMachine.Zombie.animationData.IdleParameterHash);
     }
 
     public override void Update()
     {
-        base.Update();
+        var zombie = stateMachine.Zombie;
+
+        // --- 1. Enemy check first ---
+        if (zombie.EnemyTarget == null)
+            zombie.EnemyTarget = zombie.FindClosestEnemy();
+
+        if (zombie.EnemyTarget != null)
+        {
+            float distSqr = (zombie.EnemyTarget.position - zombie.transform.position).sqrMagnitude;
+            if (distSqr <= stateMachine.DetectionRange * stateMachine.DetectionRange)
+            {
+                stateMachine.ChangeState(stateMachine.ChasingState);
+                return;
+            }
+            else
+            {
+                zombie.EnemyTarget = null;
+            }
+        }
+
+        // --- 2. Follow player if too far ---
+        float distToPlayerSqr = (zombie.PlayerTarget.position - zombie.transform.position).sqrMagnitude;
+        if (distToPlayerSqr > zombie.followRange * zombie.followRange)
+        {
+            stateMachine.ChangeState(stateMachine.FollowState);
+        }
     }
+
 
     public override void Exit()
     {
