@@ -13,4 +13,70 @@ MonoBehaviour:
   m_Name: Stage2_Config
   m_EditorClassIdentifier: 
   sceneName: 12. Stage2_Scene
-  spawns: []
+  spawns:
+  - name: NPC_Man_2
+    prefab: {fileID: 6687691561937348005, guid: 40ba292b296873a4baad299c49a59ec1, type: 3}
+    initialCount: 5
+    maxCount: 10
+    respawnInterval: 5
+    startCondition: 1
+    startDelay: 1
+    spawnPoints:
+    - {fileID: 5422534185651761901, guid: 8467267db99359d4fbc0410774e7a3a8, type: 3}
+    randomAreaSize: {x: 10, y: 10}
+    fixedY: 0
+  - name: NPC_Woman_2
+    prefab: {fileID: 3638801546970039278, guid: 2d9002490fd211940a7e2632b3461240, type: 3}
+    initialCount: 5
+    maxCount: 10
+    respawnInterval: 5
+    startCondition: 1
+    startDelay: 1
+    spawnPoints:
+    - {fileID: 5422534185651761901, guid: 8467267db99359d4fbc0410774e7a3a8, type: 3}
+    randomAreaSize: {x: 10, y: 10}
+    fixedY: 0
+  - name: NPC_Hunter_2
+    prefab: {fileID: 4886982653721326076, guid: efd82a542b4684a479b9b46d39913ea7, type: 3}
+    initialCount: 5
+    maxCount: 10
+    respawnInterval: 5
+    startCondition: 1
+    startDelay: 1
+    spawnPoints:
+    - {fileID: 5422534185651761901, guid: 8467267db99359d4fbc0410774e7a3a8, type: 3}
+    randomAreaSize: {x: 10, y: 10}
+    fixedY: 0
+  - name: NPC_Hunter_W_2
+    prefab: {fileID: 386326027053311078, guid: 0381073dfc4e99c488cb022a2e73f4d8, type: 3}
+    initialCount: 5
+    maxCount: 10
+    respawnInterval: 5
+    startCondition: 1
+    startDelay: 1
+    spawnPoints:
+    - {fileID: 5422534185651761901, guid: 8467267db99359d4fbc0410774e7a3a8, type: 3}
+    randomAreaSize: {x: 10, y: 10}
+    fixedY: 0
+  - name: NPC_VIP_M_2
+    prefab: {fileID: 5507003941367423812, guid: 9e74fbba0da91754780e6e16d19a3ff3, type: 3}
+    initialCount: 5
+    maxCount: 10
+    respawnInterval: 5
+    startCondition: 1
+    startDelay: 1
+    spawnPoints:
+    - {fileID: 5422534185651761901, guid: 8467267db99359d4fbc0410774e7a3a8, type: 3}
+    randomAreaSize: {x: 10, y: 10}
+    fixedY: 0
+  - name: NPC_VIP_W_2
+    prefab: {fileID: 1583775786394517558, guid: f1fdbe7790188034f83bae10d44d34e3, type: 3}
+    initialCount: 5
+    maxCount: 10
+    respawnInterval: 5
+    startCondition: 1
+    startDelay: 1
+    spawnPoints:
+    - {fileID: 5422534185651761901, guid: 8467267db99359d4fbc0410774e7a3a8, type: 3}
+    randomAreaSize: {x: 10, y: 10}
+    fixedY: 0

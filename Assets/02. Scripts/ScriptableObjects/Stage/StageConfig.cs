@@ -17,9 +17,6 @@ public class StageConfig : ScriptableObject
         public string name;                 // 예: "Human", "VIP", "Hunter"
         public GameObject prefab;         // 소환할 프리팹
 
-        [Header("Infection")]
-        public float infectionPoint = 0f;  // 이 적 1건이 기여하는 감염 점수
-
         [Header("How many")]
         public int initialCount = 0;      // 시작 즉시 생성 수
         public int maxCount = 10;         // 동시 최대 존재 수
@@ -28,7 +25,6 @@ public class StageConfig : ScriptableObject
         [Header("When")]
         public StartCondition startCondition = StartCondition.Immediate;
         public float startDelay = 0f;         // AfterSeconds 용
-        [Range(0, 100)] public float unlockInfectionPercent = 0f; // AfterInfectionPercent 용
 
         [Header("Where")]
         public Transform[] spawnPoints;       // 지정 포인트(없으면 randomArea 사용)
