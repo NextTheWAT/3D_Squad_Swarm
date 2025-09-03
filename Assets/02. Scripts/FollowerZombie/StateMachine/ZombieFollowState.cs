@@ -4,32 +4,47 @@ using UnityEngine.AI;
 public class ZombieFollowState : ZombieBaseState
 {
     private NavMeshAgent agent;
-    private float minDistance = 1.2f;          // minimum spacing between zombies
-    private float separationStrength = 2.0f;   // how strongly they push apart
+    private float minDistance = 1.2f;          
+    private float separationStrength = 2.0f;   
 
     public ZombieFollowState(ZombieStateMachine sm) : base(sm) { }
 
     public override void Enter()
     {
-        stateMachine.MovementSpeedModifier = 1f; // Run = full speed
-        stateMachine.RotationDampingModifier = 1f;
         agent = stateMachine.Zombie.Agent;
-
-        // Random stopping distance for variety
         agent.stoppingDistance = Random.Range(1.0f, 2.5f);
-
         StartAnimation(stateMachine.Zombie.animationData.WalkParameterHash);
     }
 
     public override void Update()
     {
-        Transform leader = stateMachine.Zombie.PlayerTarget;
+        var zombie = stateMachine.Zombie;
+
+        // --- 1. Enemy check first ---
+        if (zombie.EnemyTarget == null)
+            zombie.EnemyTarget = zombie.FindClosestEnemy();
+
+        if (zombie.EnemyTarget != null)
+        {
+            float distSqr = (zombie.EnemyTarget.position - zombie.transform.position).sqrMagnitude;
+            if (distSqr <= stateMachine.DetectionRange * stateMachine.DetectionRange)
+            {
+                stateMachine.ChangeState(stateMachine.ChasingState);
+                return;
+            }
+            else
+            {
+                zombie.EnemyTarget = null;
+            }
+        }
+
+        // --- 2. Follow player ---
+        Transform leader = zombie.PlayerTarget;
         if (leader == null) return;
 
-        // --- Base movement toward leader ---
         Vector3 targetPos = leader.position;
 
-        // --- Separation from other zombies ---
+        // Separation from other zombies
         Vector3 separation = Vector3.zero;
         Collider[] nearby = Physics.OverlapSphere(agent.transform.position, minDistance);
         foreach (Collider col in nearby)
@@ -38,36 +53,28 @@ public class ZombieFollowState : ZombieBaseState
             {
                 Vector3 away = agent.transform.position - col.transform.position;
                 float distance = away.magnitude;
-
-                if (distance > 0.01f) // prevent AABB Error
-                {
-                    separation += away.normalized / distance; 
-                }
+                if (distance > 0.01f)
+                    separation += away.normalized / distance;
             }
         }
 
-        // Apply separation force
-        if (separation != Vector3.zero)
-        {
-            targetPos += separation * separationStrength;
-        }
-
-        // --- Ensure position is valid before moving ---
-        if (targetPos.x == Mathf.Infinity || targetPos.y == Mathf.Infinity || targetPos.z == Mathf.Infinity)
-            return;
-
+        targetPos += separation * separationStrength;
         agent.SetDestination(targetPos);
 
-        // --- Animation control: only play walk when actually moving ---
+        // Switch to idle if close enough
+        if ((leader.position - zombie.transform.position).sqrMagnitude <= zombie.followRange * zombie.followRange)
+        {
+            stateMachine.ChangeState(stateMachine.IdleState);
+            return;
+        }
+
+        // Walk animation
         if (agent.velocity.sqrMagnitude > 0.01f)
-        {
-            StartAnimation(stateMachine.Zombie.animationData.WalkParameterHash);
-        }
+            StartAnimation(zombie.animationData.WalkParameterHash);
         else
-        {
-            StopAnimation(stateMachine.Zombie.animationData.WalkParameterHash);
-        }
+            StopAnimation(zombie.animationData.WalkParameterHash);
     }
+
 
     public override void Exit()
     {

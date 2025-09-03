@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public enum UIState
 {
+    None,
     Intro,
     StageSelect,
     Game,
@@ -15,34 +16,10 @@ public enum UIState
     GameOver,
     GameClear,
     Option,
-    None,
 }
 
-public class UIManager : MonoBehaviour
+public class UIManager : Singleton<UIManager>
 {
-    private static UIManager _instance;
-
-    // 싱글톤
-    public static UIManager Instance
-    {
-        get
-        {
-            // 인스턴스가 존재하지 않으면 씬에서 찾거나 새로 생성
-            if (_instance == null)
-            {
-                _instance = FindObjectOfType<UIManager>();
-
-                // 씬에 없으면 새로 게임 오브젝트를 만들어 컴포넌트 추가
-                if (_instance == null)
-                {
-                    GameObject singletonObject = new GameObject(typeof(UIManager).Name);
-                    _instance = singletonObject.AddComponent<UIManager>();
-                }
-            }
-            return _instance;
-        }
-    }
-
     // UI 요소들을 참조할 변수들
     private IntroUI introUI;
     private StageSelectUI stageSelectUI;
@@ -85,18 +62,13 @@ public class UIManager : MonoBehaviour
         private set { _previousState = value; }
     }
 
-    private void Awake()
+    protected override void Awake()
     {
-        // 인스턴스가 이미 존재하고, 나 자신이 아니라면 파괴
-        if (_instance != null && _instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
+        base.Awake();
 
-        // 인스턴스 초기화 및 씬 전환 시 파괴 방지
-        _instance = this;
-        DontDestroyOnLoad(gameObject);
+        // 부모의 Awake에서 중복으로 파괴된 경우, 이 아래 코드가 실행되지 않음
+        if (this == null)
+            return;
 
         // 각 UI 요소들을 찾아 초기화
         introUI = GetComponentInChildren<IntroUI>(true);
@@ -113,6 +85,24 @@ public class UIManager : MonoBehaviour
         gameClearUI.Init(this);
         optionUI = GetComponentInChildren<OptionUI>(true);
         optionUI.Init(this);
+    }
+
+    // UI 상태 변경 메서드
+    public void ChangeState(UIState newState)
+    {
+        // 현재 상태를 이전 상태에 저장하고,
+        // 새로운 상태로 업데이트
+        _previousState = _currentState;
+        _currentState = newState;
+
+        // 각 UI에 SetActive 명령을 보내서 현재 enum 상태와 일치하는지 비교후 활성화 여부 결정
+        introUI.SetActive(_currentState);
+        stageSelectUI.SetActive(_currentState);
+        gameUI.SetActive(_currentState);
+        pauseUI.SetActive(_currentState);
+        gameOverUI.SetActive(_currentState);
+        gameClearUI.SetActive(_currentState);
+        optionUI.SetActive(_currentState);
     }
 
     // 인트로 화면으로 전환
@@ -174,24 +164,6 @@ public class UIManager : MonoBehaviour
         ChangeState(UIState.Option);
     }
 
-    // UI 상태 변경 메서드
-    public void ChangeState(UIState newState)
-    {
-        // 현재 상태를 이전 상태에 저장하고,
-        // 새로운 상태로 업데이트
-        _previousState = _currentState;
-        _currentState = newState;
-
-        // 각 UI에 SetActive 명령을 보내서 현재 enum 상태와 일치하는지 비교후 활성화 여부 결정
-        introUI.SetActive(_currentState);
-        stageSelectUI.SetActive(_currentState);
-        gameUI.SetActive(_currentState);
-        pauseUI.SetActive(_currentState);
-        gameOverUI.SetActive(_currentState);
-        gameClearUI.SetActive(_currentState);
-        optionUI.SetActive(_currentState);
-    }
-
     // 감염도 증가 (인간이 죽을때 호출)
     public void getInfection(float amount)
     {
@@ -216,10 +188,6 @@ public class UIManager : MonoBehaviour
             // 남은 시간을 1초 감소
             remainingTime--;
         }
-
-        // 게임오버 (남은시간0)
-        Debug.Log("시간 종료!");
-        SceneManager.LoadScene("99.GameOverScene_TimeUP");
     }
 
     private void OnEnable()

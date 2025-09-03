@@ -70,6 +70,10 @@ public class IntroTimeline : MonoBehaviour
         {
             // 씬 전환 허용 (true로 설정)
             _asyncOperation.allowSceneActivation = true;
+
+            if (UIManager.Instance.SelectedStageIndex == 3) StageManager.Instance.Stage1();
+            else if(UIManager.Instance.SelectedStageIndex == 4) StageManager.Instance.Stage2();
+            else if(UIManager.Instance.SelectedStageIndex == 5) StageManager.Instance.Stage3();
         }
     }
 }

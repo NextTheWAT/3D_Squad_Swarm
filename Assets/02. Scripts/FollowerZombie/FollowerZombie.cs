@@ -11,7 +11,7 @@ public class FollowerZombie : MonoBehaviour, IDamageable
     public StatHandler Stats { get; private set; }
 
     public Transform PlayerTarget { get; private set; }
-    public Transform EnemyTarget { get; private set; }
+    public Transform EnemyTarget { get; set; }
 
     public ZombieStateMachine stateMachine;
 
@@ -47,32 +47,10 @@ public class FollowerZombie : MonoBehaviour, IDamageable
 
         stateMachine.HandleInput();
         stateMachine.Update();
-
-        if (stateMachine.AttackState != null && stateMachine.AttackState.Equals(stateMachine))
-        {
-            // Currently attacking, skip
-            return;
-        }
-        EnemyTarget = FindClosestEnemy();
-
-        if (EnemyTarget != null)
-        {
-            float distToEnemy = Vector3.Distance(transform.position, EnemyTarget.position);
-            if (distToEnemy <= stateMachine.DetectionRange)
-                stateMachine.ChangeState(stateMachine.ChasingState);
-        }
-        else
-        {
-            float distToPlayer = Vector3.Distance(transform.position, PlayerTarget.position);
-            if (distToPlayer > followRange)
-                stateMachine.ChangeState(stateMachine.FollowState);
-            else
-                stateMachine.ChangeState(stateMachine.IdleState);
-        }
     }
 
 
-    private Transform FindClosestEnemy()
+    public Transform FindClosestEnemy()
     {
         Collider[] hits = Physics.OverlapSphere(transform.position, stateMachine.DetectionRange);
         float minDist = Mathf.Infinity;

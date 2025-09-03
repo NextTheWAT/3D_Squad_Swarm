@@ -8,8 +8,11 @@ public class Billboard : MonoBehaviour
 
     private void OnEnable()
     {
-        // 메인 카메라의 Transform을 찾기
-        mainCameraTransform = Camera.main.transform;
+        if (Camera.main != null)
+        {
+            // 메인 카메라의 Transform을 찾기
+            mainCameraTransform = Camera.main.transform;
+        }
     }
 
     void LateUpdate()
