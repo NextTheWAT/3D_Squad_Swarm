@@ -9,6 +9,7 @@ public class ZombieAttackState : ZombieBaseState
     public override void Enter()
     {
         stateMachine.MovementSpeedModifier = 0f;
+        stateMachine.RotationDampingModifier = 0f;
         base.Enter();
         StartAnimation(stateMachine.Zombie.animationData.attackParameterHash);
     }
