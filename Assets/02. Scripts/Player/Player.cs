@@ -98,4 +98,5 @@ public class Player : MonoBehaviour, IDamageable
                 Debug.LogWarning("UIManager instance not found!");
         }
     }
+
 }

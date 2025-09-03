@@ -8,12 +8,10 @@ public class ZombieAttackState : ZombieBaseState
 
     public override void Enter()
     {
-        Debug.Log("Stop Follower");
         stateMachine.MovementSpeedModifier = 0f;
         stateMachine.RotationDampingModifier = 0f;
         base.Enter();
         StartAnimation(stateMachine.Zombie.animationData.attackParameterHash);
-        Debug.Log("Why doesn it work");
     }
 
     public override void Update()
