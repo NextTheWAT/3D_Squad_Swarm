@@ -714,7 +714,7 @@ GameObject:
   - component: {fileID: 76676059257199285}
   - component: {fileID: 1209092830760242364}
   m_Layer: 0
-  m_Name: NPC_Woman
+  m_Name: NPC_Woman_1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

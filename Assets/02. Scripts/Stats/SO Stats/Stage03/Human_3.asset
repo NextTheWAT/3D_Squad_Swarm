@@ -10,17 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bfcb6d6ddf7d6684f930e3f10de8d5ed, type: 3}
-  m_Name: Hunter
+  m_Name: Human_3
   m_EditorClassIdentifier: 
   isAlive: 1
   stats:
   - statType: 1
-    baseValue: 2
+    baseValue: 1
+  - statType: 3
+    baseValue: 5
   - statType: 4
     baseValue: 5
-  - statType: 2
-    baseValue: 1
-  - statType: 5
-    baseValue: 7
-  - statType: 6
-    baseValue: 6
+  - statType: 7
+    baseValue: 0.7

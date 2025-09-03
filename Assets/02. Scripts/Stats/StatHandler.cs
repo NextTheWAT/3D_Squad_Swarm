@@ -12,12 +12,12 @@ public class StatHandler : MonoBehaviour
 
     private void Awake()
     {
-        // InitializeStats();  // ¡ç ÀÌ ÁÙÀº Á¦°Å (Áßº¹)
-        ApplyFrom(baseStats, clearBefore: true);        // baseStats°¡ ÀÖÀ¸¸é Àû¿ë
-        isAlive = baseStats != null ? baseStats.isAlive : true;  // ³Î°¡µå
+        // InitializeStats();  // ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½ßºï¿½)
+        ApplyFrom(baseStats, clearBefore: true);        // baseStatsï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        isAlive = baseStats != null ? baseStats.isAlive : true;  // ï¿½Î°ï¿½ï¿½ï¿½
     }
 
-    //ÇÊ¿äÇÑÁö ¸ð¸£°Ú½À´Ï´Ù..¤¾¤¾ Àú´Â ÇÊ¿ä¾ø´Ù°í ÆÇ´ÜµË´Ï´Ù!
+    //ï¿½Ê¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ð¸£°Ú½ï¿½ï¿½Ï´ï¿½..ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½Ù°ï¿½ ï¿½Ç´ÜµË´Ï´ï¿½!
     private void InitializeStats()
     {
         statValues.Clear();
@@ -32,24 +32,15 @@ public class StatHandler : MonoBehaviour
         return statValues.ContainsKey(type) ? statValues[type] : 0f;
     }
 
-    public void BoostStat(StatType type, float multtplier, float duration)
-    {
-        StartCoroutine(BoostRoutine(type, multtplier, duration));
-    }
-
-    private IEnumerator BoostRoutine(StatType type, float multiplier, float duration)
+    public void BoostStatRound(StatType type, float amount)
     {
         if (!statValues.ContainsKey(type))
-        {
-            yield break;
-        }
+            statValues[type] = 0f;
 
-        statValues[type] *= multiplier;
-        yield return new WaitForSeconds(duration);
-        statValues[type] /= multiplier;
+        statValues[type] += amount;
     }
 
-    //½ºÅ×ÀÌÁö ¸Å´ÏÀú¿¡¼­ »ç¿ë ÇöÀç ½ºÅÈ ÃÊ±âÈ­ ¿ëµµ
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Å´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ ï¿½ëµµ
     public void ApplyFrom(ScriptableStats s, bool clearBefore = true)
     {
         if (s == null) return;
