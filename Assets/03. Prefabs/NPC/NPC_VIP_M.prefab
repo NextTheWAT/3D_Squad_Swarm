@@ -170,6 +170,7 @@ MonoBehaviour:
   firePoint: {fileID: 0}
   bulletPrefab: {fileID: 0}
   bulletSpeed: 20
+  zombiePrefab: {fileID: 1666421720722391696, guid: cc7fd377968814a4fbb324262953a500, type: 3}
   <AnimationData>k__BackingField:
     groundParameterName: '@Ground'
     idleParameterName: Idle

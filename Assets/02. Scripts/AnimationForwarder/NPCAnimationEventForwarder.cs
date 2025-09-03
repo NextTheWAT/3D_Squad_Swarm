@@ -16,11 +16,11 @@ public class NPCAnimationEventForwarder : MonoBehaviour
     }
     public void OnShootEvent()
     {
-        parentNpc.OnShootEvenet();
+        parentNpc.OnShootEvent();
     }
 
     public void OnDeathAnimationEnd()
     {
-        //npc.OnDeathAnimationEnd();
+        parentNpc.ChangeToZombie();
     }
 }
