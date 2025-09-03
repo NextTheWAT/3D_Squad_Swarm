@@ -216,10 +216,6 @@ public class UIManager : MonoBehaviour
             // 남은 시간을 1초 감소
             remainingTime--;
         }
-
-        // 게임오버 (남은시간0)
-        Debug.Log("시간 종료!");
-        SceneManager.LoadScene("99.GameOverScene_TimeUP");
     }
 
     private void OnEnable()
