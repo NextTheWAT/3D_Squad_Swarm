@@ -16,9 +16,7 @@ public class NPCDeathState : NPCBaseState
         base.Enter();
         if (stateMachine.Npc.npcType == NPCType.VIP)
         {
-            var player = stateMachine.Target.GetComponent<Player>();
-            player.Stats.BoostStatRound(StatType.Speed, 0.5f);
-            Debug.Log("Player Speed:" + player.Stats.GetStat(StatType.Speed));
+            PlayerManager.Instance.PlayerSpeedUp();
         }
         stateMachine.Npc.agent.isStopped = true;
         PlayTriggerAnimation(stateMachine.Npc.AnimationData.deathParameterHash);

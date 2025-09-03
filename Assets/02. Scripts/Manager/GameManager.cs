@@ -8,8 +8,4 @@ public class GameManager : Singleton<GameManager>
     {
         base.Awake();
     }
-    //private void OnEnable()
-    //{
-    //    if(UIManager.Instance != null) UIManager.Instance.SetPlayGame();
-    //}
 }
