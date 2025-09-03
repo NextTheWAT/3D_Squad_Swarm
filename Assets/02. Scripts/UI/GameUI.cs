@@ -35,7 +35,7 @@ public class GameUI : BaseUI
     // 감염도UI 업데이트 함수
     public void SetInfectionNumber(float number)
     {
-        infectionNumber.text = number.ToString();
+        infectionNumber.text = $"{Mathf.FloorToInt(number)}%";
     }
 
     protected override UIState GetUIState()

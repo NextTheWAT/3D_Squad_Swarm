@@ -76,6 +76,11 @@ public class NPC : MonoBehaviour, IDamageable
         GameObject zombie = GameObject.Instantiate(zombiePrefab, stateMachine.Npc.transform.position, stateMachine.Npc.transform.transform.rotation);
         Destroy(gameObject);
     }
+    public void Die()
+    {
+        StageManager.Instance?.OnEnemyKilled(this);
+        // 원하면 여기서 Destroy(gameObject)까지 처리
+    }
 }
    
         
