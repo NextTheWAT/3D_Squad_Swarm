@@ -15,7 +15,6 @@ public class NPCAttackState : NPCBaseState
     {
         stateMachine.Npc.agent.isStopped = true; //공격시 멈추고
         base.Enter();
-        StartAnimation(stateMachine.Npc.AnimationData.attackParameterHash);
 
        //lastFireTime = Time.time; //만약 조준시간을 주고싶다면 근데 이러면 애니메이션을 트리거로 이벤트호출해야할거같음
     }
@@ -23,7 +22,6 @@ public class NPCAttackState : NPCBaseState
     public override void Exit()
     {
         base.Exit();
-        StopAnimation(stateMachine.Npc.AnimationData.attackParameterHash);
         stateMachine.Npc.agent.isStopped = false; //끝나면 움직임
     }
 
@@ -41,16 +39,17 @@ public class NPCAttackState : NPCBaseState
 
         if (Time.time >= lastFireTime + fireCooldown)
         {
-            Shoot();
+            PlayTriggerAnimation(stateMachine.Npc.AnimationData.attackParameterHash);
             lastFireTime = Time.time;
         }
 
 
     }
 
-    private void Shoot()
+    public void Shoot()
     {
         NPC npc = stateMachine.Npc;
+
 
         if (npc.bulletPrefab != null && npc.firePoint != null)
         {
@@ -80,6 +79,7 @@ public class NPCAttackState : NPCBaseState
 
     }
 
+   
 
 }
 

@@ -64,6 +64,11 @@ public class NPC : MonoBehaviour, IDamageable
         Stats.isAlive = false;
     }
 
+    public void OnShootEvenet()
+    {
+        stateMachine.AttackState.Shoot();
+    }
+
 }
    
         
