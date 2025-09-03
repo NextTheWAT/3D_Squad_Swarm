@@ -6,34 +6,37 @@ public class ZombieChasingState : ZombieBaseState
 
     public override void Enter()
     {
-        stateMachine.MovementSpeedModifier = 1f; // Run = full speed
+        stateMachine.MovementSpeedModifier = 1f;
         stateMachine.RotationDampingModifier = 1f;
         StartAnimation(stateMachine.Zombie.animationData.WalkParameterHash);
     }
 
     public override void Update()
     {
-        var enemy = stateMachine.Zombie.EnemyTarget;
+        var zombie = stateMachine.Zombie;
+        var enemy = zombie.EnemyTarget;
+
         if (enemy == null)
         {
-            // No enemy to chase → stop moving
             StopMoving();
+            stateMachine.ChangeState(stateMachine.IdleState);
             return;
         }
 
-        // Move toward the enemy
+        // Move toward enemy
         MoveTo(enemy.position);
 
-        // If enemy moved out of detection range, stop chasing
+        // Stop chasing if enemy out of range
         if (!IsEnemyInDetectionRange())
         {
+            zombie.EnemyTarget = null;
             StopMoving();
+            stateMachine.ChangeState(stateMachine.IdleState);
         }
     }
 
     public override void Exit()
     {
-        // Stop run animation
         StopAnimation(stateMachine.Zombie.animationData.WalkParameterHash);
     }
 }
