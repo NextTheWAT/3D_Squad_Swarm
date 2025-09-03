@@ -16,6 +16,7 @@ public enum UIState
     GameOver,
     GameClear,
     Option,
+    TimeUP,
 }
 
 public class UIManager : Singleton<UIManager>
@@ -28,6 +29,7 @@ public class UIManager : Singleton<UIManager>
     private GameOverUI gameOverUI;
     private GameClearUI gameClearUI;
     private OptionUI optionUI;
+    private TimeUPUI timeUPUI;
     public GameObject stageSelectCarObject;
 
     private CameraManager cameraManager;
@@ -85,6 +87,8 @@ public class UIManager : Singleton<UIManager>
         gameClearUI.Init(this);
         optionUI = GetComponentInChildren<OptionUI>(true);
         optionUI.Init(this);
+        timeUPUI = GetComponentInChildren<TimeUPUI>(true);
+        timeUPUI.Init(this);
     }
 
     // UI 상태 변경 메서드
@@ -103,6 +107,7 @@ public class UIManager : Singleton<UIManager>
         gameOverUI.SetActive(_currentState);
         gameClearUI.SetActive(_currentState);
         optionUI.SetActive(_currentState);
+        timeUPUI.SetActive(_currentState);
     }
 
     // 인트로 화면으로 전환
@@ -164,6 +169,13 @@ public class UIManager : Singleton<UIManager>
         ChangeState(UIState.Option);
     }
 
+    // UI매니저의 타임업시 호출
+    public void SetTimeUP()
+    {
+        // enum 상태를 TimeUP으로 변경
+        ChangeState(UIState.TimeUP);
+    }
+
     // 감염도 증가 (인간이 죽을때 호출)
     public void getInfection(float amount)
     {
@@ -187,6 +199,14 @@ public class UIManager : Singleton<UIManager>
 
             // 남은 시간을 1초 감소
             remainingTime--;
+        }
+
+        // 시간이 0 이하가 되면 타임업 처리
+        if (remainingTime < 0)
+        {
+            remainingTime = Mathf.Max(remainingTime, 0); // 시간을 0 이하로 떨어뜨리지 않음
+
+            SetTimeUP(); // 시간이 0이 되면 타임업 UI로 전환
         }
     }
 
