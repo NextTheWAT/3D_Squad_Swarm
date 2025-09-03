@@ -24,8 +24,10 @@ public class PauseUI : BaseUI
     // 게임으로 돌아가기
     public void OnClickReturnButton()
     {
+        Debug.Log("Return Button Clicked");
+
         // 게임매니저의 일시정지 상태 해제 함수 호출
-        // GameManager.Instance.TogglePause();
+        GameManager.Instance.OnPause(false);
 
         // UI 상태를 게임으로 변경
         uiManager.ChangeState(UIState.Game);
@@ -34,6 +36,8 @@ public class PauseUI : BaseUI
     // 옵션창 활성화
     public void OnClickOptionButton()
     {
+        Debug.Log("Option Button Clicked");
+
         // UI매니저의 옵션창 활성화 함수 호출
         uiManager.SetOption();
     }
@@ -41,6 +45,8 @@ public class PauseUI : BaseUI
     // 게임 종료
     public void OnClickExitButton()
     {
+        Debug.Log("Exit Button Clicked");
+
         Application.Quit();
     }
 

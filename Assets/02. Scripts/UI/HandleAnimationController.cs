@@ -17,6 +17,6 @@ public class HandleAnimationController : MonoBehaviour
     private void OnSliderValueChanged(float value)
     {
         // 슬라이더 값(0~1)을 애니메이션의 normalizedTime으로 설정
-        handleAnimator.Play("HandleAnimation", -1, value);
+        handleAnimator.Play("ChaisingSoldier", -1, value);
     }
 }
