@@ -58,5 +58,5 @@ MonoBehaviour:
     startDelay: 5
   spawnOnNavMesh: 1
   navMeshData: {fileID: 23800000, guid: 4a189b0b458b6164b870200c4c345a45, type: 2}
-  navSampleMaxDistance: 5
+  navSampleMaxDistance: 10
   navAreaMask: -1
