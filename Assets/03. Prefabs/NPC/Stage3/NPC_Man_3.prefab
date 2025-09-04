@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2830867993332597202}
   - component: {fileID: 5341325737056750306}
   - component: {fileID: 4599530969548723573}
+  - component: {fileID: -626899478896232402}
   m_Layer: 0
   m_Name: NPC_Man_3
   m_TagString: Enemy
@@ -75,7 +76,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 0}
   bulletSpeed: 20
   zombiePrefab: {fileID: 1666421720722391696, guid: cc7fd377968814a4fbb324262953a500, type: 3}
-  zombieEffect: {fileID: 8168785843105752374, guid: f8e4365a7130aaf43aecc92064f6d17d, type: 3}
+  zombieEffect: {fileID: 2771775932424238379, guid: f8e4365a7130aaf43aecc92064f6d17d, type: 3}
   <AnimationData>k__BackingField:
     groundParameterName: '@Ground'
     idleParameterName: Idle
@@ -123,6 +124,29 @@ CapsuleCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Height: 1.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!136 &-626899478896232402
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2972642708918744755}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &6683050262506759191
