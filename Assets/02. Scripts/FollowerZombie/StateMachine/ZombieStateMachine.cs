@@ -1,8 +1,9 @@
 using UnityEngine;
 
+
 public class ZombieStateMachine : StateMachine
 {
-    public FollowerZombie Zombie { get; }
+    public BaseZombie Zombie { get; }
     public bool IsDead { get; private set; } = false;
 
     public Vector2 MovementInput { get; set; }
@@ -16,18 +17,30 @@ public class ZombieStateMachine : StateMachine
     public ZombieAttackState AttackState { get; }
     public ZombieDeathState DeathState { get; }
     public ZombieRiseState RiseState { get; }
+    public ZombieChargeState ChargeState { get; }
 
-    public ZombieStateMachine(FollowerZombie Zombie)
+    public ZombieStateMachine(BaseZombie zombie)
     {
-        this.Zombie = Zombie;
-        MovementSpeedModifier = 1f;
+        Zombie = zombie;
 
         IdleState = new ZombieIdleState(this);
-        FollowState = new ZombieFollowState(this);
-        ChasingState = new ZombieChasingState(this);
-        AttackState = new ZombieAttackState(this);
         DeathState = new ZombieDeathState(this);
-        RiseState = new ZombieRiseState(this);
+
+        if (zombie is FollowerZombie)
+        {
+            FollowState = new ZombieFollowState(this);
+            ChasingState = new ZombieChasingState(this);
+            AttackState = new ZombieAttackState(this);
+            RiseState = new ZombieRiseState(this);
+        }
+        else if (zombie is ChargingZombie)
+        {
+            FollowState = new ZombieFollowState(this);
+            ChasingState = new ZombieChasingState(this);
+            AttackState = new ZombieAttackState(this);
+            RiseState = new ZombieRiseState(this);
+            ChargeState = new ZombieChargeState(this);
+        }
     }
 
     public void SetDead()
@@ -38,4 +51,6 @@ public class ZombieStateMachine : StateMachine
     public float MovementSpeed => Zombie.Stats.GetStat(StatType.Speed) * MovementSpeedModifier;
     public float RotationDamping => Zombie.Stats.GetStat(StatType.RotationDamping) * RotationDampingModifier;
     public float DetectionRange => Zombie.Stats.GetStat(StatType.DetectRange);
+    public float ChaseRange => Zombie.Stats.GetStat(StatType.ChaseRange);
+    public float ChargeDistance => Zombie.Stats.GetStat(StatType.ChargeDistance);
 }

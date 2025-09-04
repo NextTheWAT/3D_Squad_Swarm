@@ -69,7 +69,7 @@ public class ZombieBaseState : IState
         if (stateMachine.Zombie.EnemyTarget == null) return false;
 
         float distSqr = (stateMachine.Zombie.EnemyTarget.position - stateMachine.Zombie.transform.position).sqrMagnitude;
-        return distSqr <= stateMachine.DetectionRange * stateMachine.DetectionRange;
+        return distSqr <= stateMachine.ChaseRange * stateMachine.ChaseRange;
     }
 
     protected bool IsNearPlayer(float followRange)

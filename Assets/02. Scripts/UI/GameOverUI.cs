@@ -46,6 +46,13 @@ public class GameOverUI : BaseUI
     // 현재 게임씬 다시 시작
     public void OnClickRestartButton()
     {
+        // 현재 씬이 2번씬이라면
+        if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            // 이전 스테이지 씬으로 이동
+            SceneManager.LoadScene(uiManager.PreviousSceneIndex);
+            return;
+        }
         // 현재 게임씬 다시 로드
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 

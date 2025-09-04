@@ -65,6 +65,8 @@ AudioMixerController:
   m_ExposedParameters:
   - guid: fac38f82d63c880408d2a81463edc471
     name: BGMVolume
+  - guid: f6acc5da5c0642940927d280ca255de2
+    name: SFXVolume
   m_AudioMixerGroupViews:
   - guids:
     - 161cb33df2df64e43bf2d8fa43c4b184
@@ -125,7 +127,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SFX
+  m_Name: SFXVolume
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 3a735078d6b2ec64ba9460f593c2775b
   m_Children: []

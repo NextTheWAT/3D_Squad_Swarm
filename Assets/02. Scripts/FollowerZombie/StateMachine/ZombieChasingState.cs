@@ -23,10 +23,21 @@ public class ZombieChasingState : ZombieBaseState
             return;
         }
 
-        // Move toward enemy
+        if (zombie is ChargingZombie chargingZombie)
+        {
+            float distToEnemy = Vector3.Distance(zombie.transform.position, enemy.position);
+            if (distToEnemy <= stateMachine.ChargeDistance && stateMachine.ChargeState != null)
+            {
+                StopMoving();
+                stateMachine.ChangeState(stateMachine.ChargeState);
+                return;
+            }
+        }
+
+        // Normal chasing logic
         MoveTo(enemy.position);
 
-        // Stop chasing if enemy out of range
+        // Stop chasing if enemy out of detection range
         if (!IsEnemyInDetectionRange())
         {
             zombie.EnemyTarget = null;

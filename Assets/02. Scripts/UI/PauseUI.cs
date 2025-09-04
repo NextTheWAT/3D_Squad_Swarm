@@ -13,6 +13,8 @@ public class PauseUI : BaseUI
     [SerializeField] private Button backHomeButton;
     [SerializeField] private Button exitButton;
 
+    public GameObject gameStartPanel; // GameUI의 게임 시작 이미지패널
+
     public override void Init(UIManager uiManager)
     {
         base.Init(uiManager);
@@ -22,6 +24,15 @@ public class PauseUI : BaseUI
         optionButton.onClick.AddListener(OnClickOptionButton);
         backHomeButton.onClick.AddListener(OnClickBackHomeButton);
         exitButton.onClick.AddListener(OnClickExitButton);
+    }
+
+    private void OnEnable()
+    {
+        // 게임 시작 패널 비활성화
+        if (gameStartPanel != null)
+        {
+            gameStartPanel.SetActive(false);
+        }
     }
 
     // 게임으로 돌아가기
