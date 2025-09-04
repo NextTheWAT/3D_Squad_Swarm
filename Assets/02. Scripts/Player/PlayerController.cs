@@ -34,6 +34,10 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
+            if (other.TryGetComponent<IDamageable>(out var damageable))
+            {
+                damageable.OnTakeDamage(false);
+            }
             StartCoroutine(RotateTowardEnemy(other.transform));
             player.stateMachine.ChangeState(player.stateMachine.AttackState);
         }
