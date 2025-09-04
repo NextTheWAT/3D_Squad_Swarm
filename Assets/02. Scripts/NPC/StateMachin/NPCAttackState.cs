@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NPCAttackState : NPCBaseState
 {
-    private float fireCooldown = 3.0f;
+    private float fireCooldown = 0.75f;
     private float lastFireTime;
 
     public NPCAttackState(NPCStateMachine npcStateMachine) : base(npcStateMachine)

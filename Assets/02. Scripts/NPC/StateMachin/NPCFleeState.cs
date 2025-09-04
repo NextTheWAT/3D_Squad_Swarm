@@ -15,7 +15,7 @@ public class NPCFleeState : NPCGroundState
         }
         else if (stateMachine.Npc.npcType == NPCType.VIP)
         {
-            stateMachine.Npc.agent.speed = PlayerManager.Instance.player.stateMachine.MovementSpeed;
+            stateMachine.Npc.agent.speed = PlayerManager.Instance.player.Stats.GetStat(StatType.Speed);
         }
         base.Enter();
         StartAnimation(stateMachine.Npc.AnimationData.RunParameterHash);

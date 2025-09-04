@@ -21,7 +21,34 @@ public class NPCIdleState : NPCGroundState
         }
         else if (stateMachine.Npc.npcType == NPCType.VIP) 
         {
-            stateMachine.Npc.agent.speed = PlayerManager.Instance.player.stateMachine.MovementSpeed;
+            if (PlayerManager.Instance == null)
+            {
+                Debug.Log("플레이어매니저가 없음");
+                return;
+            }
+
+            if (PlayerManager.Instance.player == null)
+            {
+                Debug.Log("플레이어가 없음");
+                return;
+            }
+
+            if (PlayerManager.Instance.player.Stats == null)
+            {
+                Debug.Log("스탯이 없음");
+                return;
+            }
+
+            float speed = PlayerManager.Instance.player.Stats.GetStat(StatType.Speed);
+            if (speed == 0)
+            {
+                Debug.Log("스피드가 없음");
+            }
+            else
+            {
+                Debug.Log($"스피드 값: {speed}");
+                stateMachine.Npc.agent.speed = speed;
+            }
         }
 
             StartAnimation(stateMachine.Npc.AnimationData.WalkParameterHash);
