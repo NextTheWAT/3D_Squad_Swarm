@@ -17,6 +17,7 @@ public enum UIState
     GameClear,
     Option,
     TimeUP,
+    Info,
 }
 
 public class UIManager : Singleton<UIManager>
@@ -45,8 +46,7 @@ public class UIManager : Singleton<UIManager>
     public float remainingTime = 100f; // 초기 시간
     public float killCount = 0; // 사냥한 인간 수
 
-    // 선택된 스테이지 인덱스를 저장할 변수
-    private int _selectedStageIndex;
+    private int _selectedStageIndex; // 선택된 스테이지 인덱스를 저장할 변수
 
     public int SelectedStageIndex
     {

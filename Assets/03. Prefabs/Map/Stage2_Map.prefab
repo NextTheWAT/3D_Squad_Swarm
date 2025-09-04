@@ -5616,6 +5616,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5411364735647693104}
+  - component: {fileID: 5477086516149587121}
   m_Layer: 0
   m_Name: Player_Spawn_Point
   m_TagString: Untagged
@@ -5632,12 +5633,29 @@ Transform:
   m_GameObject: {fileID: 5384665929590334228}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.09, y: 1.47, z: -57.39}
+  m_LocalPosition: {x: 10.5, y: 1.47, z: -57.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8564572748922693057}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5477086516149587121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5384665929590334228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb03876e827616942a74562f75294b4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 4758041361623711294, guid: 643c51f9d8ae7344cae01298af886a3a, type: 3}
+  spawnPoint: {fileID: 5411364735647693104}
+  mainCameraPrefab: {fileID: 8446513760509138731, guid: a9ec1e1bf42ff814e8652f8f1a20384b, type: 3}
+  subCameraPrefab: {fileID: 7800120575699222344, guid: 675eff869d7f30348a3f413665bed151, type: 3}
+  destroyExistingPlayer: 1
 --- !u!1 &5532098564775555558
 GameObject:
   m_ObjectHideFlags: 0
