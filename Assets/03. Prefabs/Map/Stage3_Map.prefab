@@ -517,6 +517,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7288041885567212450}
+  - component: {fileID: 4334504617876119418}
   m_Layer: 0
   m_Name: Player_Spawn_Point
   m_TagString: Untagged
@@ -539,6 +540,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1179451685120896159}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4334504617876119418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2187017557352628997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb03876e827616942a74562f75294b4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 4758041361623711294, guid: 643c51f9d8ae7344cae01298af886a3a, type: 3}
+  spawnPoint: {fileID: 7288041885567212450}
+  destroyExistingPlayer: 1
 --- !u!1 &3223779016314067014
 GameObject:
   m_ObjectHideFlags: 0
