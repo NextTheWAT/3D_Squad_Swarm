@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8222880844042407207}
   - component: {fileID: 7363073527342009735}
   - component: {fileID: 4186696681874778658}
-  - component: {fileID: 6083114684339745255}
   m_Layer: 0
   m_Name: NPC_VIP_M_3
   m_TagString: Enemy
@@ -125,29 +124,6 @@ CapsuleCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Height: 1.5
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
---- !u!136 &6083114684339745255
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4663749763471866935}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &6230718158624331794
