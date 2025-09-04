@@ -39,6 +39,12 @@ public class StatHandler : MonoBehaviour
 
         statValues[type] += amount;
     }
+    public void ResetStat(StatType type, float amount)
+    {
+        if (baseStats == null) return;
+
+        statValues[type] = amount;
+    }
 
     //�������� �Ŵ������� ��� ���� ���� �ʱ�ȭ �뵵
     public void ApplyFrom(ScriptableStats s, bool clearBefore = true)
