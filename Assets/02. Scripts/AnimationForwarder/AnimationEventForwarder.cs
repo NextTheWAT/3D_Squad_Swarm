@@ -45,7 +45,7 @@ public class AnimationEventForwarder : MonoBehaviour
     {
         if (parentPlayer != null)
         {
-            //
+            parentPlayer.OnDeathAnimationComplete();
         }
         else if (parentZombie != null)
         {
