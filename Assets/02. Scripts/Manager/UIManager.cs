@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -56,14 +57,24 @@ public class UIManager : Singleton<UIManager>
         set { _selectedStageIndex = value; }
     }
 
-    // 현재 상태와 이전 상태를 저장할 변수
-    private UIState _currentState;
-    private UIState _previousState;
+    // 현재 상태와 이전 UI상태를 저장할 변수
+    private UIState _currentState; // 현재 상태를 저장할 변수
+    private UIState _previousState; // 이전 상태를 저장할 변수
 
     public UIState PreviousState
     {
         get { return _previousState; }
         private set { _previousState = value; }
+    }
+
+    // 현재 상태와 이전 씬넘버를 저장할 변수
+    private int _currentSceneIndex; // 현재 씬넘버를 저장할 변수
+    private int _previousSceneIndex; // 이전 씬넘버를 저장할 변수
+
+    public int PreviousSceneIndex
+    {
+        get { return _previousSceneIndex; }
+        private set { _previousSceneIndex = value; }
     }
 
     protected override void Awake()
@@ -257,6 +268,11 @@ public class UIManager : Singleton<UIManager>
             // UI 상태를 GameUI로 변경
             ChangeState(UIState.Game);
         }
+
+        // 현재 상태를 이전 상태에 저장하고,
+        // 새로운 상태로 업데이트
+        _previousSceneIndex = _currentSceneIndex;
+        _currentSceneIndex = scene.buildIndex;
     }
 
     // 일부 씬시작 시 페이드인(화면이 점점 밝아지는 효과) 코루틴

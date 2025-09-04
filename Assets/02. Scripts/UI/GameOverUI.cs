@@ -50,7 +50,7 @@ public class GameOverUI : BaseUI
         if (SceneManager.GetActiveScene().buildIndex == 2)
         {
             // 이전 스테이지 씬으로 이동
-            SceneManager.LoadScene(uiManager.SelectedStageIndex);
+            SceneManager.LoadScene(uiManager.PreviousSceneIndex);
             return;
         }
         // 현재 게임씬 다시 로드
