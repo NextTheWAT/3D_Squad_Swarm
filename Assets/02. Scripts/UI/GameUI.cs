@@ -44,6 +44,11 @@ public class GameUI : BaseUI
     // UI 활성화 시 감염도 초기화
     private void OnEnable()
     {
+        if (uiManager.PreviousState == UIState.Pause)
+        {
+            return; // 이전 상태가 일시정지 상태라면 초기화하지 않음
+        }
+
         // UI매니저의 현재감염도를 0으로 초기화
         uiManager.currentInfection = 0f;
 
