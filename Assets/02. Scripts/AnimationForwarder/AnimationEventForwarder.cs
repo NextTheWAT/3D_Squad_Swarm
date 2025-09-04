@@ -3,7 +3,7 @@ using UnityEngine;
 public class AnimationEventForwarder : MonoBehaviour
 {
     public Player parentPlayer;
-    public FollowerZombie parentZombie;
+    public BaseZombie parentZombie;
 
     private void Awake()
     {
@@ -11,7 +11,7 @@ public class AnimationEventForwarder : MonoBehaviour
         if (parentPlayer == null && parentZombie == null)
         {
             parentPlayer = GetComponentInParent<Player>();
-            parentZombie = GetComponentInParent<FollowerZombie>();
+            parentZombie = GetComponentInParent<BaseZombie>();
         }
     }
 
@@ -45,7 +45,7 @@ public class AnimationEventForwarder : MonoBehaviour
     {
         if (parentPlayer != null)
         {
-            parentPlayer.OnDeathAnimationComplete();
+            //
         }
         else if (parentZombie != null)
         {

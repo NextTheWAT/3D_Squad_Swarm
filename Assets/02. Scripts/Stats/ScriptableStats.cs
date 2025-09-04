@@ -11,7 +11,8 @@ public enum StatType  // Type of stats
     RotationDamping,
     ChaseRange,
     NPCAttackRange,
-    InfectionPoint
+    InfectionPoint,
+    ChargeDistance
 }
 
 [CreateAssetMenu(fileName = "ScriptableStats", menuName = "Stats/ScriptableStats")]
