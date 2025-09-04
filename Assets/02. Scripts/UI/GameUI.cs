@@ -46,7 +46,13 @@ public class GameUI : BaseUI
     {
         // UI매니저의 현재감염도를 0으로 초기화
         uiManager.currentInfection = 0f;
-    }
+
+        // UI매니저의 킬카운트를 0으로 초기화
+        uiManager.killCount = 0f;
+
+        // UI매니저의 남은시간을 초기화
+        uiManager.remainingTime = maxTime;
+    }        
 
     private void Update()
     {

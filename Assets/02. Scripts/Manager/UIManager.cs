@@ -153,6 +153,9 @@ public class UIManager : Singleton<UIManager>
     {
         // enum 상태를 GameOver로 변경
         ChangeState(UIState.GameOver);
+
+        // 게임오버시 타이머 코루틴 정지
+        StopCoroutine(Countdown());
     }
 
     // 게임 클리어 시 호출
@@ -174,6 +177,9 @@ public class UIManager : Singleton<UIManager>
     {
         // enum 상태를 TimeUP으로 변경
         ChangeState(UIState.TimeUP);
+
+        // 타임오버시 타이머 코루틴 정지
+        StopCoroutine(Countdown());
     }
 
     // 감염도 증가 (인간이 죽을때 호출)
@@ -185,7 +191,6 @@ public class UIManager : Singleton<UIManager>
 
         // 사냥한 인간 수 1증가
         killCount++;
-
     }
 
     IEnumerator Countdown()
