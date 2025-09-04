@@ -18,7 +18,7 @@ public class ZombieManager : MonoBehaviour
     private float targetDistance;
     private CinemachineFramingTransposer transposer;
 
-    public float GlobalSpeedBoost { get; private set; } = 0f;
+    public float GlobalSpeedBoost = 0f;
 
     private void Awake()
     {
