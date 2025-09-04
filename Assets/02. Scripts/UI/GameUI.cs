@@ -52,6 +52,27 @@ public class GameUI : BaseUI
 
         // UI매니저의 남은시간을 초기화
         uiManager.remainingTime = maxTime;
+
+        // 게임 시작 시 gameInfoChecked가 true면
+        if (gameInfoChecked == true)
+        {
+            Debug.Log("게임정보창 활성화");
+
+            // 게임매니저의 게임시간 일시정지 함수 호출(게임일시정지)
+            GameManager.Instance.OnPause(true);
+
+            // 정보창 UI 활성화
+            infoPanel.SetActive(true);
+        }
+
+        // false면
+        else if (gameInfoChecked == false)
+        {
+            Debug.Log("게임정보창 비활성화");
+
+            // 게임 시작 시 페이드 아웃 코루틴 시작
+            StartCoroutine(GameStartFadeInOut());
+        }
     }        
 
     private void Update()
@@ -107,30 +128,6 @@ public class GameUI : BaseUI
     public void SetInfectionNumber(float number)
     {
         infectionNumber.text = $"{Mathf.FloorToInt(number)}%";
-    }
-
-    private void Start()
-    {
-        // 게임 시작 시 gameInfoChecked가 true면
-        if (gameInfoChecked == true)
-        {
-            Debug.Log("게임정보창 활성화");
-
-            // 게임매니저의 게임시간 일시정지 함수 호출(게임일시정지)
-            GameManager.Instance.OnPause(true);
-
-            // 정보창 UI 활성화
-            infoPanel.SetActive(true);
-        }
-
-        // false면
-        else if (gameInfoChecked == false)
-        {
-            Debug.Log("게임정보창 비활성화");
-
-            // 게임 시작 시 페이드 아웃 코루틴 시작
-            StartCoroutine(GameStartFadeInOut());
-        }
     }
 
     // 게임 시작 시 페이드 인 / 아웃 코루틴

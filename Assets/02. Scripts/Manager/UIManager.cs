@@ -243,6 +243,11 @@ public class UIManager : Singleton<UIManager>
 
             StartCoroutine(FadeAndLoadScene());
         }
+        else if (scene.buildIndex == 3 || scene.buildIndex == 4 || scene.buildIndex == 5)
+        {
+            // UI 상태를 GameUI로 변경
+            ChangeState(UIState.Game);
+        }
     }
 
     // 일부 씬시작 시 페이드인(화면이 점점 밝아지는 효과) 코루틴
