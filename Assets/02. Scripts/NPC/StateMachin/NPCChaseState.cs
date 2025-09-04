@@ -10,7 +10,7 @@ public class NPCChaseState : NPCGroundState
 
     public override void Enter()
     {
-        stateMachine.Npc.agent.speed = 4f; //사냥꾼속도만 변경됨
+        stateMachine.Npc.agent.speed = 3f; //사냥꾼속도만 변경됨
         base.Enter();
         StartAnimation(stateMachine.Npc.AnimationData.RunParameterHash);
     }
@@ -43,6 +43,11 @@ public class NPCChaseState : NPCGroundState
         Vector3 targetPos = stateMachine.Target.transform.position;
         stateMachine.Npc.agent.isStopped = false;  // 이동 가능
         stateMachine.Npc.agent.SetDestination(targetPos);
+        var aim = stateMachine.Npc.GetComponent<GunAimer>();
+        if (aim != null)
+        {
+            aim.EnableAim(true);
+        }
     }
 
 }
