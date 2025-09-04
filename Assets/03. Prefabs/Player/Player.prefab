@@ -731,6 +731,7 @@ MonoBehaviour:
     attackParameterName: Attack
     deathParameterName: Death
     riseParameterName: Rise
+  Indicator: {fileID: 913071063856021507}
 --- !u!114 &1008932351582022511
 MonoBehaviour:
   m_ObjectHideFlags: 0

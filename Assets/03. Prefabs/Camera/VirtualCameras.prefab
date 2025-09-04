@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 816083096319654193}
   - component: {fileID: 8453097491540498353}
+  - component: {fileID: 5170427946376322393}
   m_Layer: 0
   m_Name: VirtualCamera
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3790566637953928098}
   serializedVersion: 2
   m_LocalRotation: {x: 0.41211066, y: -0, z: -0, w: 0.9111338}
-  m_LocalPosition: {x: 0.19452286, y: 6.611691, z: -5.7866592}
+  m_LocalPosition: {x: 0.19452286, y: 7.231691, z: -10.046659}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -72,6 +73,22 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 8081166976039156454}
+--- !u!114 &5170427946376322393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3790566637953928098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71fec85a159b0f74a9b0f151d23b81df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  virtualCamera: {fileID: 8453097491540498353}
+  zoomInDistance: 3
+  spinSpeed: 50
+  zoomSpeed: 2
 --- !u!1 &4808766736723365449
 GameObject:
   m_ObjectHideFlags: 0
