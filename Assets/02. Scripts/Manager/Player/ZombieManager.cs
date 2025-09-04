@@ -39,6 +39,10 @@ public class ZombieManager : MonoBehaviour
             }
         }
     }
+    private void OnEnable()
+    {
+        GlobalSpeedBoost = 0f;
+    }
 
     private void Update()
     {

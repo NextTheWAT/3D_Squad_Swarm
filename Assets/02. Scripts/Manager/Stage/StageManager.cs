@@ -42,9 +42,6 @@ public class StageManager : Singleton<StageManager>
         Current = config;
         SceneManager.LoadScene(config.sceneName); // 필요하면 Async로 변경
         UIManager.Instance.SetPlayGame();
-
-        ZombieManager.Instance.GlobalSpeedBoost = 0f; // 스테이지 시작시 좀비 속도 초기화
-        PlayerManager.Instance.PlayerSpeedReset(); // 스테이지 시작시 플레이어 속도 초기화
     }
 
     private void HandleLoaded(Scene _, LoadSceneMode __)
