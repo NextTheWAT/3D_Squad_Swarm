@@ -30,7 +30,6 @@ public class CameraDeathEffect : MonoBehaviour
         {
             transposer = virtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
 
-            // 🔹 Find player by tag and set as camera follow/lookAt
             GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
             if (playerObj != null)
             {

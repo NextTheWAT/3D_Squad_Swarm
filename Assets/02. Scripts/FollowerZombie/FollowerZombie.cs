@@ -115,7 +115,6 @@ public class FollowerZombie : MonoBehaviour, IDamageable
     {
         Debug.Log("Attack animation event triggered");
 
-        // Example attack area (optional extra hitbox check)
         float attackRange = 1.5f;
         float attackRadius = 0.5f;
 
