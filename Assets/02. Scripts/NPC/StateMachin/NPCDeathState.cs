@@ -18,6 +18,14 @@ public class NPCDeathState : NPCBaseState
         {
             PlayerManager.Instance.PlayerSpeedUp();
         }
+        if(stateMachine.Npc.npcType == NPCType.Hunter)
+        {
+            var aim = stateMachine.Npc.GetComponent<GunAimer>();
+            if (aim != null)
+            {
+                aim.EnableAim(false);
+            }
+        }
         stateMachine.Npc.gameObject.tag = "Untagged";
         stateMachine.Npc.agent.isStopped = true;
         PlayTriggerAnimation(stateMachine.Npc.AnimationData.deathParameterHash);

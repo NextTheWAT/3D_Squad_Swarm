@@ -42,10 +42,11 @@ public class PlayerController : MonoBehaviour
     private void OnPausePressed(InputAction.CallbackContext context)
     {
         if (UIManager.Instance != null)
+        {
             UIManager.Instance.SetPause();
+            GameManager.Instance.OnPause(true);
+        }
         else
             Debug.LogWarning("UIManager instance not found!");
     }
-
-    //테스팅 테스팅 123
 }

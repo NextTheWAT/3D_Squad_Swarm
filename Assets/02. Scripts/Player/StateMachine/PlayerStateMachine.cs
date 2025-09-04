@@ -19,7 +19,6 @@ public class PlayerStateMachine : StateMachine
     public Vector2 MovementInput { get; set; }
     public float MovementSpeedModifier { get; set; } = 1f;
     public float RotationDampingModifier { get; set; } = 1f;
-    //public float JumpForceModifier { get; set; } = 1f;
     public Transform MainCameraTransform { get; set; }
 
     public PlayerStateMachine(Player player)
@@ -40,5 +39,4 @@ public class PlayerStateMachine : StateMachine
     }
     public float MovementSpeed => Player.Stats.GetStat(StatType.Speed) * MovementSpeedModifier;
     public float RotationDamping => Player.Stats.GetStat(StatType.RotationDamping) * RotationDampingModifier;
-    //public float JumpForce => Player.Stats.GetStat(StatType.JumpPower) * JumpForceModifier;
 }

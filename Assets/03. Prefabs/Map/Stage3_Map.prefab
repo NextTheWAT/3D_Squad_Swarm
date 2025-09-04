@@ -554,6 +554,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 4758041361623711294, guid: 643c51f9d8ae7344cae01298af886a3a, type: 3}
   spawnPoint: {fileID: 7288041885567212450}
+  mainCameraPrefab: {fileID: 8446513760509138731, guid: a9ec1e1bf42ff814e8652f8f1a20384b, type: 3}
+  subCameraPrefab: {fileID: 7800120575699222344, guid: 675eff869d7f30348a3f413665bed151, type: 3}
   destroyExistingPlayer: 1
 --- !u!1 &3223779016314067014
 GameObject:
