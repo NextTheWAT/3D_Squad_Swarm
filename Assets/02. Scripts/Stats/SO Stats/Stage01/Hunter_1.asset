@@ -20,3 +20,7 @@ MonoBehaviour:
     baseValue: 4
   - statType: 5
     baseValue: 18
+  - statType: 6
+    baseValue: 5
+  - statType: 4
+    baseValue: 5

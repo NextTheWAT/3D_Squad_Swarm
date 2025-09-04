@@ -734,6 +734,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Charge_Zombie
       objectReference: {fileID: 0}
+    - target: {fileID: 4668654602810645675, guid: 99ce26a6b9af2e8449273741e745d146, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5412026636817747566, guid: 99ce26a6b9af2e8449273741e745d146, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -793,7 +797,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1666421720722391696, guid: cc7fd377968814a4fbb324262953a500, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3527019774630966992, guid: cc7fd377968814a4fbb324262953a500, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1711,7 +1715,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3767624275152557282, guid: ac30cdd0e060bd64b88c57a17839f9bc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.59
+      value: -12.66
       objectReference: {fileID: 0}
     - target: {fileID: 3767624275152557282, guid: ac30cdd0e060bd64b88c57a17839f9bc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1719,7 +1723,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3767624275152557282, guid: ac30cdd0e060bd64b88c57a17839f9bc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.36
+      value: -3.33
       objectReference: {fileID: 0}
     - target: {fileID: 3767624275152557282, guid: ac30cdd0e060bd64b88c57a17839f9bc, type: 3}
       propertyPath: m_LocalRotation.w
