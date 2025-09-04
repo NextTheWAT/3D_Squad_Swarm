@@ -9608,6 +9608,7 @@ MonoBehaviour:
   optionButton: {fileID: 8345416918149237348}
   backHomeButton: {fileID: 9134120280573893930}
   exitButton: {fileID: 3396021968098040420}
+  gameStartPanel: {fileID: 3735969131993519490}
 --- !u!1 &5711064329725458914
 GameObject:
   m_ObjectHideFlags: 0
