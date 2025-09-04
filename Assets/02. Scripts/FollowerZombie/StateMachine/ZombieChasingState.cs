@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class ZombieChasingState : ZombieBaseState
 {
@@ -18,23 +19,25 @@ public class ZombieChasingState : ZombieBaseState
 
         if (enemy == null)
         {
+            Debug.Log("Testing123");
             StopMoving();
             stateMachine.ChangeState(stateMachine.IdleState);
             return;
         }
 
-        if (zombie is ChargingZombie chargingZombie)
+        // ChargingZombie check: if within charge distance, switch to ChargeState
+        if (zombie is ChargingZombie && stateMachine.ChargeState != null)
         {
             float distToEnemy = Vector3.Distance(zombie.transform.position, enemy.position);
-            if (distToEnemy <= stateMachine.ChargeDistance && stateMachine.ChargeState != null)
+            if (distToEnemy <= stateMachine.ChargeDistance)
             {
-                StopMoving();
+                Debug.Log("Charging");
                 stateMachine.ChangeState(stateMachine.ChargeState);
                 return;
             }
         }
 
-        // Normal chasing logic
+        // Normal chasing movement
         MoveTo(enemy.position);
 
         // Stop chasing if enemy out of detection range

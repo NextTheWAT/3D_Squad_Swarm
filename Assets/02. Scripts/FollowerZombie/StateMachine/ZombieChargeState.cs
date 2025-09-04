@@ -2,69 +2,46 @@ using UnityEngine;
 
 public class ZombieChargeState : ZombieBaseState
 {
-    private Vector3 chargeDirection;
-    private float chargeSpeed = 13f;
-    private float windupTime = 0.5f;
-    private float chargeDuration = 1.0f;
-
-    private float elapsedTime;
-    private bool isCharging;
-
     public ZombieChargeState(ZombieStateMachine stateMachine) : base(stateMachine) { }
 
     public override void Enter()
     {
-        base.Enter();
-        elapsedTime = 0f;
-        isCharging = false;
-
-        // pick a direction (example: towards enemy or forward)
-        if (stateMachine.Zombie.EnemyTarget != null)
-        {
-            chargeDirection = (stateMachine.Zombie.EnemyTarget.position - stateMachine.Zombie.transform.position).normalized;
-            chargeDirection.y = 0f;
-        }
-        else
-        {
-            chargeDirection = stateMachine.Zombie.transform.forward;
-        }
-
-        // play charge animation
+        // Double speed while charging
+        stateMachine.MovementSpeedModifier = 2f;
+        Debug.Log("ChargeAnimation");
         StartAnimation(stateMachine.Zombie.animationData.chargeParameterHash);
-
-        // stop NavMesh movement during wind-up
-        StopMoving();
     }
 
     public override void Update()
     {
-        elapsedTime += Time.deltaTime;
+        var zombie = stateMachine.Zombie;
+        var enemy = zombie.EnemyTarget;
 
-        if (!isCharging && elapsedTime >= windupTime)
+        if (enemy == null)
         {
-            // Begin dash
-            isCharging = true;
-            elapsedTime = 0f; // restart timer for charge duration
+            StopMoving();
+            stateMachine.ChangeState(stateMachine.IdleState);
+            return;
         }
 
-        if (isCharging)
-        {
-            // Move manually instead of NavMesh
-            stateMachine.Zombie.transform.position += chargeDirection * chargeSpeed * Time.deltaTime;
+        // Keep moving toward enemy
+        MoveTo(enemy.position);
 
-            if (elapsedTime >= chargeDuration)
-            {
-                stateMachine.ChangeState(stateMachine.IdleState);
-            }
+        // Stop charge if enemy out of detection range
+        if (!IsEnemyInDetectionRange())
+        {
+            zombie.EnemyTarget = null;
+            StopMoving();
+            stateMachine.ChangeState(stateMachine.IdleState);
         }
     }
 
     public override void Exit()
     {
-        base.Exit();
+        // Reset speed
+        stateMachine.MovementSpeedModifier = 1f;
+
+        // Stop charge animation
         StopAnimation(stateMachine.Zombie.animationData.chargeParameterHash);
-        // re-enable NavMesh for normal movement
-        if (stateMachine.Zombie.Agent != null && stateMachine.Zombie.Agent.isActiveAndEnabled)
-            stateMachine.Zombie.Agent.isStopped = false;
     }
 }
