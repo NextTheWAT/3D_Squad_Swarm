@@ -48,6 +48,8 @@ public class UIManager : Singleton<UIManager>
 
     private int _selectedStageIndex; // 선택된 스테이지 인덱스를 저장할 변수
 
+    private Coroutine _timerRoutine;
+
     public int SelectedStageIndex
     {
         get { return _selectedStageIndex; }
@@ -137,7 +139,7 @@ public class UIManager : Singleton<UIManager>
         ChangeState(UIState.Game);
 
         // 게임 시작시 타이머 코루틴 시작
-        StartCoroutine(Countdown());
+        _timerRoutine = StartCoroutine(Countdown());
     }
 
     // 일시정지 키입력하는 곳에서 호출
@@ -154,8 +156,15 @@ public class UIManager : Singleton<UIManager>
         // enum 상태를 GameOver로 변경
         ChangeState(UIState.GameOver);
 
+        if (_timerRoutine != null)
+        {
+            StopCoroutine(_timerRoutine);
+            _timerRoutine = null;
+        }
+
         // 게임오버시 타이머 코루틴 정지
-        StopCoroutine(Countdown());
+        //StopCoroutine(Countdown());
+        //_timerRoutine = null;
     }
 
     // 게임 클리어 시 호출
