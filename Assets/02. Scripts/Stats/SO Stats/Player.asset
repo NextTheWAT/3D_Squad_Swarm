@@ -14,8 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAlive: 1
   stats:
-  - statType: 0
-    baseValue: 5
   - statType: 1
     baseValue: 6
   - statType: 4
