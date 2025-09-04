@@ -62,17 +62,20 @@ public class NPCBaseState : IState
 
     protected bool IsInChaseRange()
     {
+        if(stateMachine.Target == null) return false;
         float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Npc.transform.position).sqrMagnitude;
         return playerDistanceSqr <= stateMachine.Npc.Stats.GetStat(StatType.ChaseRange) * stateMachine.Npc.Stats.GetStat(StatType.ChaseRange);
     }
     protected bool IsInDetectRange()
     {
+        if (stateMachine.Target == null) return false;
         float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Npc.transform.position).sqrMagnitude;
         return playerDistanceSqr <= stateMachine.Npc.Stats.GetStat(StatType.DetectRange) * stateMachine.Npc.Stats.GetStat(StatType.DetectRange);
     }
 
     protected bool IsInAttackRange()
     {
+        if (stateMachine.Target == null) return false;
         float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Npc.transform.position).sqrMagnitude;
         return playerDistanceSqr <= stateMachine.Npc.Stats.GetStat(StatType.NPCAttackRange) * stateMachine.Npc.Stats.GetStat(StatType.NPCAttackRange);
     }
