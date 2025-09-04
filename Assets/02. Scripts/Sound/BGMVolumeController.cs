@@ -23,7 +23,13 @@ public class BGMVolumeController : MonoBehaviour
 
     public void SetVolume(float value)
     {
-        // 볼륨 값(선형)을 오디오 믹서에 맞는 로그 스케일로 변환
-        mixer.SetFloat(parameterName, Mathf.Log10(value) * 20);
+        if (value <= 0.0001f) // 0 방지
+        {
+            mixer.SetFloat(parameterName, -80f); // 무음 처리
+        }
+        else
+        {
+            mixer.SetFloat(parameterName, Mathf.Log10(value) * 20f);
+        }
     }
 }
