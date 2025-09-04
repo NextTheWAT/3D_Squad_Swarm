@@ -7,7 +7,6 @@ public class ZombieIdleState : ZombieBaseState
     public override void Enter()
     {
         stateMachine.Zombie.Agent.isStopped = true;
-        stateMachine.Zombie.Agent.speed = PlayerManager.Instance.player.Stats.GetStat(StatType.Speed);
         StartAnimation(stateMachine.Zombie.animationData.IdleParameterHash);
     }
 

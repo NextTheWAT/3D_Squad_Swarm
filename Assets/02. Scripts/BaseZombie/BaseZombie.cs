@@ -43,9 +43,20 @@ public abstract class BaseZombie : MonoBehaviour, IDamageable
 
         if (stateMachine.IsDead)
             return;
+        
+        SyncSpeedWithPlayer();
 
         stateMachine.HandleInput();
         stateMachine.Update();
+    }
+
+    protected virtual void SyncSpeedWithPlayer()
+    {
+        if (Agent != null && PlayerManager.Instance.player != null)
+        {
+            float playerSpeed = PlayerManager.Instance.player.Stats.GetStat(StatType.Speed);
+            Agent.speed = playerSpeed * stateMachine.MovementSpeedModifier;
+        }
     }
 
     protected virtual void FixedUpdate()
