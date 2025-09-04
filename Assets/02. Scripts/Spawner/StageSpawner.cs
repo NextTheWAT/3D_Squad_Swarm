@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI; // ✅
+using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class StageSpawner : MonoBehaviour
 {
@@ -18,8 +19,15 @@ public class StageSpawner : MonoBehaviour
         _shuttingDown = false;
         StageManager.OnStageStarted += HandleStageStarted;
 
+        // 현재 활성 씬이 진짜 스테이지 씬일 때만 즉시 시작
         if (StageManager.Instance != null && StageManager.Instance.Current != null)
-            HandleStageStarted(StageManager.Instance.Current);
+        {
+            var cur = StageManager.Instance.Current;
+            if (IsActiveSceneMyStage(cur))
+                HandleStageStarted(cur);
+            else
+                HardStopAndCleanup(); // 혹시 남아있던 것들 정리
+        }
     }
 
     private void OnDisable()
@@ -31,8 +39,33 @@ public class StageSpawner : MonoBehaviour
         if (_navInstance.valid) _navInstance.Remove(); // 네브 해제
     }
 
+    // === 현재 활성 씬이 스테이지 씬인지 확인 ===
+    private bool IsActiveSceneMyStage(StageConfig c)
+    {
+        if (c == null || string.IsNullOrEmpty(c.sceneName)) return false;
+        return SceneManager.GetActiveScene().name == c.sceneName;
+    }
+
+    // === 홈씬 등에서 잘못 들어왔을 때 강제 정리 ===
+    private void HardStopAndCleanup()
+    {
+        StopAllCoroutines();
+        loops.Clear();
+        aliveCounts.Clear();
+        cfg = null;
+
+        if (_navInstance.valid) _navInstance.Remove();
+    }
+
     private void HandleStageStarted(StageConfig config)
     {
+        // 현재 씬이 스테이지 씬이 아니면 아무것도 하지 않음(방어적 정리 포함)
+        if (!IsActiveSceneMyStage(config))
+        {
+            HardStopAndCleanup();
+            return;
+        }
+
         if (config == null) return;
         cfg = config;
 
@@ -55,6 +88,9 @@ public class StageSpawner : MonoBehaviour
 
     private IEnumerator RunRule(int i)
     {
+        // 혹시 중간에 씬이 바뀌면 즉시 종료
+        if (!IsActiveSceneMyStage(cfg)) yield break;
+
         var rule = cfg.spawns[i];
 
         if (rule.startCondition == StageConfig.StartCondition.AfterSeconds && rule.startDelay > 0f)
@@ -64,8 +100,10 @@ public class StageSpawner : MonoBehaviour
 
         while (true)
         {
+            if (!IsActiveSceneMyStage(cfg)) yield break; // 루프 중에도 가드
             while (aliveCounts[i] < rule.maxCount)
             {
+                if (!IsActiveSceneMyStage(cfg)) yield break; // 추가 가드
                 SpawnOne(i);
                 yield return (rule.respawnInterval > 0f)
                     ? new WaitForSeconds(rule.respawnInterval) : null;
@@ -76,6 +114,8 @@ public class StageSpawner : MonoBehaviour
 
     private void SpawnOne(int i)
     {
+        if (!IsActiveSceneMyStage(cfg)) return; // 스폰 시점 가드
+
         var rule = cfg.spawns[i];
         if (rule.prefab == null) return;
 
@@ -97,7 +137,7 @@ public class StageSpawner : MonoBehaviour
     private Vector3 GetSpawnPosOnNavMesh()
     {
         // 1) NavMeshData가 있으면 그 bounds 안에서 랜덤 → SamplePosition
-        if (cfg.spawnOnNavMesh && cfg.navMeshData != null)
+        if (cfg != null && cfg.spawnOnNavMesh && cfg.navMeshData != null)
         {
             var b = cfg.navMeshData.sourceBounds; // 에셋 인스펙터의 Source Bounds
             for (int attempt = 0; attempt < 12; attempt++)
@@ -113,29 +153,6 @@ public class StageSpawner : MonoBehaviour
                 {
                     return hit.position; // NavMesh 위 보장
                 }
-            }
-        }
-
-        // 2) (대안) 현재 씬 NavMesh에서 무조건 하나 뽑기: 삼각형 샘플
-        if (cfg.spawnOnNavMesh)
-        {
-            var tri = NavMesh.CalculateTriangulation();
-            if (tri.vertices != null && tri.indices != null && tri.indices.Length >= 3)
-            {
-                int triCount = tri.indices.Length / 3;
-                int t = Random.Range(0, triCount) * 3;
-                Vector3 a = tri.vertices[tri.indices[t + 0]];
-                Vector3 b = tri.vertices[tri.indices[t + 1]];
-                Vector3 c = tri.vertices[tri.indices[t + 2]];
-                // 무작위 내부점
-                float r1 = Random.value, r2 = Random.value;
-                if (r1 + r2 > 1f) { r1 = 1f - r1; r2 = 1f - r2; }
-                var p = a + (b - a) * r1 + (c - a) * r2;
-                // 근처 다시 샘플(고저차 보정)
-                if (NavMesh.SamplePosition(p, out var hit,
-                    cfg.navSampleMaxDistance, cfg.navAreaMask))
-                    return hit.position;
-                return p; // 최후의 보정
             }
         }
         return Vector3.zero; // 실패

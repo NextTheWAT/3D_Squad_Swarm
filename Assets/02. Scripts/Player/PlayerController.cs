@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
@@ -33,10 +34,33 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            player.OnAttackHit();
+            StartCoroutine(RotateTowardEnemy(other.transform));
             player.stateMachine.ChangeState(player.stateMachine.AttackState);
         }
     }
+
+    private IEnumerator RotateTowardEnemy(Transform enemy)
+    {
+        float elapsed = 0f;
+        float duration = 0.2f; 
+
+        Quaternion startRotation = player.transform.rotation;
+        Vector3 direction = enemy.position - player.transform.position;
+        direction.y = 0f; // Keep flat
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            player.transform.rotation = Quaternion.Slerp(startRotation, targetRotation, elapsed / duration);
+            yield return null;
+        }
+
+        // Ensure it ends exactly at target rotation
+        player.transform.rotation = targetRotation;
+    }
+
+
 
     // Callback for the Escape key / Pause input
     private void OnPausePressed(InputAction.CallbackContext context)

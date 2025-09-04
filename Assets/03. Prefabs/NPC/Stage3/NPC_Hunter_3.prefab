@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3248421644716454524}
   - component: {fileID: 3164505151219610135}
   - component: {fileID: 2867148612386184533}
+  - component: {fileID: -7455848836520548846}
   m_Layer: 0
   m_Name: NPC_Hunter_3
   m_TagString: Enemy
@@ -246,6 +247,29 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!136 &-7455848836520548846
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7842510224554946093}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &5442388098989083772
 PrefabInstance:
   m_ObjectHideFlags: 0

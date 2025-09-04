@@ -713,6 +713,7 @@ GameObject:
   - component: {fileID: 6481983343525803344}
   - component: {fileID: 76676059257199285}
   - component: {fileID: 1209092830760242364}
+  - component: {fileID: 4309220490124123934}
   m_Layer: 0
   m_Name: NPC_Woman_1
   m_TagString: Enemy
@@ -823,6 +824,29 @@ CapsuleCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Height: 1.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!136 &4309220490124123934
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5210098199429294078}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &5273068706234798550
