@@ -604,7 +604,7 @@ MonoBehaviour:
     attackParameterName: Attack
     deathParameterName: Death
     riseParameterName: Rise
-  Indicator: {fileID: 0}
+  Indicator: {fileID: 5056053990865467797}
 --- !u!114 &1008932351582022511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -710,6 +710,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4681013151745196042}
+  - component: {fileID: 10694834883160398}
   m_Layer: 0
   m_Name: PivotArrow
   m_TagString: Untagged
@@ -725,14 +726,32 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5056053990865467797}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3616096816966253492}
   m_Father: {fileID: 6619727096608826113}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &10694834883160398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5056053990865467797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ba2b8c05abcfac428e578ac54e374e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyTag: Enemy
+  player: {fileID: 6619727096608826113}
+  arrowRenderer: {fileID: 1230439378423776149}
+  farColor: {r: 0, g: 1, b: 0, a: 1}
+  closeColor: {r: 1, g: 0, b: 0, a: 1}
+  noEnemyColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!1 &5347099734081325743
 GameObject:
   m_ObjectHideFlags: 0
@@ -1071,13 +1090,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7208529537656902260}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
   m_LocalPosition: {x: 0.018, y: 0, z: 0}
   m_LocalScale: {x: 25, y: 25, z: 25}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4681013151745196042}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: -90}
 --- !u!33 &4767539016392190394
 MeshFilter:
   m_ObjectHideFlags: 0
