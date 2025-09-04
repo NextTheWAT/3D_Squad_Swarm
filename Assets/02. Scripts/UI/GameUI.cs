@@ -41,6 +41,13 @@ public class GameUI : BaseUI
         maxTime = UIManager.Instance.remainingTime; // maxTime을 UIManager의 초기 시간으로 설정
     }
 
+    // UI 활성화 시 감염도 초기화
+    private void OnEnable()
+    {
+        // UI매니저의 현재감염도를 0으로 초기화
+        uiManager.currentInfection = 0f;
+    }
+
     private void Update()
     {
         // UI매니저의 감염도를 가져와 업데이트
