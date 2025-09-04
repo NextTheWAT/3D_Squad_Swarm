@@ -49,6 +49,4 @@ public class PlayerController : MonoBehaviour
         else
             Debug.LogWarning("UIManager instance not found!");
     }
-
-    //테스팅 테스팅 123
 }

@@ -34,7 +34,6 @@ public class Player : MonoBehaviour, IDamageable
 
     private void Start()
     {
-        //Cursor.lockState = CursorLockMode.Locked;
     }
 
 
