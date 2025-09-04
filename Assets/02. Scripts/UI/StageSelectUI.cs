@@ -16,6 +16,7 @@ public class StageSelectUI : BaseUI
     private CameraManager cameraManager;
 
     public Animator animator;
+    public GameObject human;
 
     private AudioSource audioSource;
 
@@ -85,9 +86,16 @@ public class StageSelectUI : BaseUI
     {
         uiManager.SelectedStageIndex = stageIndex; // 선택된 스테이지 인덱스를 변수에 저장해둠 -> 인트로씬에서 사용할 예정
 
+
         audioSource.PlayOneShot(audioSource.clip);
+
+        human.SetActive(true); // 인간 오브젝트 활성화
         
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(1.5f);
+        
+        human.SetActive(false); // 인간 오브젝트 비활성화
+
+        yield return new WaitForSeconds(1.5f);
         animator.SetTrigger("StartStage");
 
         yield return new WaitForSeconds(2.0f);

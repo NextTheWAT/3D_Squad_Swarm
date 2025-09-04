@@ -8176,16 +8176,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIManager
       objectReference: {fileID: 0}
-    - target: {fileID: 4489663738596358484, guid: 9aa81f1cba203ea4eac3db5cba01e7eb, type: 3}
-      propertyPath: m_Color.a
-      value: 0.69411767
-      objectReference: {fileID: 0}
-    - target: {fileID: 5159867234807564124, guid: 9aa81f1cba203ea4eac3db5cba01e7eb, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5338864229883739069, guid: 9aa81f1cba203ea4eac3db5cba01e7eb, type: 3}
-      propertyPath: m_AnchorMax.y
+    - target: {fileID: 7098061160655550930, guid: 9aa81f1cba203ea4eac3db5cba01e7eb, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8253547667901283262, guid: 9aa81f1cba203ea4eac3db5cba01e7eb, type: 3}
@@ -8226,10 +8218,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8253547667901283262, guid: 9aa81f1cba203ea4eac3db5cba01e7eb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8307753792171762623, guid: 9aa81f1cba203ea4eac3db5cba01e7eb, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
