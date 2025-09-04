@@ -14,6 +14,9 @@ public class Player : MonoBehaviour, IDamageable
 
     public PlayerStateMachine stateMachine;
 
+    [Header("GameObjects")]
+    public GameObject Indicator;
+
     private void Awake()
     {
         AnimationData.Initialize();
@@ -90,12 +93,22 @@ public class Player : MonoBehaviour, IDamageable
         if (stateMachine.Player.Controller != null)
         {
             stateMachine.Player.Controller.enabled = false;
+            Indicator.SetActive(false);
+
+            if (CameraDeathEffect.Instance != null)
+            {
+                Debug.Log("PlayDeathCamera");
+                CameraDeathEffect.Instance.PlayDeathCamera(transform);
+            }
+
             if (UIManager.Instance != null)
             {
                 UIManager.Instance.SetGameOver();
             }
             else
+            {
                 Debug.LogWarning("UIManager instance not found!");
+            }
         }
     }
 

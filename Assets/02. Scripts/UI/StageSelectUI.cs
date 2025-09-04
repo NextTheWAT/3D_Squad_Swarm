@@ -40,6 +40,9 @@ public class StageSelectUI : BaseUI
 
     private void OnEnable()
     {
+        // 처음 활성화될 때 패널 비활성화
+        panel.gameObject.SetActive(false);
+
         if (cameraManager == null)
         {
             cameraManager = CameraManager.Instance;
