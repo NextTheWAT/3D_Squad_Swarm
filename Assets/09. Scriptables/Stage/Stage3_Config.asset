@@ -16,46 +16,46 @@ MonoBehaviour:
   spawns:
   - name: NPC_Man_3
     prefab: {fileID: 2972642708918744755, guid: 0f3e0b91c8d360a4a977cbb915f56c14, type: 3}
-    initialCount: 5
-    maxCount: 10
-    respawnInterval: 5
+    initialCount: 40
+    maxCount: 50
+    respawnInterval: 30
     startCondition: 1
     startDelay: 1
   - name: NPC_Woman_3
     prefab: {fileID: 2451761408369611063, guid: 41370a52aa9c30747bae5d25519b21f2, type: 3}
-    initialCount: 5
-    maxCount: 10
-    respawnInterval: 5
+    initialCount: 40
+    maxCount: 50
+    respawnInterval: 30
     startCondition: 1
     startDelay: 1
   - name: NPC_Hunter_3
     prefab: {fileID: 7842510224554946093, guid: 9d55e30fc2253284995d9b90b308326e, type: 3}
-    initialCount: 5
-    maxCount: 10
-    respawnInterval: 5
+    initialCount: 15
+    maxCount: 20
+    respawnInterval: 10
     startCondition: 1
-    startDelay: 1
+    startDelay: 3
   - name: NPC_Hunter_W_3
     prefab: {fileID: 5944571120269254071, guid: 5a638fafbdae7a343bbbf00854f70a7b, type: 3}
-    initialCount: 5
-    maxCount: 10
-    respawnInterval: 5
+    initialCount: 15
+    maxCount: 20
+    respawnInterval: 10
     startCondition: 1
-    startDelay: 1
+    startDelay: 3
   - name: NPC_VIP_M_3
     prefab: {fileID: 5507003941367423812, guid: 9e74fbba0da91754780e6e16d19a3ff3, type: 3}
     initialCount: 5
-    maxCount: 10
-    respawnInterval: 5
+    maxCount: 5
+    respawnInterval: 3
     startCondition: 1
-    startDelay: 1
+    startDelay: 5
   - name: NPC_VIP_W_3
     prefab: {fileID: 7087763673012793474, guid: b404757fc4bdb1e4498cf9f76e47efbd, type: 3}
     initialCount: 5
-    maxCount: 10
-    respawnInterval: 5
+    maxCount: 5
+    respawnInterval: 3
     startCondition: 1
-    startDelay: 1
+    startDelay: 5
   spawnOnNavMesh: 1
   navMeshData: {fileID: 23800000, guid: 82e665f9aaabfe741901d7a8115f2bc5, type: 2}
   navSampleMaxDistance: 5
