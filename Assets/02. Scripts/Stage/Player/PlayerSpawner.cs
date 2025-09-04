@@ -3,13 +3,19 @@ using UnityEngine;
 public class PlayerSpawner : MonoBehaviour
 {
     [Header("Assign in Inspector")]
-    public GameObject playerPrefab;   // 플레이어 프리팹
-    public Transform spawnPoint;      // 맵에 배치한 스폰 포인트(Transform)
+    public GameObject playerPrefab;        // 플레이어 프리팹
+    public Transform spawnPoint;           // 스폰 위치/회전
+
+    [Header("Camera Prefabs (instantiate only)")]
+    public GameObject mainCameraPrefab;    // 메인 카메라 프리팹
+    public GameObject subCameraPrefab;     // 서브 카메라 프리팹(있으면)
 
     [Header("Options")]
     public bool destroyExistingPlayer = true; // 기존 Player 있으면 제거
 
-    private GameObject current;
+    private GameObject playerInstance;
+    private GameObject mainCamInstance;
+    private GameObject subCamInstance;
 
     void Start()
     {
@@ -25,8 +31,15 @@ public class PlayerSpawner : MonoBehaviour
             if (existing) Destroy(existing);
         }
 
-        current = Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
+        // 1) 플레이어 스폰
+        playerInstance = Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
 
+        // 2) 카메라 프리팹들 그냥 같이 생성(추가 세팅 X)
+        if (mainCameraPrefab != null)
+            mainCamInstance = Instantiate(mainCameraPrefab);
+
+        if (subCameraPrefab != null)
+            subCamInstance = Instantiate(subCameraPrefab);
     }
 
 #if UNITY_EDITOR
