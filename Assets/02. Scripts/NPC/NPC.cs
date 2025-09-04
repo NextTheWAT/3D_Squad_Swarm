@@ -30,7 +30,7 @@ public class NPC : MonoBehaviour, IDamageable
     public NavMeshAgent agent;
     
 
-    private void Awake()
+    private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         AnimationData.Initialize();

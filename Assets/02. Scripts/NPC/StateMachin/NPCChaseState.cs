@@ -10,8 +10,7 @@ public class NPCChaseState : NPCGroundState
 
     public override void Enter()
     {
-        stateMachine.MovementSpeedModifier = 1f; // Run = full speed
-        stateMachine.RotationDampingModifier = 1f;
+        stateMachine.Npc.agent.speed = 4f; //»ç³É²Û¼Óµµ¸¸ º¯°æµÊ
         base.Enter();
         StartAnimation(stateMachine.Npc.AnimationData.RunParameterHash);
     }

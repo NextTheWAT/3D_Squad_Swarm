@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerManager : Singleton<PlayerManager>
 {
-    [SerializeField] private Player player;
+    [SerializeField] public Player player;
 
 
     private void Awake()

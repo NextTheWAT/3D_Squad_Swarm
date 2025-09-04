@@ -9,6 +9,7 @@ public class ZombieChasingState : ZombieBaseState
     {
         stateMachine.MovementSpeedModifier = 1f;
         stateMachine.RotationDampingModifier = 1f;
+        stateMachine.Zombie.Agent.speed = PlayerManager.Instance.player.Stats.GetStat(StatType.Speed);
         StartAnimation(stateMachine.Zombie.animationData.WalkParameterHash);
     }
 

@@ -9,8 +9,14 @@ public class NPCFleeState : NPCGroundState
     }
     public override void Enter()
     {
-        stateMachine.MovementSpeedModifier = 1f; // Run = full speed
-        stateMachine.RotationDampingModifier = 1f;
+        if (stateMachine.Npc.npcType == NPCType.Civilian)
+        {
+            stateMachine.Npc.agent.speed = 3;
+        }
+        else if (stateMachine.Npc.npcType == NPCType.VIP)
+        {
+            stateMachine.Npc.agent.speed = PlayerManager.Instance.player.Stats.GetStat(StatType.Speed);
+        }
         base.Enter();
         StartAnimation(stateMachine.Npc.AnimationData.RunParameterHash);
     }
