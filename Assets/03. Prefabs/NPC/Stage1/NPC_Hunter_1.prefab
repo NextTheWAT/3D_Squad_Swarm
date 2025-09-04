@@ -89,6 +89,7 @@ MonoBehaviour:
     attackParameterName: Attack
     deathParameterName: Death
     riseParameterName: Rise
+    chargeParameterName: Charge
   agent: {fileID: 0}
 --- !u!114 &1287767407822025331
 MonoBehaviour:

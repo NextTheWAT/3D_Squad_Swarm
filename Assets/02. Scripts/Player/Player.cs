@@ -30,6 +30,9 @@ public class Player : MonoBehaviour, IDamageable
         stateMachine.ChangeState(stateMachine.IdleState);
 
         ForceReceiver = GetComponent<ForceReceiver>();
+
+        if (PlayerManager.Instance != null)
+            PlayerManager.Instance.player = this;
     }
 
     private void Start()
