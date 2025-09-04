@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 public class FollowerZombie : MonoBehaviour, IDamageable
 {
@@ -97,9 +98,28 @@ public class FollowerZombie : MonoBehaviour, IDamageable
     {
         if (other.CompareTag("Enemy"))
         {
-            EnemyTarget = other.transform;
+            StartCoroutine(RotateTowardEnemy(other.transform));
             stateMachine.ChangeState(stateMachine.AttackState);
         }
+    }
+
+    private IEnumerator RotateTowardEnemy(Transform enemy)
+    {
+        float elapsed = 0f;
+        float duration = 0.2f; 
+
+        Quaternion startRotation = transform.rotation;
+        Vector3 direction = enemy.position - transform.position;
+        direction.y = 0f; // Keep flat
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            transform.rotation = Quaternion.Slerp(startRotation, targetRotation, elapsed / duration);
+            yield return null;
+        }
+        transform.rotation = targetRotation;
     }
 
     private void OnTriggerExit(Collider other)
