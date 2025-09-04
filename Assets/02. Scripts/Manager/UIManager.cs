@@ -211,6 +211,15 @@ public class UIManager : Singleton<UIManager>
 
         // 사냥한 인간 수 1증가
         killCount++;
+
+        if (currentInfection >= maxInfection)
+        {
+            // 타임오버시 타이머 코루틴 정지
+            StopCoroutine(Countdown());
+
+            // 감염도가 최대치에 도달하면 게임 오버 처리
+            SetGameClear();
+        }
     }
 
     IEnumerator Countdown()
@@ -267,6 +276,9 @@ public class UIManager : Singleton<UIManager>
         {
             // UI 상태를 GameUI로 변경
             ChangeState(UIState.Game);
+
+            // 시작시 카운트다운 코루틴 시작
+            StartCoroutine(Countdown());
         }
 
         // 현재 상태를 이전 상태에 저장하고,
