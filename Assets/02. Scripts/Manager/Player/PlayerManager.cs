@@ -14,7 +14,13 @@ public class PlayerManager : Singleton<PlayerManager>
         base.Awake();
         player = FindObjectOfType<Player>();
 
-        playerSpeed = player.Stats.GetStat(StatType.Speed);
+    }
+    private void OnEnable()
+    {
+        if (player != null)
+        {
+            playerSpeed = player.Stats.GetStat(StatType.Speed);
+        }
     }
 
     public void PlayerSpeedUp()

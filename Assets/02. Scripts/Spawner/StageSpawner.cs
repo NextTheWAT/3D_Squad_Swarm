@@ -28,6 +28,7 @@ public class StageSpawner : MonoBehaviour
             else
                 HardStopAndCleanup(); // 혹시 남아있던 것들 정리
         }
+
     }
 
     private void OnDisable()

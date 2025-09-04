@@ -34,7 +34,10 @@ public class Player : MonoBehaviour, IDamageable
         if (PlayerManager.Instance != null)
             PlayerManager.Instance.player = this;
     }
-
+    private void OnEnable()
+    {
+        PlayerManager.Instance.PlayerSpeedReset(); // 스테이지 시작시 플레이어 속도 초기화
+    }
     private void Start()
     {
     }
