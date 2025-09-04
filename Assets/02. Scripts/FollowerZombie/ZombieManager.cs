@@ -18,6 +18,8 @@ public class ZombieManager : MonoBehaviour
     private float targetDistance;
     private CinemachineFramingTransposer transposer;
 
+    public float GlobalSpeedBoost { get; private set; } = 0f;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -50,6 +52,9 @@ public class ZombieManager : MonoBehaviour
         }
     }
 
+    // -----------------
+    // Zombie management
+    // -----------------
     public void RegisterZombie(FollowerZombie zombie)
     {
         if (!zombies.Contains(zombie))
@@ -72,5 +77,14 @@ public class ZombieManager : MonoBehaviour
     {
         int zoomSteps = zombies.Count / 20;
         targetDistance = Mathf.Min(baseDistance + zoomSteps * distanceStep, maxDistance);
+    }
+
+    // -----------------
+    // Global stat buffs
+    // -----------------
+    public void AddGlobalSpeed(float amount)
+    {
+        GlobalSpeedBoost += amount;
+        Debug.Log($"Global zombie speed increased by {amount}. Total = {GlobalSpeedBoost}");
     }
 }

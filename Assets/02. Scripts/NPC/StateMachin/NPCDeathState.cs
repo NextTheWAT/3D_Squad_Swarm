@@ -17,6 +17,7 @@ public class NPCDeathState : NPCBaseState
         if (stateMachine.Npc.npcType == NPCType.VIP)
         {
             PlayerManager.Instance.PlayerSpeedUp();
+            ZombieManager.Instance.AddGlobalSpeed(0.5f);
         }
         if(stateMachine.Npc.npcType == NPCType.Hunter)
         {

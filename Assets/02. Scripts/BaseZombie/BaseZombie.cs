@@ -34,6 +34,10 @@ public abstract class BaseZombie : MonoBehaviour, IDamageable
     protected virtual void Start()
     {
         PlayerTarget = GameObject.FindWithTag("Player").transform;
+        if (Agent != null)
+        {
+            Agent.speed = Stats.GetStat(StatType.Speed);
+        }
     }
 
     protected virtual void Update()
@@ -46,8 +50,9 @@ public abstract class BaseZombie : MonoBehaviour, IDamageable
 
         if (Agent != null)
         {
-            Agent.speed = Stats.GetStat(StatType.Speed);
-            Debug.Log("Zombie Speed: " + Agent.speed);
+            float baseSpeed = Stats.GetStat(StatType.Speed);
+            float totalSpeed = baseSpeed + ZombieManager.Instance.GlobalSpeedBoost;
+            Agent.speed = totalSpeed;
         }
 
         stateMachine.HandleInput();
