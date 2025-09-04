@@ -37,9 +37,6 @@ public class NPCStateMachine : StateMachine
         ChangeState(DeathState);
     }
 
-    public float MovementSpeed => Npc.Stats.GetStat(StatType.Speed) * MovementSpeedModifier;
-    public float RotationDamping => Npc.Stats.GetStat(StatType.RotationDamping) * RotationDampingModifier;
-
     // 매 프레임 호출: 플레이어/좀비 중 가장 가까운 오브젝트를 Target으로
     public void RefreshTargetEveryFrame()
     {

@@ -10,7 +10,21 @@ public class NPCIdleState : NPCGroundState
     public override void Enter()
     {
         base.Enter();
-        StartAnimation(stateMachine.Npc.AnimationData.WalkParameterHash);
+        //이동속도
+        if (stateMachine.Npc.npcType == NPCType.Hunter)
+        {
+            stateMachine.Npc.agent.speed = 3;
+        }
+        else if (stateMachine.Npc.npcType == NPCType.Civilian)
+        {
+            stateMachine.Npc.agent.speed = 2;
+        }
+        else if (stateMachine.Npc.npcType == NPCType.VIP) 
+        {
+            stateMachine.Npc.agent.speed = PlayerManager.Instance.player.stateMachine.MovementSpeed;
+        }
+
+            StartAnimation(stateMachine.Npc.AnimationData.WalkParameterHash);
 
 
         stateMachine.Npc.agent.isStopped = false; // NavMeshAgent 켜기
@@ -28,7 +42,7 @@ public class NPCIdleState : NPCGroundState
 
 
         // 추격/도망 조건 확인
-        if (stateMachine.Npc.npcType == NPCType.Hunter && IsInChaseRange())
+        if (stateMachine.Npc.npcType == NPCType.Hunter && IsInDetectRange())
         {
             stateMachine.ChangeState(stateMachine.ChaseState);
             return;
@@ -39,6 +53,6 @@ public class NPCIdleState : NPCGroundState
             return;
         }
 
-        
+
     }
 }
