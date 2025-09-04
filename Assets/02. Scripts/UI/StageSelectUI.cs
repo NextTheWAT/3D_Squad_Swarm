@@ -19,6 +19,8 @@ public class StageSelectUI : BaseUI
 
     private AudioSource audioSource;
 
+    public Image panel; // 버튼 클릭 막을 패널 이미지
+
     public override void Init(UIManager uiManager)
     {
         base.Init(uiManager);
@@ -30,7 +32,10 @@ public class StageSelectUI : BaseUI
         stage2Button.onClick.AddListener(() => OnClickStartStageButton(4)); // 4번 씬(스테이지2)으로 이동
         stage3Button.onClick.AddListener(() => OnClickStartStageButton(5)); // 5번 씬(스테이지3)으로 이동
 
-        
+        if (panel != null)
+        {
+            panel.gameObject.SetActive(false);
+        }
     }
 
     private void OnEnable()
@@ -69,6 +74,7 @@ public class StageSelectUI : BaseUI
     public void OnClickStartStageButton(int stageIndex)
     {
         StartCoroutine(DelayStageStart(stageIndex));
+        panel.gameObject.SetActive(true);
     }
 
     // 0초 지연하여 차 문열고 닫는 소리 재생 후 스테이지 시작
