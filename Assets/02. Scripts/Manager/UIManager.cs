@@ -150,7 +150,7 @@ public class UIManager : Singleton<UIManager>
         ChangeState(UIState.Game);
 
         // 게임 시작시 타이머 코루틴 시작
-        _timerRoutine = StartCoroutine(Countdown());
+        //_timerRoutine = StartCoroutine(Countdown());
     }
 
     // 일시정지 키입력하는 곳에서 호출
@@ -278,7 +278,7 @@ public class UIManager : Singleton<UIManager>
             ChangeState(UIState.Game);
 
             // 시작시 카운트다운 코루틴 시작
-            StartCoroutine(Countdown());
+            _timerRoutine = StartCoroutine(Countdown());
         }
 
         // 현재 상태를 이전 상태에 저장하고,
