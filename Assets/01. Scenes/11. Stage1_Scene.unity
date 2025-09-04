@@ -1095,9 +1095,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3267546728036891639, guid: abfc9cd58b949d746861d682307eb3cf, type: 3}
+      propertyPath: m_DefaultArea
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3267546728036891639, guid: abfc9cd58b949d746861d682307eb3cf, type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: 4a189b0b458b6164b870200c4c345a45, type: 2}
+      objectReference: {fileID: 23800000, guid: 988cacbf373120f4e883adc741032eee, type: 2}
     - target: {fileID: 3293862520403043379, guid: abfc9cd58b949d746861d682307eb3cf, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -2718,7 +2722,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2897040754599468449, guid: abfc9cd58b949d746861d682307eb3cf, type: 3}
+    - {fileID: 7417719102702886886, guid: abfc9cd58b949d746861d682307eb3cf, type: 3}
+    - {fileID: 8639213723536888894, guid: abfc9cd58b949d746861d682307eb3cf, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
