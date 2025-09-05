@@ -5,6 +5,8 @@ public class CameraOcclusion : MonoBehaviour
 {
     [Range(0f, 1f)]
     public float transparentAlpha = 0.3f; // How transparent the building gets
+    public float detectionRadius = 5f;   // Radius of the fixed detection sphere
+    public LayerMask buildingLayer;      // Layer for buildings
 
     private class RendererData
     {
@@ -13,80 +15,78 @@ public class CameraOcclusion : MonoBehaviour
     }
 
     private Dictionary<Transform, List<RendererData>> hiddenRenderers = new Dictionary<Transform, List<RendererData>>();
-    private Dictionary<Transform, int> parentOverlapCount = new Dictionary<Transform, int>();
 
-    private void OnTriggerEnter(Collider other)
+    private HashSet<Transform> currentlyDetected = new HashSet<Transform>();
+
+    private void Update()
     {
-        if (!other.TryGetComponent<MeshRenderer>(out _)) return;
+        // Detect buildings in range using a fixed sphere
+        Collider[] hits = Physics.OverlapSphere(transform.position, detectionRadius, buildingLayer);
+        HashSet<Transform> newDetected = new HashSet<Transform>();
 
-        Transform parent = FindOcclusionRoot(other.transform);
-
-        if (parent == null) return;
-
-        // Increment overlap count
-        if (!parentOverlapCount.ContainsKey(parent))
-            parentOverlapCount[parent] = 0;
-        parentOverlapCount[parent]++;
-
-        // Only make transparent if it's the first overlap
-        if (!hiddenRenderers.ContainsKey(parent))
+        foreach (var hit in hits)
         {
-            var renderers = new List<MeshRenderer>(parent.GetComponentsInChildren<MeshRenderer>());
-            var rendererDataList = new List<RendererData>();
+            if (!hit.TryGetComponent<MeshRenderer>(out _)) continue;
 
-            foreach (var r in renderers)
-            {
-                if (r.gameObject.name.Contains("Sidewalk"))
-                    continue;
+            Transform parent = FindOcclusionRoot(hit.transform);
+            if (parent == null) continue;
 
-                RendererData data = new RendererData
-                {
-                    renderer = r,
-                    originalMaterials = r.materials
-                };
-                rendererDataList.Add(data);
+            newDetected.Add(parent);
 
-                Material[] newMats = new Material[r.materials.Length];
-                for (int i = 0; i < r.materials.Length; i++)
-                {
-                    Material m = new Material(r.materials[i]);
-                    MakeMaterialTransparent(m);
-                    newMats[i] = m;
-                }
-                r.materials = newMats;
-            }
-
-            if (rendererDataList.Count > 0)
-                hiddenRenderers[parent] = rendererDataList;
+            if (!currentlyDetected.Contains(parent))
+                MakeTransparent(parent);
         }
+
+        // Restore materials for objects no longer detected
+        foreach (var parent in currentlyDetected)
+        {
+            if (!newDetected.Contains(parent))
+                RestoreMaterials(parent);
+        }
+
+        currentlyDetected = newDetected;
     }
 
-    private void OnTriggerExit(Collider other)
+    private void MakeTransparent(Transform parent)
     {
-        if (!other.TryGetComponent<MeshRenderer>(out _)) return;
+        if (hiddenRenderers.ContainsKey(parent)) return;
 
-        Transform parent = FindOcclusionRoot(other.transform);
+        var renderers = new List<MeshRenderer>(parent.GetComponentsInChildren<MeshRenderer>());
+        var rendererDataList = new List<RendererData>();
 
-        if (parent == null) return;
-
-        if (!parentOverlapCount.ContainsKey(parent)) return;
-
-        // Decrement overlap count
-        parentOverlapCount[parent]--;
-
-        // Only restore materials when all child colliders have exited
-        if (parentOverlapCount[parent] <= 0)
+        foreach (var r in renderers)
         {
-            if (hiddenRenderers.ContainsKey(parent))
+            if (r.gameObject.name.Contains("Sidewalk")) continue;
+
+            RendererData data = new RendererData
             {
-                foreach (var data in hiddenRenderers[parent])
-                    data.renderer.materials = data.originalMaterials;
+                renderer = r,
+                originalMaterials = r.materials
+            };
+            rendererDataList.Add(data);
 
-                hiddenRenderers.Remove(parent);
+            Material[] newMats = new Material[r.materials.Length];
+            for (int i = 0; i < r.materials.Length; i++)
+            {
+                Material m = new Material(r.materials[i]);
+                MakeMaterialTransparent(m);
+                newMats[i] = m;
             }
-
-            parentOverlapCount.Remove(parent);
+            r.materials = newMats;
         }
+
+        if (rendererDataList.Count > 0)
+            hiddenRenderers[parent] = rendererDataList;
+    }
+
+    private void RestoreMaterials(Transform parent)
+    {
+        if (!hiddenRenderers.ContainsKey(parent)) return;
+
+        foreach (var data in hiddenRenderers[parent])
+            data.renderer.materials = data.originalMaterials;
+
+        hiddenRenderers.Remove(parent);
     }
 
     private void MakeMaterialTransparent(Material mat)
