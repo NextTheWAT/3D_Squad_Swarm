@@ -88,10 +88,11 @@ public class StageSelectUI : BaseUI
 
 
         audioSource.PlayOneShot(audioSource.clip);
+        yield return new WaitForSeconds(0.5f);
 
         human.SetActive(true); // 인간 오브젝트 활성화
         
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.0f);
         
         human.SetActive(false); // 인간 오브젝트 비활성화
 

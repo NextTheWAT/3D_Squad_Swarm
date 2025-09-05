@@ -8,11 +8,15 @@ public class PlayerController : MonoBehaviour
     public PlayerInput.PlayerMovementActions playerActions { get; private set; }
     public Player player { get; private set; }
 
+    private AudioSource attackSoundEffect;
+
     private void Awake()
     {
         playerInputs = new PlayerInput();
         playerActions = playerInputs.PlayerMovement;
         player = GetComponent<Player>();
+
+        attackSoundEffect = GetComponent<AudioSource>();
     }
 
     private void OnEnable()
@@ -34,6 +38,8 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
+            attackSoundEffect.PlayOneShot(attackSoundEffect.clip);
+
             if (other.TryGetComponent<IDamageable>(out var damageable))
             {
                 damageable.OnTakeDamage(false);
