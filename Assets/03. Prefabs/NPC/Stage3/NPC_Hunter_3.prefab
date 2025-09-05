@@ -76,7 +76,7 @@ MonoBehaviour:
   firePoint: {fileID: 5442388098988691686}
   bulletPrefab: {fileID: 88251313295885787, guid: d722eab6f2136c94784ebb215e06c34f, type: 3}
   bulletSpeed: 5
-  zombiePrefab: {fileID: 1666421720722391696, guid: cc7fd377968814a4fbb324262953a500, type: 3}
+  zombiePrefab: {fileID: 0}
   zombieEffect: {fileID: 2771775932424238379, guid: f8e4365a7130aaf43aecc92064f6d17d, type: 3}
   <AnimationData>k__BackingField:
     groundParameterName: '@Ground'
@@ -89,6 +89,7 @@ MonoBehaviour:
     attackParameterName: Attack
     deathParameterName: Death
     riseParameterName: Rise
+    chargeParameterName: Charge
   agent: {fileID: 0}
 --- !u!114 &6366853452793967560
 MonoBehaviour:
