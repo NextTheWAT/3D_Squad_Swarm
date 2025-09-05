@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transparentAlpha: 0.3
-  detectionRadius: 5
+  detectionRadius: 3
   buildingLayer:
     serializedVersion: 2
     m_Bits: 1
