@@ -6,21 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/01. Scenes/00.HomeScene_PMJ.unity
+    path: Assets/01. Scenes/01. MainScene/00.HomeScene_PMJ.unity
     guid: a4dd813fcf01d954c99e84cbaefc98e1
   - enabled: 1
-    path: Assets/01. Scenes/01.IntroScene_PMJ.unity
+    path: Assets/01. Scenes/01. MainScene/01.IntroScene_PMJ.unity
     guid: b24ae5ffda49ebe4f9019f7c3cb78ca5
   - enabled: 1
-    path: Assets/01. Scenes/02.GameOverScene_TimeUP.unity
+    path: Assets/01. Scenes/01. MainScene/02.GameOverScene_TimeUP.unity
     guid: e43bf8be2524df849b52310bb8ed3c9c
   - enabled: 1
-    path: Assets/01. Scenes/11. Stage1_Scene.unity
+    path: Assets/01. Scenes/01. MainScene/11. Stage1_Scene.unity
     guid: d0ee1626c0c09cc4594702314c1605bc
   - enabled: 1
-    path: Assets/01. Scenes/12. Stage2_Scene.unity
+    path: Assets/01. Scenes/01. MainScene/12. Stage2_Scene.unity
     guid: 60eaca25496c979469e28104484d94f1
   - enabled: 1
-    path: Assets/01. Scenes/13. Stage3_Scene.unity
+    path: Assets/01. Scenes/01. MainScene/13. Stage3_Scene.unity
     guid: 7b61cb7a71e90fe4391e908128ac27a1
   m_configObjects: {}

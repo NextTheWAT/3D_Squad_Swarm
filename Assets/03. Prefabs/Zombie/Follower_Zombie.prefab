@@ -362,6 +362,7 @@ MonoBehaviour:
     attackParameterName: Attack
     deathParameterName: Death
     riseParameterName: Rise
+    chargeParameterName: Charge
   followRange: 2
 --- !u!114 &6104787351263095154
 MonoBehaviour:
