@@ -223,6 +223,7 @@ MonoBehaviour:
   distanceStep: 2
   maxDistance: 50
   lerpSpeed: 2
+  GlobalSpeedBoost: 0
 --- !u!4 &1020648127
 Transform:
   m_ObjectHideFlags: 0
