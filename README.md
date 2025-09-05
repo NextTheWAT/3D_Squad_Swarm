@@ -3,7 +3,7 @@
 <img width="1024" height="1024" alt="GameTitle_SquadSwarm" src="https://github.com/user-attachments/assets/7086f5f8-9d51-44a3-88ce-c603589444ca" />
 
 ## 🎮 게임소개
-작은 맵에서 플레이어 vs NPC vs 좀비가 빠르게 충돌하는 라운드형 3D 액션입니다.  
+작은 맵에서 플레이어(좀비) vs NPC 가 빠르게 충돌하는 라운드형 3D 액션입니다.  
 모든 캐릭터는 상태머신(FSM) 으로 움직이며, 스테이지 설정(SO) 과 스폰 규칙으로 라운드 난이도를 제어합니다.  
 UI는 인트로 → 스테이지선택 → 게임 → 일시정지/클리어/게임오버/타임업으로 전환됩니다.  
 
