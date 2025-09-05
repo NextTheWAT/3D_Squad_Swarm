@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23dcf32b89c79804597d553deb23892c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 1028705882524650444}
+  firePoint: {fileID: 5227001606013186043}
   lineRenderer: {fileID: 1258738951561864903}
   maxDistance: 20
 --- !u!120 &1258738951561864903
@@ -257,7 +257,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5227001606013186043}
   m_Layer: 0
-  m_Name: fire Point
+  m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

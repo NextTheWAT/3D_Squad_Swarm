@@ -830,7 +830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npcType: 1
-  firePoint: {fileID: 8516600399622466551}
+  firePoint: {fileID: 7836496486065046094}
   bulletPrefab: {fileID: 88251313295885787, guid: d722eab6f2136c94784ebb215e06c34f, type: 3}
   bulletSpeed: 5
   zombiePrefab: {fileID: 4668654602810645675, guid: 99ce26a6b9af2e8449273741e745d146, type: 3}
@@ -897,7 +897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23dcf32b89c79804597d553deb23892c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 8516600399622466551}
+  firePoint: {fileID: 7836496486065046094}
   lineRenderer: {fileID: 4653082520465406212}
   maxDistance: 20
 --- !u!120 &4653082520465406212

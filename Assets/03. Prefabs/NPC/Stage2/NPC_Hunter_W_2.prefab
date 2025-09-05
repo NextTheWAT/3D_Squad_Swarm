@@ -204,7 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23dcf32b89c79804597d553deb23892c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 2897265158101540763}
+  firePoint: {fileID: 6555464414777016274}
   lineRenderer: {fileID: 2921388350499018626}
   maxDistance: 20
 --- !u!120 &2921388350499018626

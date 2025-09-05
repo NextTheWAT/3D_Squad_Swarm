@@ -7,7 +7,7 @@ public class PlayerManager : Singleton<PlayerManager>
     [SerializeField] public Player player;
 
 
-    public float playerSpeed = 0f;
+    public float playerSpeed = 6f;
 
     private void Awake()
     {
@@ -19,7 +19,7 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         if (player != null)
         {
-            playerSpeed = player.Stats.GetStat(StatType.Speed);
+            playerSpeed = 6f;//playerSpeed = player.Stats.GetStat(StatType.Speed);
         }
     }
 
