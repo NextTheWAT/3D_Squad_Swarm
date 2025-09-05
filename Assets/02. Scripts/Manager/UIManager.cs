@@ -268,6 +268,8 @@ public class UIManager : Singleton<UIManager>
     // 씬 로드시 호출되는 함수
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        GameManager.Instance.OnPause(false);
+
         // 씬 인덱스가 0이면 (Home 씬)
         if (scene.buildIndex == 0)
         {
