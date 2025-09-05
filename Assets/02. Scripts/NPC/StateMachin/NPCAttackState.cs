@@ -14,6 +14,7 @@ public class NPCAttackState : NPCBaseState
     public override void Enter()
     {
         stateMachine.Npc.agent.isStopped = true; //공격시 멈추고
+        lastFireTime = Time.time;
         base.Enter();
 
     }
