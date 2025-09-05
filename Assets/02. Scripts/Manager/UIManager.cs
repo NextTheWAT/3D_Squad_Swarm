@@ -159,6 +159,9 @@ public class UIManager : Singleton<UIManager>
     {
         // enum 상태를 Pause로 변경
         ChangeState(UIState.Pause);
+
+        // 게임매니저의 게임 일시정지 함수 호출
+        GameManager.Instance.OnPause(true);
     }
 
     // 플레이어 사망 시 적절한 곳(예:플레이어)에서 호출
@@ -172,10 +175,6 @@ public class UIManager : Singleton<UIManager>
             StopCoroutine(_timerRoutine);
             _timerRoutine = null;
         }
-
-        // 게임오버시 타이머 코루틴 정지
-        //StopCoroutine(Countdown());
-        //_timerRoutine = null;
     }
 
     // 게임 클리어 시 호출
@@ -183,6 +182,12 @@ public class UIManager : Singleton<UIManager>
     {
         // enum 상태를 GameClear로 변경
         ChangeState(UIState.GameClear);
+
+        if (_timerRoutine != null)
+        {
+            StopCoroutine(_timerRoutine);
+            _timerRoutine = null;
+        }
     }
 
     // 각 옵션버튼에서 호출 (인트로, 일시정지)
@@ -198,8 +203,11 @@ public class UIManager : Singleton<UIManager>
         // enum 상태를 TimeUP으로 변경
         ChangeState(UIState.TimeUP);
 
-        // 타임오버시 타이머 코루틴 정지
-        StopCoroutine(Countdown());
+        if (_timerRoutine != null)
+        {
+            StopCoroutine(_timerRoutine);
+            _timerRoutine = null;
+        }
     }
 
     // 감염도 증가 (인간이 죽을때 호출)
