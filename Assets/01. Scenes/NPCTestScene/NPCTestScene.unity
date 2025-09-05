@@ -137,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6673452028324763727, guid: bf89fc9d27b331446b50c17807e972d3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7569144202553138305, guid: bf89fc9d27b331446b50c17807e972d3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -192,6 +192,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 84254007718213061, guid: 9d55e30fc2253284995d9b90b308326e, type: 3}
+      propertyPath: zombiePrefab
+      value: 
+      objectReference: {fileID: 1005759432}
     - target: {fileID: 1297343226860714323, guid: 9d55e30fc2253284995d9b90b308326e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -236,10 +240,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC_Hunter_3
       objectReference: {fileID: 0}
-    - target: {fileID: 7842510224554946093, guid: 9d55e30fc2253284995d9b90b308326e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -263,7 +263,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 987013070293102917, guid: 1e33df42841577c44b047593030ba105, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2366175819597854788, guid: 1e33df42841577c44b047593030ba105, type: 3}
       propertyPath: m_LocalPosition.x
@@ -324,7 +324,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4663749763471866935, guid: 980d821579f857248abc548e54294cd0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8406957949066626693, guid: 980d821579f857248abc548e54294cd0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -447,7 +447,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2451761408369611063, guid: 41370a52aa9c30747bae5d25519b21f2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8453943446541556785, guid: 41370a52aa9c30747bae5d25519b21f2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -612,10 +612,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC_Hunter_W_2
       objectReference: {fileID: 0}
-    - target: {fileID: 386326027053311078, guid: 0381073dfc4e99c488cb022a2e73f4d8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 5277560922070293442, guid: 0381073dfc4e99c488cb022a2e73f4d8, type: 3}
+      propertyPath: zombiePrefab
+      value: 
+      objectReference: {fileID: 1005759432}
     - target: {fileID: 6313405035653301259, guid: 0381073dfc4e99c488cb022a2e73f4d8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -736,7 +736,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4668654602810645675, guid: 99ce26a6b9af2e8449273741e745d146, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5412026636817747566, guid: 99ce26a6b9af2e8449273741e745d146, type: 3}
       propertyPath: m_LocalPosition.x
@@ -783,6 +783,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99ce26a6b9af2e8449273741e745d146, type: 3}
+--- !u!1 &1005759432 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4668654602810645675, guid: 99ce26a6b9af2e8449273741e745d146, type: 3}
+  m_PrefabInstance: {fileID: 1005759431}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1171339916
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -797,7 +802,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1666421720722391696, guid: cc7fd377968814a4fbb324262953a500, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3527019774630966992, guid: cc7fd377968814a4fbb324262953a500, type: 3}
       propertyPath: m_LocalPosition.x
@@ -858,7 +863,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3638801546970039278, guid: 2d9002490fd211940a7e2632b3461240, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7289884403130743204, guid: 2d9002490fd211940a7e2632b3461240, type: 3}
       propertyPath: m_LocalPosition.x
@@ -919,7 +924,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1583775786394517558, guid: f1fdbe7790188034f83bae10d44d34e3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8804748227809953737, guid: f1fdbe7790188034f83bae10d44d34e3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1020,7 +1025,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5210098199429294078, guid: 109e98089e4afb4459bac6ed2ebe8f58, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1035,13 +1040,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1816335319141443815, guid: efd82a542b4684a479b9b46d39913ea7, type: 3}
+      propertyPath: zombiePrefab
+      value: 
+      objectReference: {fileID: 1005759432}
     - target: {fileID: 4886982653721326076, guid: efd82a542b4684a479b9b46d39913ea7, type: 3}
       propertyPath: m_Name
       value: NPC_Hunter_2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4886982653721326076, guid: efd82a542b4684a479b9b46d39913ea7, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5191274270915908780, guid: efd82a542b4684a479b9b46d39913ea7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1102,7 +1107,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6687691561937348005, guid: 40ba292b296873a4baad299c49a59ec1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8827427514571998003, guid: 40ba292b296873a4baad299c49a59ec1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1295,7 +1300,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2972642708918744755, guid: 0f3e0b91c8d360a4a977cbb915f56c14, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1444,13 +1449,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3825409408030194163, guid: 5a638fafbdae7a343bbbf00854f70a7b, type: 3}
+      propertyPath: zombiePrefab
+      value: 
+      objectReference: {fileID: 1005759432}
     - target: {fileID: 5944571120269254071, guid: 5a638fafbdae7a343bbbf00854f70a7b, type: 3}
       propertyPath: m_Name
       value: NPC_Hunter_W_3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5944571120269254071, guid: 5a638fafbdae7a343bbbf00854f70a7b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1511,7 +1516,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7087763673012793474, guid: b404757fc4bdb1e4498cf9f76e47efbd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1572,7 +1577,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5507003941367423812, guid: 9e74fbba0da91754780e6e16d19a3ff3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1637,7 +1642,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7691466430745523193, guid: 17481c2e46859b94fb63ebd883b354a2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1655,10 +1660,6 @@ PrefabInstance:
     - target: {fileID: 1357426970570690203, guid: c526e253363e21844a8426958b508e7a, type: 3}
       propertyPath: m_Name
       value: NPC_Hunter_W_1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1357426970570690203, guid: c526e253363e21844a8426958b508e7a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2906097572137703452, guid: c526e253363e21844a8426958b508e7a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1700,6 +1701,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7352315947903220931, guid: c526e253363e21844a8426958b508e7a, type: 3}
+      propertyPath: zombiePrefab
+      value: 
+      objectReference: {fileID: 1005759432}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

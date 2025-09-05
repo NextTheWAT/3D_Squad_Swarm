@@ -170,6 +170,8 @@ public class UIManager : Singleton<UIManager>
         // enum 상태를 GameOver로 변경
         ChangeState(UIState.GameOver);
 
+        GameManager.Instance.OnPause(true);
+
         if (_timerRoutine != null)
         {
             StopCoroutine(_timerRoutine);
