@@ -16,16 +16,16 @@ MonoBehaviour:
   spawns:
   - name: NPC_Man_1
     prefab: {fileID: 6673452028324763727, guid: bf89fc9d27b331446b50c17807e972d3, type: 3}
-    initialCount: 20
-    maxCount: 30
-    respawnInterval: 20
+    initialCount: 40
+    maxCount: 50
+    respawnInterval: 30
     startCondition: 1
     startDelay: 1
   - name: NPC_Woman_1
     prefab: {fileID: 5210098199429294078, guid: 109e98089e4afb4459bac6ed2ebe8f58, type: 3}
-    initialCount: 20
-    maxCount: 30
-    respawnInterval: 20
+    initialCount: 40
+    maxCount: 50
+    respawnInterval: 30
     startCondition: 1
     startDelay: 1
   - name: NPC_Hunter_1
