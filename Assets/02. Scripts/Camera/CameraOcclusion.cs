@@ -5,7 +5,7 @@ public class CameraOcclusion : MonoBehaviour
 {
     [Range(0f, 1f)]
     public float transparentAlpha = 0.3f; // How transparent the building gets
-    public float detectionRadius = 5f;   // Radius of the fixed detection sphere
+    public float detectionRadius = 3f;   // Radius of the fixed detection sphere
     public LayerMask buildingLayer;      // Layer for buildings
 
     private class RendererData

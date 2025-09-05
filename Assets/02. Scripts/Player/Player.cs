@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections;
 public class Player : MonoBehaviour, IDamageable
 {
     [field: Header("Animations")]
@@ -36,7 +36,7 @@ public class Player : MonoBehaviour, IDamageable
     }
     private void OnEnable()
     {
-        PlayerManager.Instance.PlayerSpeedReset(); // ½ºÅ×ÀÌÁö ½ÃÀÛ½Ã ÇÃ·¹ÀÌ¾î ¼Óµµ ÃÊ±âÈ­
+        PlayerManager.Instance.PlayerSpeedReset(); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Û½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½Óµï¿½ ï¿½Ê±ï¿½È­
     }
     private void Start()
     {
@@ -105,15 +105,21 @@ public class Player : MonoBehaviour, IDamageable
                 Debug.Log("PlayDeathCamera");
                 CameraDeathEffect.Instance.PlayDeathCamera(transform);
             }
+            StartCoroutine(ShowGameOverAfterDelay());
+        }
+    }
 
-            if (UIManager.Instance != null)
-            {
-                UIManager.Instance.SetGameOver();
-            }
-            else
-            {
-                Debug.LogWarning("UIManager instance not found!");
-            }
+    private IEnumerator ShowGameOverAfterDelay()
+    {
+        yield return new WaitForSeconds(3f);
+
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.SetGameOver();
+        }
+        else
+        {
+            Debug.LogWarning("UI Manger Not found");
         }
     }
 
