@@ -143,6 +143,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transparentAlpha: 0.3
+  detectionRadius: 5
+  buildingLayer:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!135 &1913917464545091270
 SphereCollider:
   m_ObjectHideFlags: 0

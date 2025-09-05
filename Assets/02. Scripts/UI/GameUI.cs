@@ -24,7 +24,7 @@ public class GameUI : BaseUI
     
     private float maxTime; // 최대 시간을 저장할 변수
 
-    public bool gameInfoChecked = true; // 게임시작시 정보창 볼지 여부
+    public bool gameInfoChecked; // 게임시작시 정보창 볼지 여부
 
     public override void Init(UIManager uiManager)
     {
@@ -39,6 +39,8 @@ public class GameUI : BaseUI
         timeSlider.maxValue = 1f;
 
         maxTime = UIManager.Instance.remainingTime; // maxTime을 UIManager의 초기 시간으로 설정
+
+        gameInfoChecked = true;
     }
 
     // UI 활성화 시 감염도 초기화
@@ -49,6 +51,9 @@ public class GameUI : BaseUI
             return; // 이전 상태가 일시정지 상태라면 초기화하지 않음
         }
 
+        // 게임매니저의 게임시간 일시정지 함수 호출(게임일시정지)
+        GameManager.Instance.OnPause(true);
+
         // UI매니저의 현재감염도를 0으로 초기화
         uiManager.currentInfection = 0f;
 
@@ -57,6 +62,8 @@ public class GameUI : BaseUI
 
         // UI매니저의 남은시간을 초기화
         uiManager.remainingTime = maxTime;
+
+        Debug.Log($"gameInfoChecked : {gameInfoChecked}");
 
         // 게임 시작 시 gameInfoChecked가 true면
         if (gameInfoChecked == true)
@@ -74,6 +81,8 @@ public class GameUI : BaseUI
         else if (gameInfoChecked == false)
         {
             Debug.Log("게임정보창 비활성화");
+
+            GameManager.Instance.OnPause(false);
 
             // 게임 시작 시 페이드 아웃 코루틴 시작
             StartCoroutine(GameStartFadeInOut());
