@@ -57,6 +57,10 @@ public class GameClearUI : BaseUI
         // 다음 스테이지 게임씬 로드
         SceneManager.LoadScene(currentSceneIndex + 1);
 
+        if (currentSceneIndex + 1 == 4) StageManager.Instance.Stage2();
+        else if (currentSceneIndex + 1 == 5) StageManager.Instance.Stage3();
+
+
         Debug.Log("NextStage Button Clicked");
     }
 
