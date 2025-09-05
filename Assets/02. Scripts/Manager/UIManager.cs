@@ -148,9 +148,6 @@ public class UIManager : Singleton<UIManager>
     {
         // enum 상태를 Game으로 변경
         ChangeState(UIState.Game);
-
-        // 게임 시작시 타이머 코루틴 시작
-        //_timerRoutine = StartCoroutine(Countdown());
     }
 
     // 일시정지 키입력하는 곳에서 호출
@@ -225,7 +222,8 @@ public class UIManager : Singleton<UIManager>
         if (currentInfection >= maxInfection)
         {
             // 타임오버시 타이머 코루틴 정지
-            StopCoroutine(Countdown());
+            StopCoroutine(_timerRoutine);
+            _timerRoutine = null;
 
             // 감염도가 최대치에 도달하면 게임 오버 처리
             SetGameClear();
@@ -270,11 +268,11 @@ public class UIManager : Singleton<UIManager>
     // 씬 로드시 호출되는 함수
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        GameManager.Instance.OnPause(false);
-
         // 씬 인덱스가 0이면 (Home 씬)
         if (scene.buildIndex == 0)
         {
+            GameManager.Instance.OnPause(false);
+
             // UI 상태를 Intro로 변경하여 UI 초기화
             ChangeState(UIState.None);
 
@@ -288,6 +286,13 @@ public class UIManager : Singleton<UIManager>
         {
             // UI 상태를 GameUI로 변경
             ChangeState(UIState.Game);
+
+            // 타이머 코루틴 정지
+            if (_timerRoutine != null)
+            {
+                StopCoroutine(_timerRoutine);
+                _timerRoutine = null;
+            }
 
             // 시작시 카운트다운 코루틴 시작
             _timerRoutine = StartCoroutine(Countdown());
