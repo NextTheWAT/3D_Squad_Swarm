@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class NPCBaseState : IState
 {
@@ -57,7 +58,11 @@ public class NPCBaseState : IState
             0,
             Random.Range(-patrolRange, patrolRange)
         );
-        stateMachine.Npc.agent.SetDestination(randomPos);
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(randomPos, out hit, patrolRange, NavMesh.AllAreas))
+        {
+            stateMachine.Npc.agent.SetDestination(hit.position);
+        }
     }
 
     protected bool IsInChaseRange()

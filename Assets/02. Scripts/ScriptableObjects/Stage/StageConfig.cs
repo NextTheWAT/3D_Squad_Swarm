@@ -33,3 +33,4 @@ public class StageConfig : ScriptableObject
     public int navAreaMask = ~0;              // 모든 영역(~0) / 필요 시 마스크 지정
 
 }
+
