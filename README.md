@@ -335,3 +335,14 @@ Coroutines: 타이머/페이드/스폰 루프
 ![특수 효과 및 파티클 시스템 추가2](https://github.com/user-attachments/assets/6fd3f695-0359-47cf-b60b-5df92a3d049a)
 
 <aside>
+
+ ## 🧯 Troubleshooting
+<img width="950" height="227" alt="image" src="https://github.com/user-attachments/assets/4d6459ee-bcd3-4ccc-9894-9a69c8268b2c" />
+<img width="950" height="246" alt="image" src="https://github.com/user-attachments/assets/2f90818a-8ab8-44f5-a8a0-7d571a9d2f8c" />
+<img width="950" height="194" alt="image" src="https://github.com/user-attachments/assets/e612e5f4-f16a-4be0-a162-67e2e8cf00f1" />
+<img width="950" height="255" alt="image" src="https://github.com/user-attachments/assets/d444afaf-30f2-48eb-8cc9-6eaa94ab4c33" />
+
+
+
+
+
