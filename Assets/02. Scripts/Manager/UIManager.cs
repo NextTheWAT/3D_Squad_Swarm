@@ -159,6 +159,9 @@ public class UIManager : Singleton<UIManager>
     {
         // enum 상태를 Pause로 변경
         ChangeState(UIState.Pause);
+
+        // 게임매니저의 게임 일시정지 함수 호출
+        GameManager.Instance.OnPause(true);
     }
 
     // 플레이어 사망 시 적절한 곳(예:플레이어)에서 호출
