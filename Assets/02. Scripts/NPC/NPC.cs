@@ -26,7 +26,6 @@ public class NPC : MonoBehaviour, IDamageable
     public StatHandler Stats { get; private set; }
 
     private NPCStateMachine stateMachine;
-    //public ForceReceiver ForceReceiver { get; private set; }
     public NavMeshAgent agent;
     
 
@@ -40,8 +39,6 @@ public class NPC : MonoBehaviour, IDamageable
 
         stateMachine = new NPCStateMachine(this);
         stateMachine.ChangeState(stateMachine.IdleState);
-        //ForceReceiver = GetComponent<ForceReceiver>();
-       
     }
 
     private void Update()
@@ -52,9 +49,9 @@ public class NPC : MonoBehaviour, IDamageable
         }
 
         if (stateMachine.IsDead)
-            return; // Stop all other logic
+            return; 
 
-        stateMachine.RefreshTargetEveryFrame(); //Ÿ�� ������Ʈ
+        stateMachine.RefreshTargetEveryFrame(); 
         stateMachine.Update();
 
     }
@@ -88,7 +85,6 @@ public class NPC : MonoBehaviour, IDamageable
     public void Die()
     {
         StageManager.Instance?.OnEnemyKilled(this);
-        // ���ϸ� ���⼭ Destroy(gameObject)���� ó��
     }
 }
    
