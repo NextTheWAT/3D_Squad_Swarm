@@ -48,8 +48,8 @@ MonoBehaviour:
   musicClip:
   - {fileID: 8300000, guid: 5ed65ac5b8793114c91b092182d31423, type: 3}
   - {fileID: 8300000, guid: e34064c22301c2f4288cdbba64367a80, type: 3}
-  - {fileID: 8300000, guid: cef6abbd64ce8bb4a813bc59efe1e0e5, type: 3}
   - {fileID: 8300000, guid: 27d1883791e62014898ad103a2531117, type: 3}
+  - {fileID: 8300000, guid: cef6abbd64ce8bb4a813bc59efe1e0e5, type: 3}
 --- !u!82 &7299002264389135645
 AudioSource:
   m_ObjectHideFlags: 0
