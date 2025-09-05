@@ -17,7 +17,7 @@ UI는 인트로 → 스테이지선택 → 게임 → 일시정지/클리어/게
 
 
 ## ▶️ 플레이영상
-[시연 영상 보기](https://your.video.link)  
+[시연 영상 보기]([https://your.video.link](https://youtu.be/6wKTC_5yyMQ))  
 
 ## 🕹️ 플레이방법  
 게임 실행 → Intro 진입    
